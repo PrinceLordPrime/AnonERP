@@ -482,7 +482,7 @@ public class MAIN extends javax.swing.JFrame {
         btnexit.setBackground(java.awt.Color.red);
         btnexit.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
         btnexit.setForeground(new java.awt.Color(255, 255, 255));
-        btnexit.setText("Exit DynamicSP ERP");
+        btnexit.setText("Exit Anon ERP");
         btnexit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnexit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -867,7 +867,7 @@ public class MAIN extends javax.swing.JFrame {
         tfclient.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
         tfclient.setForeground(new java.awt.Color(0, 102, 102));
         tfclient.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfclient.setText("Welcome DynamicSP Member");
+        tfclient.setText("ANON Matrix ERP");
         tfclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfclientActionPerformed(evt);
@@ -979,7 +979,7 @@ public class MAIN extends javax.swing.JFrame {
         dspwelcome.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         dspwelcome.setForeground(new java.awt.Color(0, 102, 102));
         dspwelcome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        dspwelcome.setText("Welcome To DynamicSP ERP");
+        dspwelcome.setText("Welcome : Anon Matrix ERP");
         dspwelcome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 dspwelcomeMouseEntered(evt);

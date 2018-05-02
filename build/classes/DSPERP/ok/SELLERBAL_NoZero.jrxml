@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SellerBal" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dceec894-7d3a-47d2-a727-30894f21f664">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN,
+     SELLERBALANCE."BALANCE" AS SELLERBALANCE_BALANCE,
+     SUPP."NAME" AS SUPP_NAME,
+     SUPP."ADD1" AS SUPP_ADD1,
+     SUPP."CONTACT" AS SUPP_CONTACT,
+     SELLERBALANCE."SELLER" AS SELLERBALANCE_SELLER,
+     SUPP."FNAME" AS SUPP_FNAME
+FROM
+     "DSP001"."SUPP" SUPP INNER JOIN "DSP001"."SELLERBALANCE" SELLERBALANCE ON SUPP."CODE" = SELLERBALANCE."SELLER",
+     "DSP001"."DSPCLIENT" DSPCLIENT
+WHERE
+      SELLERBALANCE."BALANCE" != 0]]>
+	</queryString>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<field name="SELLERBALANCE_BALANCE" class="java.math.BigDecimal"/>
+	<field name="SUPP_NAME" class="java.lang.String"/>
+	<field name="SUPP_ADD1" class="java.lang.String"/>
+	<field name="SUPP_CONTACT" class="java.lang.String"/>
+	<field name="SELLERBALANCE_SELLER" class="java.math.BigDecimal"/>
+	<field name="SUPP_FNAME" class="java.lang.String"/>
+	<sortField name="SUPP_NAME"/>
+	<variable name="SumAll" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SELLERBALANCE_BALANCE}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="42">
+			<textField>
+				<reportElement mode="Opaque" x="2" y="0" width="554" height="28" backcolor="#99CCFF" uuid="f2de52f9-1461-4004-8d7d-857100176ec2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="67" y="16" width="422" height="23" uuid="266e8366-3c08-4533-91ae-16400a80b6ed"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="17" forecolor="#006699" backcolor="#E6E6E6" uuid="7690381e-1827-4200-a810-4cececf8323d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Sellers Balances Report (Only Balances)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="38" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="b82fe9a6-41da-4c36-9b10-7c4f650822ea"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="38" y="0" width="144" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="9476f9f8-16ed-4b05-81c4-47db5181ccf5"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Seller Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="182" y="0" width="123" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="6375d849-616b-4a2b-be0a-f75b36524f98"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="388" y="0" width="88" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="83fb9bfc-9625-43da-9d75-cc2e0b2fbec1"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Contact #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="476" y="0" width="79" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="c5cd12e3-84da-43e7-b3a8-82523b04aeed"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="305" y="0" width="83" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="656a385e-db8c-4d0a-ac71-ae0a40289c57"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Company]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="0" y="0" width="38" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="faebafca-7619-4c2e-a10b-006a80230356"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SELLERBALANCE_SELLER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="38" y="0" width="144" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="2fe2f1c7-5944-41c0-9aa0-3539a73ce007"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUPP_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="182" y="0" width="123" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="3eaa91a8-6d26-44f3-bf2b-dd4aa6aa8e6f"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUPP_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="388" y="0" width="88" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="66bcebee-fa37-47dd-82dc-a720013b9fa4"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUPP_CONTACT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="476" y="0" width="79" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="354e8e0d-578e-4f41-b602-fc4026c550bd"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SELLERBALANCE_BALANCE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="305" y="0" width="83" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="571276b9-3543-4c2e-bd03-ef0f3bf07aeb"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUPP_FNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="1" y="4" width="100" height="13" backcolor="#E6E6E6" uuid="1cdf4a86-7cb0-4de0-832b-68c933b5dae8"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="30c27844-5715-479a-8eca-a1f1029c364b"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="4" width="352" height="13" backcolor="#E6E6E6" uuid="7e3158e3-0a49-49e1-b585-01e41af30846"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 0302-5555496 | http://dspak.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-19" y="2" width="596" height="1" forecolor="#666666" uuid="23f9592d-7f08-456c-a38f-61c96d58c247"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement mode="Opaque" x="453" y="4" width="63" height="13" backcolor="#E6E6E6" uuid="9749d544-6e5a-41dd-b923-cd13843542ae"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15">
+			<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="475" y="0" width="80" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="6f260f7f-e80c-4c48-8f40-d09badc30fe9"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumAll}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="475" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="f0e4b807-9d86-43a8-896f-af3caf61ac6d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

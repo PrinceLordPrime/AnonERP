@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stockexpbatch" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76faa5ac-8e1c-45d7-9070-68d4b4ba9805">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fromexpirydate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Company" class="java.lang.String"/>
+	<parameter name="toexpirydate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CURRENTSTOCK."EXPIRYDATE" AS CURRENTSTOCK_EXPIRYDATE,
+     CURRENTSTOCK."BATCH" AS CURRENTSTOCK_BATCH,
+     CURRENTSTOCK."PURQTY" AS CURRENTSTOCK_PURQTY,
+     CURRENTSTOCK."TOTALOUT" AS CURRENTSTOCK_TOTALOUT,
+     CURRENTSTOCK."PAIDSTOCK" AS CURRENTSTOCK_PAIDSTOCK,
+     CURRENTSTOCK."BONSSTOCK" AS CURRENTSTOCK_BONSSTOCK,
+     CURRENTSTOCK."NETTOTALSTOCK" AS CURRENTSTOCK_NETTOTALSTOCK,
+     PMAST."CODE" AS PMAST_CODE,
+     PMAST."PNAME" AS PMAST_PNAME,
+     PMAST."PSIZE" AS PMAST_PSIZE,
+     PMAST."STTYPECODE" AS PMAST_STTYPECODE,
+     PMAST."SUBCAT" AS PMAST_SUBCAT,
+     PMAST."NOOFPCS" AS PMAST_NOOFPCS,
+     PMAST."WEIGHT" AS PMAST_WEIGHT,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN,
+     PMAST."CATCODE" AS PMAST_CATCODE,
+     PMAST."COMPANYCODE" AS PMAST_COMPANYCODE,
+     STOCKTYPE."NAME" AS STOCKTYPE_NAME,
+     PCAT."PDESC" AS PCAT_PDESC,
+     COMPANY."NAME" AS COMPANY_NAME,
+     SUBCAT."SUBCAT" AS SUBCAT_SUBCAT,
+     PMAST."COSTPRICE" AS PMAST_COSTPRICE,
+     PMAST."SALEPRICE" AS PMAST_SALEPRICE
+FROM
+     "DSP001"."PMAST" PMAST INNER JOIN "DSP001"."CURRENTSTOCK" CURRENTSTOCK ON PMAST."CODE" = CURRENTSTOCK."CODE"
+     INNER JOIN "DSP001"."COMPANY" COMPANY ON PMAST."COMPANYCODE" = COMPANY."CODE"
+     INNER JOIN "DSP001"."STOCKTYPE" STOCKTYPE ON PMAST."STTYPECODE" = STOCKTYPE."CODE"
+     INNER JOIN "DSP001"."PCAT" PCAT ON PMAST."CATCODE" = PCAT."CCODE"
+     INNER JOIN "DSP001"."SUBCAT" SUBCAT ON PMAST."SUBCAT" = SUBCAT."CODE",
+     "DSP001"."DSPCLIENT" DSPCLIENT
+WHERE
+	CURRENTSTOCK."EXPIRYDATE" >= TO_DATE($P{fromexpirydate} ,'MM/DD/YY') AND
+	CURRENTSTOCK."EXPIRYDATE" <= TO_DATE($P{toexpirydate} ,'MM/DD/YY') AND
+	CURRENTSTOCK."NETTOTALSTOCK" > 0 AND
+	PMAST."COMPANYCODE" = $P{Company}]]>
+	</queryString>
+	<field name="CURRENTSTOCK_EXPIRYDATE" class="java.sql.Timestamp"/>
+	<field name="CURRENTSTOCK_BATCH" class="java.lang.String"/>
+	<field name="CURRENTSTOCK_PURQTY" class="java.math.BigDecimal"/>
+	<field name="CURRENTSTOCK_TOTALOUT" class="java.math.BigDecimal"/>
+	<field name="CURRENTSTOCK_PAIDSTOCK" class="java.math.BigDecimal"/>
+	<field name="CURRENTSTOCK_BONSSTOCK" class="java.math.BigDecimal"/>
+	<field name="CURRENTSTOCK_NETTOTALSTOCK" class="java.math.BigDecimal"/>
+	<field name="PMAST_CODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_PNAME" class="java.lang.String"/>
+	<field name="PMAST_PSIZE" class="java.lang.String"/>
+	<field name="PMAST_STTYPECODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_SUBCAT" class="java.math.BigDecimal"/>
+	<field name="PMAST_NOOFPCS" class="java.lang.Double"/>
+	<field name="PMAST_WEIGHT" class="java.lang.Double"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<field name="PMAST_CATCODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_COMPANYCODE" class="java.math.BigDecimal"/>
+	<field name="STOCKTYPE_NAME" class="java.lang.String"/>
+	<field name="PCAT_PDESC" class="java.lang.String"/>
+	<field name="COMPANY_NAME" class="java.lang.String"/>
+	<field name="SUBCAT_SUBCAT" class="java.lang.String"/>
+	<field name="PMAST_COSTPRICE" class="java.lang.Double"/>
+	<field name="PMAST_SALEPRICE" class="java.lang.Double"/>
+	<sortField name="STOCKTYPE_NAME"/>
+	<sortField name="COMPANY_NAME"/>
+	<sortField name="PCAT_PDESC"/>
+	<sortField name="SUBCAT_SUBCAT"/>
+	<sortField name="PMAST_PNAME"/>
+	<variable name="SUBCAT_SUBCAT_1" class="java.lang.Integer" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{SUBCAT_SUBCAT}]]></variableExpression>
+	</variable>
+	<variable name="SUBCAT_SUBCAT_2" class="java.lang.Integer" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{SUBCAT_SUBCAT}]]></variableExpression>
+	</variable>
+	<variable name="PAIDCTNS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal (($F{CURRENTSTOCK_PAIDSTOCK}-($F{CURRENTSTOCK_PAIDSTOCK}%$F{PMAST_NOOFPCS}))/($F{PMAST_NOOFPCS}))]]></variableExpression>
+	</variable>
+	<variable name="PAIDPCS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_PAIDSTOCK}%$F{PMAST_NOOFPCS})]]></variableExpression>
+	</variable>
+	<variable name="NetCtnz" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal (($F{CURRENTSTOCK_NETTOTALSTOCK}-($F{CURRENTSTOCK_NETTOTALSTOCK}%$F{PMAST_NOOFPCS}))/($F{PMAST_NOOFPCS}))]]></variableExpression>
+	</variable>
+	<variable name="NetPcsz" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_NETTOTALSTOCK}%$F{PMAST_NOOFPCS})]]></variableExpression>
+	</variable>
+	<variable name="stockvalue" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{CURRENTSTOCK_PAIDSTOCK}*$F{PMAST_COSTPRICE}]]></variableExpression>
+	</variable>
+	<variable name="totalweight" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_PAIDSTOCK}*$F{PMAST_WEIGHT})]]></variableExpression>
+	</variable>
+	<variable name="SumTotalFree" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{CURRENTSTOCK_BONSSTOCK}]]></variableExpression>
+	</variable>
+	<variable name="SumTotalPaidValue" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($V{stockvalue})]]></variableExpression>
+	</variable>
+	<variable name="sumfreeValue" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_BONSSTOCK}*$F{PMAST_COSTPRICE})]]></variableExpression>
+	</variable>
+	<variable name="sumnetstockvalue" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_NETTOTALSTOCK}*$F{PMAST_COSTPRICE})]]></variableExpression>
+	</variable>
+	<variable name="sumnetstockGrossSale" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_NETTOTALSTOCK}*$F{PMAST_SALEPRICE})]]></variableExpression>
+	</variable>
+	<variable name="SumWeight" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalweight}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidCtn" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDCTNS}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidPcs" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDPCS}]]></variableExpression>
+	</variable>
+	<variable name="SumNetCtnz" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetCtnz}]]></variableExpression>
+	</variable>
+	<variable name="SumNetPcs" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetPcsz}]]></variableExpression>
+	</variable>
+	<variable name="SumTotalFree_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$F{CURRENTSTOCK_BONSSTOCK}]]></variableExpression>
+	</variable>
+	<variable name="SumTotalPaidValue_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($V{stockvalue})]]></variableExpression>
+	</variable>
+	<variable name="SumNetCtnz_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetCtnz}]]></variableExpression>
+	</variable>
+	<variable name="SumWeight_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalweight}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidPcs_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDPCS}]]></variableExpression>
+	</variable>
+	<variable name="SumNetPcs_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetPcsz}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidCtn_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDCTNS}]]></variableExpression>
+	</variable>
+	<variable name="sumfreeValue_Company" class="java.math.BigDecimal" resetType="Group" resetGroup="COMPANY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_BONSSTOCK}*$F{PMAST_COSTPRICE})]]></variableExpression>
+	</variable>
+	<variable name="SumTotalFree_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$F{CURRENTSTOCK_BONSSTOCK}]]></variableExpression>
+	</variable>
+	<variable name="SumWeight_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalweight}]]></variableExpression>
+	</variable>
+	<variable name="SumNetCtnz_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetCtnz}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidCtn_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDCTNS}]]></variableExpression>
+	</variable>
+	<variable name="SumPaidPcs_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$V{PAIDPCS}]]></variableExpression>
+	</variable>
+	<variable name="sumfreeValue_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($F{CURRENTSTOCK_BONSSTOCK}*$F{PMAST_COSTPRICE})]]></variableExpression>
+	</variable>
+	<variable name="SumNetPcs_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[$V{NetPcsz}]]></variableExpression>
+	</variable>
+	<variable name="SumTotalPaidValue_SubCAT" class="java.math.BigDecimal" resetType="Group" resetGroup="SUBCAT_SUBCAT" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal ($V{stockvalue})]]></variableExpression>
+	</variable>
+	<group name="STOCKTYPE_NAME">
+		<groupExpression><![CDATA[$F{STOCKTYPE_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement mode="Opaque" x="64" y="0" width="491" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="cceb36e6-1b3d-40b4-9df3-5a01077fb785"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STOCKTYPE_NAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="64" height="15" forecolor="#006699" uuid="dcc343ef-8679-49fd-8227-c0fd3940933c"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PMAST_STTYPECODE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="COMPANY_NAME">
+		<groupExpression><![CDATA[$F{COMPANY_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<textField>
+					<reportElement mode="Opaque" x="64" y="2" width="491" height="15" forecolor="#006699" uuid="f2c0e51d-5d65-466a-8e1d-500913e1b51f"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{COMPANY_NAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="2" width="64" height="15" forecolor="#006699" uuid="428638d9-a2ca-4e76-af48-a816a5ffc049"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PMAST_COMPANYCODE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="380" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="1bd512ee-ca48-4416-ac2c-3ef8766205f6"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumTotalFree_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="515" y="0" width="40" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="0ad2fa56-53c2-4cd2-b311-aa35b7d96cca"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumTotalPaidValue_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="476" y="0" width="39" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="4de2bf61-7adc-47a5-b28e-6a6fd2cffac7"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumWeight_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="444" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="c5d2876d-9933-40b1-b68e-e55871f8be5d"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumNetPcs_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="412" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="1921b70b-3387-496f-a6e6-50c8a9cbe283"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumNetCtnz_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="348" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="9de18436-d171-4e05-a9bf-75bfec7d235d"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumPaidPcs_Company}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="316" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="aa7b67b8-c3d7-4ed8-8d94-b760d9d1ddb2"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumPaidCtn_Company}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="1" y="0" width="315" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="db8816ce-ef8c-47fb-8e5e-c1936ace1e71"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Company Total:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="SUBCAT_SUBCAT">
+		<groupExpression><![CDATA[$F{SUBCAT_SUBCAT}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField>
+					<reportElement mode="Opaque" x="64" y="1" width="252" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="f45d4f5d-9a70-4b4e-af67-c7b4ba229766"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PCAT_PDESC}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="380" y="1" width="175" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="0350fb33-d150-4267-a16e-cdc3533c5340"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SUBCAT_SUBCAT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="316" y="1" width="64" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="f1de3d6a-f039-4e1d-bdb7-95959d3c54fb"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PMAST_SUBCAT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="1" width="64" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="e55b8c9e-7e5c-4609-b484-8b9391b25ebf"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PMAST_CATCODE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<staticText>
+					<reportElement mode="Transparent" x="1" y="0" width="315" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="52e5d3d3-6d8a-4e75-ba39-4dcc69de901e"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Category Total:]]></text>
+				</staticText>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="380" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="6e14ec12-5a6a-4d9f-a002-0d8684753718"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumTotalFree_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="476" y="0" width="39" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="1b8e352d-a59d-4720-9b44-de4ee0905a57"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumWeight_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="412" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="1ebd316c-a9eb-4d1c-aad4-6edd4af0c14f"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumNetCtnz_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="316" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="005b76b3-9e28-43a9-b121-92ed9d2efff0"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumPaidCtn_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="348" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="57979c73-ff6d-4c80-b412-de922fbd9b2b"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumPaidPcs_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="444" y="0" width="32" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="1b2566d3-a9c5-41f4-acb0-1b27cc2f31c8"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumNetPcs_SubCAT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="########.##;(########.##)">
+					<reportElement mode="Opaque" x="515" y="0" width="40" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="4139edee-e748-4a00-88de-48b7c2025e56"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumTotalPaidValue_SubCAT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="58">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="0" width="554" height="22" backcolor="#99CCFF" uuid="e54156e3-75fe-4bf5-a4d2-da96ea5eefc1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="21" width="554" height="24" backcolor="#99CCFF" uuid="8b8177b3-edf5-419c-b6e7-19dc02f31c5f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="69" y="35" width="407" height="22" uuid="811157df-692c-4113-aaa1-0a561f241ed3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17">
+			<staticText>
+				<reportElement x="1" y="0" width="276" height="17" forecolor="#006699" uuid="526414af-8702-4c57-a3c5-8647ca4f6942"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Statement Showing Expired Stock Betweet Date Range of:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement mode="Opaque" x="277" y="0" width="125" height="17" forecolor="#006699" backcolor="#E6E6E6" uuid="38030958-ca31-4e29-9fe0-6e1d545f8319"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromexpirydate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="402" y="0" width="23" height="17" forecolor="#006699" uuid="1d25f9b4-efad-44e4-87fa-48166989a5fb"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement mode="Opaque" x="425" y="0" width="130" height="17" forecolor="#006699" backcolor="#E6E6E6" uuid="6058752f-818d-4b1c-9b3c-83538d050d82"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{toexpirydate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="28" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="fb288a8a-dc31-4281-99bf-d867397d8499"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="0" width="32" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="c138b844-2e29-443b-a396-47a882081907"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Free Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="28" y="0" width="110" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="161dd051-8398-4b7e-88e0-019c3082c3d9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="266" y="0" width="50" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="2fad9f1c-d3f3-4372-acde-cd06dbc58dd8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Batch #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="203" y="0" width="63" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="760764cc-11ba-4bb0-a569-2dfe6560b061"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Expiry Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="412" y="0" width="64" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b5891c3d-ecd1-4d86-accb-66c7e7e1659f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Net Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="65" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="954ed58b-56d3-4f82-8b21-e26818e606fe"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Packing / Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="316" y="0" width="64" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3942ea2a-84c5-4127-a262-1d38bdc06395"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Paid Stock]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-21" y="36" width="595" height="1" forecolor="#666666" uuid="4c13bde9-5581-4d4a-ac6f-c289753e7b01"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="316" y="16" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cfa0f7df-7ffc-45ae-9ebc-dcbf50c567b3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CTNs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="348" y="16" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6ff1401b-410c-4ef3-9553-c8555aa1250f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PCs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="412" y="16" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ec318b06-b51c-44a8-a70b-3ef7d4084ad4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CTNs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="16" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b928f0a6-54d4-451f-8eae-34f01408d614"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PCs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="515" y="0" width="40" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="4e2e7e3f-295b-4534-bb66-8f9438f2e087"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Paid Stock Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="476" y="0" width="39" height="36" forecolor="#006699" backcolor="#E6E6E6" uuid="5964e992-2506-4adc-84e5-cdeb3ba44d7b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Stock Weight]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15">
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="0" width="50" height="15" uuid="507b25a4-2dd3-4cfa-9ad6-e0a4f36671c0"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURRENTSTOCK_BATCH}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="28" y="0" width="110" height="15" uuid="ce8fdc03-e8c1-40bd-96d5-d738731dbc12"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PNAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="138" y="0" width="65" height="15" uuid="5c5ce285-35c3-4e37-9be9-dc93b6bbd3c9"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PSIZE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement x="203" y="0" width="63" height="15" uuid="7d4f50f9-53b0-4c9a-8fb2-43cbbf8adc60"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURRENTSTOCK_EXPIRYDATE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)" isBlankWhenNull="true">
+				<reportElement x="380" y="0" width="32" height="15" uuid="af93b723-7a34-4b99-ad82-a6dd49b35fe3"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURRENTSTOCK_BONSSTOCK}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="28" height="15" uuid="c2086494-22e2-44eb-a6f7-7997b75b3f13"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_CODE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="348" y="0" width="32" height="15" uuid="01b18517-deb9-4aee-bb55-9ed9aa72e557"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAIDPCS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="316" y="0" width="32" height="15" uuid="b7600cae-ed96-4a19-b2c4-8697e0884aac"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAIDCTNS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="412" y="0" width="32" height="15" uuid="f214831f-86f5-4523-ba6b-dce500fefd43"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NetCtnz}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="444" y="0" width="32" height="15" uuid="be12bcb5-fd5c-4750-93fa-3380b98ba368"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NetPcsz}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="515" y="0" width="40" height="15" uuid="36ff534f-1a4e-4d45-9069-85e3a363c4db"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{stockvalue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="476" y="0" width="39" height="15" uuid="7e2e2359-e342-4ef8-89a8-f0381156ef10"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalweight}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="0" y="3" width="100" height="13" backcolor="#E6E6E6" uuid="8a83a355-51bc-480f-9fab-a8f8fce35e2b"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="452" y="3" width="63" height="13" backcolor="#E6E6E6" uuid="a1dfe6c7-5c85-4137-85ed-2e57871a2bd2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="3" width="40" height="13" backcolor="#E6E6E6" uuid="f9f89c64-8b38-4c16-a2ff-33554deecd46"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="3" width="354" height="13" backcolor="#E6E6E6" uuid="998bc203-6a1e-408a-8684-2dd02f1a6942"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-21" y="2" width="595" height="1" forecolor="#666666" uuid="85d1b664-6379-4b33-bdd3-c1642b20c19e"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="72">
+			<line>
+				<reportElement x="-21" y="2" width="595" height="1" forecolor="#666666" uuid="8da78080-ee92-4ddf-9468-c0f20435594d"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="85" y="25" width="96" height="20" uuid="51890c39-e935-4931-8f0d-19962600bdd0"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumTotalFree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="277" y="5" width="80" height="20" uuid="3fda028d-2828-4361-85dc-65b7523f01f6"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumTotalPaidValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="5" width="96" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="caf842fb-c117-4b49-84c1-4709cb478232"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Paid Stock Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="5" width="84" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="28b0f7f3-f2fc-4e53-9ee2-a69529119495"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Paid Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="25" width="84" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1e69bedc-a3a3-475c-b758-c946bf9c142f"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Free PCs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="357" y="5" width="119" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2ad4b618-de2d-4171-bf76-6d721031e527"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Paid + Bons Stock Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="25" width="96" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6098ca36-293d-456c-8043-f357182c2ddc"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Free Stock in Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="357" y="25" width="119" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f098f359-2ee6-4d8e-99d6-3591a9775fa6"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ Stock Value on TP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="45" width="84" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="76600f3f-c9d6-41f6-9df5-9ac0457b6beb"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Net Stock]]></text>
+			</staticText>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="476" y="5" width="79" height="20" uuid="77ed571f-f139-4c2e-ae3a-4b81d1accf76"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumnetstockvalue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="277" y="25" width="80" height="20" uuid="4f6f5c04-b1f3-4a38-b1f7-f8bcdc477474"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumfreeValue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="476" y="25" width="79" height="20" uuid="455651df-5ab2-46e3-9bc5-c6ca1f1f9b3a"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumnetstockGrossSale}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="45" width="96" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4dcbb7c7-30e2-4c20-b651-a21dd93ae266"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Weight]]></text>
+			</staticText>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="277" y="45" width="80" height="20" uuid="b4772e5a-396e-4150-bdd7-7e5a545f1836"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumWeight}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="85" y="5" width="53" height="20" uuid="c83caac5-f0e5-4497-b6d6-04409ccdfe2d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumPaidCtn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="138" y="5" width="43" height="20" uuid="a8db2a22-8eab-4686-a320-07bb03d4626a"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumPaidPcs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="85" y="45" width="53" height="20" uuid="fd206217-2c77-4767-8088-bc9ad2260828"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumNetCtnz}]]></textFieldExpression>
+			</textField>
+			<textField pattern="########.##;(########.##)">
+				<reportElement x="138" y="45" width="43" height="20" uuid="3efd83e7-2123-45e8-857e-165307113095"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumNetPcs}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

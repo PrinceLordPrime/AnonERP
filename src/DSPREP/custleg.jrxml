@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="custleg" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="12f7d0b8-b76d-45fe-8118-9bdbf0273898">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fromdate" class="java.lang.String"/>
+	<parameter name="todate" class="java.lang.String"/>
+	<parameter name="get_custcode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<parameter name="op_bal" class="java.math.BigDecimal"/>
+	<parameter name="cl_bal" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[SELECT
+     CUSTLEG."CUSTCODE" AS CUSTLEG_CUSTCODE,
+     CUSTLEG."DOCDATE" AS CUSTLEG_DOCDATE,
+     CUSTLEG."DESCR" AS CUSTLEG_DESCR,
+     CUSTLEG."DEBIT" AS CUSTLEG_DEBIT,
+     CUSTLEG."CREDIT" AS CUSTLEG_CREDIT,
+     CUSTLEG."DOCNO" AS CUSTLEG_DOCNO,
+     CLIENTS."NAME" AS CLIENTS_NAME,
+     CLIENTS."ADD1" AS CLIENTS_ADD1,
+     CLIENTS."CNIC" AS CLIENTS_CNIC,
+     CLIENTS."CONTACT" AS CLIENTS_CONTACT,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT
+FROM
+     "PAK"."CLIENTS" CLIENTS INNER JOIN "PAK"."CUSTLEG" CUSTLEG ON CLIENTS."CODE" = CUSTLEG."CUSTCODE",
+     "PAK"."DSPCLIENT" DSPCLIENT
+WHERE
+     CUSTLEG."CUSTCODE" = $P{get_custcode} AND 
+CUSTLEG."DOCDATE" >= TO_DATE($P{fromdate} ,'MM/DD/YY') AND
+CUSTLEG."DOCDATE" <= TO_DATE($P{todate} ,'MM/DD/YY')]]>
+	</queryString>
+	<field name="CUSTLEG_CUSTCODE" class="java.math.BigDecimal"/>
+	<field name="CUSTLEG_DOCDATE" class="java.sql.Timestamp"/>
+	<field name="CUSTLEG_DESCR" class="java.lang.String"/>
+	<field name="CUSTLEG_DEBIT" class="java.lang.Double"/>
+	<field name="CUSTLEG_CREDIT" class="java.lang.Double"/>
+	<field name="CUSTLEG_DOCNO" class="java.math.BigDecimal"/>
+	<field name="CLIENTS_NAME" class="java.lang.String"/>
+	<field name="CLIENTS_ADD1" class="java.lang.String"/>
+	<field name="CLIENTS_CNIC" class="java.lang.String"/>
+	<field name="CLIENTS_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<variable name="prebalance" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$V{newbalance}.doubleValue()]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{op_bal}.doubleValue()]]></initialValueExpression>
+	</variable>
+	<variable name="newbalance" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new Double(($V{prebalance}.doubleValue()+$F{CUSTLEG_DEBIT}.doubleValue())-$F{CUSTLEG_CREDIT}.doubleValue())]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{op_bal}.doubleValue()]]></initialValueExpression>
+	</variable>
+	<variable name="sum_debit" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{CUSTLEG_DEBIT}]]></variableExpression>
+	</variable>
+	<variable name="sum_credit" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{CUSTLEG_CREDIT}]]></variableExpression>
+	</variable>
+	<group name="CLIENTS_NAME">
+		<groupExpression><![CDATA[$F{CLIENTS_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="101">
+				<line>
+					<reportElement x="-21" y="61" width="595" height="1" forecolor="#666666" uuid="264e0894-3785-4b08-8d7d-ca7402c8eedc"/>
+				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="94" y="41" width="461" height="20" uuid="91765141-b1af-4eb5-834a-e2912e2e8406"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CLIENTS_CONTACT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="94" y="1" width="480" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="85c8fe0b-9f10-412c-b734-ec6f5352a69a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CLIENTS_NAME}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-21" y="81" width="595" height="1" forecolor="#666666" uuid="f6052f07-ec4d-415f-a79e-a15301061b69"/>
+				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="52" y="1" width="42" height="20" uuid="8d608a6a-03a9-49d5-91ea-0389f2a66f98"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CUSTLEG_CUSTCODE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="-21" y="1" width="73" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c9c7b456-1431-40ec-87de-b87758475fe5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Customer:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="22" width="52" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="7d522cef-5eeb-4acc-8d89-83dce3824ff4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Address:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="41" width="52" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="25061558-1613-4563-b21b-499962eb3cd2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Contact #]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="94" y="21" width="461" height="20" uuid="a8476b3c-29d1-4405-a938-634a7df4d5c7"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CLIENTS_ADD1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="98" y="61" width="94" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="f89cf712-e803-4619-9e18-7d6873aba967"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Opening Balance:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="302" y="61" width="54" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="a5157861-1e51-4bee-a447-4960a60ec2cb"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[CL Balance:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="-21" y="82" width="61" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="fe996b13-0b6d-413e-8156-b26576279674"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Code    ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="94" y="82" width="280" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="f5f0e025-6993-4b17-b7d4-e5acd9dd9f8f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Description]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="40" y="82" width="54" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="18a5cedd-e835-414b-8e49-72a17a089001"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="374" y="82" width="55" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="0fce9f9b-da6c-4cb0-8d0d-015624e9af9a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Debit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="429" y="82" width="54" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="67bb1ddc-969b-4582-ae36-4485c6c714ad"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Credit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="482" y="82" width="92" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="2006e8a3-0582-4eb4-a797-1d2180c487a6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Balance    ]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-21" y="100" width="595" height="1" forecolor="#666666" uuid="8390bede-932f-429a-a926-8eda2d56a496"/>
+				</line>
+				<line>
+					<reportElement x="-21" y="21" width="595" height="1" forecolor="#666666" uuid="9faa3052-22a1-4929-a7c4-0100adee125d"/>
+				</line>
+				<line>
+					<reportElement x="-21" y="1" width="595" height="1" forecolor="#666666" uuid="eee16a91-1e09-4041-9115-1d8597a1497f"/>
+				</line>
+				<textField pattern="###,###,###.##;(###,###,###.##)">
+					<reportElement x="192" y="61" width="100" height="19" forecolor="#006699" uuid="0b7aff63-9322-4feb-bf49-ef5c7a088e74"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{op_bal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###,###,###.##;(###,###,###.##)">
+					<reportElement x="359" y="61" width="100" height="19" forecolor="#006699" uuid="bb572085-dd9b-4481-be88-4e98f4fbdc10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{cl_bal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="89">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="32" width="554" height="41" backcolor="#009999" uuid="6b27217c-626b-464e-8021-f29f2cea1548"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="0" width="554" height="34" backcolor="#009999" uuid="4f0c190f-7310-486f-bc13-c4cf138ac2c0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="74" y="53" width="407" height="36" uuid="4f98622a-bf5f-48e2-99ae-c66240e46e66"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37">
+			<staticText>
+				<reportElement x="4" y="0" width="551" height="17" uuid="89f9503e-a141-4108-9129-d7b4bc104ec6"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Statement Showing Date Wise Customer Ledger]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="145" y="17" width="65" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="110dfe3b-7c4e-4596-8167-40e4e09124e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[From Date:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Transparent" x="210" y="17" width="78" height="20" forecolor="#006699" uuid="e2287ce8-c65b-4877-a786-c7381cbe26e3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromdate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Transparent" x="339" y="17" width="101" height="20" forecolor="#006699" uuid="6c324385-0312-4546-ab18-b55a55076fe9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{todate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="288" y="17" width="51" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="30b63960-2be2-42d1-bb65-3df69fdbc324"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[To Date:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="97245ebe-49f8-4a32-b1ba-3ee834dba41a"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement x="40" y="0" width="54" height="20" uuid="be165a34-1c25-48e0-b2da-12de6292fa12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTLEG_DOCDATE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="0" width="280" height="20" uuid="f3fa0e10-5dd4-4b4e-ab1b-87258fb112d9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTLEG_DESCR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="374" y="0" width="55" height="20" uuid="e09bc49a-95b8-4640-a8a4-8abe194305e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTLEG_DEBIT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1" y="0" width="39" height="20" uuid="54e897b0-8227-43ae-b5b2-0eac936a17cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTLEG_DOCNO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="429" y="0" width="54" height="20" uuid="14ab4d9a-4971-4a02-84c9-9e9470156746"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTLEG_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="483" y="0" width="72" height="20" uuid="4d245f17-76cc-465b-99d0-4df07371e82a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{newbalance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15">
+			<staticText>
+				<reportElement mode="Opaque" x="106" y="2" width="353" height="13" backcolor="#E6E6E6" uuid="c7b76e4c-4e74-403c-bf9d-233655cf3c05"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="0" y="2" width="106" height="13" backcolor="#E6E6E6" uuid="918914b8-3150-46bf-a747-7b90b9935495"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="459" y="2" width="56" height="13" backcolor="#E6E6E6" uuid="da37e899-77ed-495d-94ab-e794ea2c7e06"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="2" width="40" height="13" backcolor="#E6E6E6" uuid="72cabd82-8b6d-40cc-a66f-5a22455dc743"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="288" y="0" width="68" height="20" uuid="5d1b5822-54bc-43dc-9fa0-c67a39e69db2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_debit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="440" y="0" width="65" height="20" uuid="ecffadae-ac86-4f86-bf8f-8d57d66c7a85"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_credit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="374" y="1" width="66" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="7faf82fc-9eaa-446a-b24a-c70f5c4d641b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Credit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="222" y="1" width="66" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="87eae55c-5106-4dff-8436-1eab0ca6655d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Debit]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

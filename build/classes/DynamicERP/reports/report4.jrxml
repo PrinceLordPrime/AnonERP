@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="824bfc9d-055d-4bea-a1be-1a49ea16a4f9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FROM_DATE" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TO_DATE" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     sum(RDTL."DUEAMOUNT") AS DUEAMOUNT,
+     sum(RDTL."RCAMOUNT") AS RCAMOUNT,
+     SMAIN."DOCNO" AS SMAIN_DOCNO,
+     CLIENTS."NAME" AS CLIENTS_NAME
+FROM
+     "PAK"."SMAIN" SMAIN INNER JOIN "PAK"."RDTL" RDTL ON SMAIN."DOCNO" = RDTL."DOCNO"
+     INNER JOIN "PAK"."CLIENTS" CLIENTS ON SMAIN."CUSTCODE" = CLIENTS."CODE"
+WHERE "PAK"."RDTL"."DUEDATE" BETWEEN $P{TO_DATE} AND $P{FROM_DATE}	
+GROUP BY
+     "PAK"."CLIENTS"."NAME","PAK"."SMAIN"."DOCNO"]]>
+	</queryString>
+	<field name="DUEAMOUNT" class="java.math.BigDecimal"/>
+	<field name="RCAMOUNT" class="java.math.BigDecimal"/>
+	<field name="SMAIN_DOCNO" class="java.math.BigDecimal"/>
+	<field name="CLIENTS_NAME" class="java.lang.String"/>
+	<group name="CLIENTS_NAME">
+		<groupExpression><![CDATA[$F{CLIENTS_NAME}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="204" y="3" width="106" height="20" uuid="f20c98e7-40ef-4e80-a537-df51ee611060"/>
+				<text><![CDATA[DUEAMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="3" width="95" height="20" uuid="4593265a-8e4e-449f-bb5e-641aa4b5b1a0"/>
+				<text><![CDATA[RCAMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="3" width="86" height="20" uuid="686c892d-79d8-420c-bfb0-a89e78d1d2c8"/>
+				<text><![CDATA[CLIENTS_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="3" width="100" height="20" uuid="8d127e27-ebd7-4bb9-9ff6-e70ded573fbe"/>
+				<text><![CDATA[REMAINING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="3" width="100" height="20" uuid="c4aaed1b-9729-442d-952e-bd83f21d4512"/>
+				<text><![CDATA[SMAIN_DOCNO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="204" y="3" width="106" height="20" uuid="e877841e-7238-4d6b-be9f-66fd047875b5"/>
+				<textFieldExpression><![CDATA[$F{DUEAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="3" width="95" height="20" uuid="b458e669-ef5e-4949-85ca-3f59597bcd56"/>
+				<textFieldExpression><![CDATA[$F{RCAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="3" width="86" height="20" uuid="40a399b4-0ce3-4c3d-9463-81b790d11090"/>
+				<textFieldExpression><![CDATA[$F{CLIENTS_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="3" width="100" height="20" uuid="e654a16b-cb93-49f0-b0e0-f9155e47b40e"/>
+				<textFieldExpression><![CDATA[$F{DUEAMOUNT}-$F{RCAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="3" width="100" height="20" uuid="603f83ee-4466-4127-a47e-8f6b63fe5f26"/>
+				<textFieldExpression><![CDATA[$F{SMAIN_DOCNO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

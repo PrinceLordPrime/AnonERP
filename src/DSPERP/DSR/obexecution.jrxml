@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d6a05fcc-32e6-4881-8543-6203127b0162">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="obcode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     EMPREC."NAME" AS EMPREC_NAME,
+     EXECUTION_OBWISE."ODATE" AS EXECUTION_OBWISE_ODATE,
+     EXECUTION_OBWISE."OBCODE" AS EXECUTION_OBWISE_OBCODE,
+     EXECUTION_OBWISE."PCODE" AS EXECUTION_OBWISE_PCODE,
+     EXECUTION_OBWISE."ISSUEQTY" AS EXECUTION_OBWISE_ISSUEQTY,
+     EXECUTION_OBWISE."RETRUNQTY" AS EXECUTION_OBWISE_RETRUNQTY,
+     EXECUTION_OBWISE."SOLDQTY" AS EXECUTION_OBWISE_SOLDQTY,
+     EXECUTION_OBWISE."BONSPCS" AS EXECUTION_OBWISE_BONSPCS,
+     EXECUTION_OBWISE."DAMAGES" AS EXECUTION_OBWISE_DAMAGES,
+     PMAST."PNAME" AS PMAST_PNAME,
+     PMAST."PSIZE" AS PMAST_PSIZE,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN
+FROM
+     "DSP001"."EMPREC" EMPREC INNER JOIN "DSP001"."EXECUTION_OBWISE" EXECUTION_OBWISE ON EMPREC."CODE" = EXECUTION_OBWISE."OBCODE"
+     INNER JOIN "DSP001"."PMAST" PMAST ON EXECUTION_OBWISE."PCODE" = PMAST."CODE",
+     "DSP001"."DSPCLIENT" DSPCLIENT
+WHERE
+     EXECUTION_OBWISE."OBCODE" = $P{obcode}]]>
+	</queryString>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="EMPREC_NAME" class="java.lang.String"/>
+	<field name="EXECUTION_OBWISE_ODATE" class="java.sql.Timestamp"/>
+	<field name="EXECUTION_OBWISE_OBCODE" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_PCODE" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_ISSUEQTY" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_RETRUNQTY" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_SOLDQTY" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_BONSPCS" class="java.math.BigDecimal"/>
+	<field name="EXECUTION_OBWISE_DAMAGES" class="java.math.BigDecimal"/>
+	<field name="PMAST_PNAME" class="java.lang.String"/>
+	<field name="PMAST_PSIZE" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<summary>
+		<band height="310" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="802" height="310" uuid="a1688ee4-5475-424d-8296-dc1f40e412d9"/>
+				<rowGroup name="PMAST_PNAME" width="70" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{PMAST_PNAME}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="8360668c-ce94-466e-91dd-8e8030c508bf"/>
+								<textFieldExpression><![CDATA[$V{PMAST_PNAME}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="05c4f9a9-5d5d-4a1e-bf3b-d874ec665e8e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total PMAST_PNAME]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="EXECUTION_OBWISE_ODATE" height="30" totalPosition="End">
+					<bucket class="java.sql.Timestamp">
+						<bucketExpression><![CDATA[$F{EXECUTION_OBWISE_ODATE}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="dd/MM">
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="32" height="30" uuid="46697a0f-e219-4a9d-979d-3f1aaddb365b"/>
+								<textFieldExpression><![CDATA[$V{EXECUTION_OBWISE_ODATE}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="f7f10d6b-e98f-4985-be45-82e4e15dffc2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total EXECUTION_OBWISE_ODATE]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="EXECUTION_OBWISE_ISSUEQTYMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{EXECUTION_OBWISE_ISSUEQTY}]]></measureExpression>
+				</measure>
+				<crosstabCell width="33" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="32" height="25" uuid="1860d0da-1527-4894-90dc-235d4f798d79"/>
+							<textFieldExpression><![CDATA[$V{EXECUTION_OBWISE_ISSUEQTYMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="33" height="25" rowTotalGroup="PMAST_PNAME">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="32" height="25" uuid="0d0b2441-e34d-4347-9157-a18be7c459af"/>
+							<textFieldExpression><![CDATA[$V{EXECUTION_OBWISE_ISSUEQTYMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="EXECUTION_OBWISE_ODATE">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="eea4593d-9b41-40bb-85a7-389bdeffcce6"/>
+							<textFieldExpression><![CDATA[$V{EXECUTION_OBWISE_ISSUEQTYMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="PMAST_PNAME" columnTotalGroup="EXECUTION_OBWISE_ODATE">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="7975f329-3f0d-40a2-ad9c-a7eec699067a"/>
+							<textFieldExpression><![CDATA[$V{EXECUTION_OBWISE_ISSUEQTYMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sales_dtl" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="38384b3a-bc2f-4c6f-9dba-3d147b82c796">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SMAIN_DOCNO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     SDTL."DOCNO" AS SDTL_DOCNO,
+     SDTL."SEQNO" AS SDTL_SEQNO,
+     SDTL."PCODE" AS SDTL_PCODE,
+     SDTL."SALEQTY" AS SDTL_SALEQTY,
+     SDTL."SALERATE" AS SDTL_SALERATE,
+     SDTL."GROSSAMOUNT" AS SDTL_GROSSAMOUNT,
+     SDTL."DISCPER" AS SDTL_DISCPER,
+     SDTL."DISCRS" AS SDTL_DISCRS,
+     SDTL."TAXPER" AS SDTL_TAXPER,
+     SDTL."TAXRS" AS SDTL_TAXRS,
+     SDTL."NETAMOUNT" AS SDTL_NETAMOUNT
+FROM
+     "PAK"."SDTL" SDTL
+WHERE
+          SDTL."DOCNO" = $P{SMAIN_DOCNO}]]>
+	</queryString>
+	<field name="SDTL_DOCNO" class="java.math.BigDecimal"/>
+	<field name="SDTL_SEQNO" class="java.math.BigDecimal"/>
+	<field name="SDTL_PCODE" class="java.math.BigDecimal"/>
+	<field name="SDTL_SALEQTY" class="java.lang.Double"/>
+	<field name="SDTL_SALERATE" class="java.lang.Double"/>
+	<field name="SDTL_GROSSAMOUNT" class="java.lang.Double"/>
+	<field name="SDTL_DISCPER" class="java.lang.Double"/>
+	<field name="SDTL_DISCRS" class="java.lang.Double"/>
+	<field name="SDTL_TAXPER" class="java.lang.Double"/>
+	<field name="SDTL_TAXRS" class="java.lang.Double"/>
+	<field name="SDTL_NETAMOUNT" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="20" uuid="f8011510-14b5-492f-9075-d807cd4c5695"/>
+				<text><![CDATA[SDTL_DOCNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="50" height="20" uuid="65ec8d25-bdfc-4607-b748-f35efe1af693"/>
+				<text><![CDATA[SDTL_SEQNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="50" height="20" uuid="779be0d2-1957-493c-85cd-283dbdb701f7"/>
+				<text><![CDATA[SDTL_PCODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="50" height="20" uuid="c972e393-8878-45d8-918e-40e3dbbf2ad0"/>
+				<text><![CDATA[SDTL_SALEQTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="50" height="20" uuid="5dc7e27f-f52e-4499-a424-fc072bcde1d1"/>
+				<text><![CDATA[SDTL_SALERATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="50" height="20" uuid="db3336cc-027b-4e8e-82d4-4d6eb1012d11"/>
+				<text><![CDATA[SDTL_GROSSAMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="50" height="20" uuid="b98b2a1b-8b6b-44e3-9caa-6458f1835f55"/>
+				<text><![CDATA[SDTL_DISCPER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="50" height="20" uuid="86841f11-5cc8-4733-b442-0ed284d5a6b4"/>
+				<text><![CDATA[SDTL_DISCRS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="50" height="20" uuid="38b02bf2-417a-4aec-8520-71912f98bf62"/>
+				<text><![CDATA[SDTL_TAXPER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="50" height="20" uuid="60f7b93d-b581-4d8f-8dee-9224d1f4ff36"/>
+				<text><![CDATA[SDTL_TAXRS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="20" uuid="64f05380-b044-421d-ba89-15446a179d21"/>
+				<text><![CDATA[SDTL_NETAMOUNT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="03f5a6c9-48a6-4166-948a-038eed96b650"/>
+				<textFieldExpression><![CDATA[$F{SDTL_DOCNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="50" height="20" uuid="1fd96575-e4aa-452c-8a01-66e9a61901d7"/>
+				<textFieldExpression><![CDATA[$F{SDTL_SEQNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="50" height="20" uuid="3d14fb8c-83aa-430e-875c-e2977b4d71bb"/>
+				<textFieldExpression><![CDATA[$F{SDTL_PCODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="50" height="20" uuid="c44d5122-35ea-42d2-8f0d-a4429d106eb9"/>
+				<textFieldExpression><![CDATA[$F{SDTL_SALEQTY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="50" height="20" uuid="74b2236d-2b8a-4f2e-b57d-42efbb99f68a"/>
+				<textFieldExpression><![CDATA[$F{SDTL_SALERATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="50" height="20" uuid="5891818b-f414-40a8-a64a-8c2600763ecd"/>
+				<textFieldExpression><![CDATA[$F{SDTL_GROSSAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="50" height="20" uuid="d05ad8fa-3180-49a5-b5c0-670d9168959f"/>
+				<textFieldExpression><![CDATA[$F{SDTL_DISCPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="50" height="20" uuid="620ef77a-8888-47de-b1e8-7c9be8685545"/>
+				<textFieldExpression><![CDATA[$F{SDTL_DISCRS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="50" height="20" uuid="e4917212-3311-4352-99a8-9c13274a2d85"/>
+				<textFieldExpression><![CDATA[$F{SDTL_TAXPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="50" height="20" uuid="dbff4f37-cc06-4c91-9ed1-2c7d2d1767bf"/>
+				<textFieldExpression><![CDATA[$F{SDTL_TAXRS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="50" height="20" uuid="e0956d12-8dcd-40b0-8ca0-6e9c290d1e69"/>
+				<textFieldExpression><![CDATA[$F{SDTL_NETAMOUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

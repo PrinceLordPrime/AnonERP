@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a67b971a-4d72-461a-8d30-f6623ea2781e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     BLOCK."LOCATION" AS BLOCK_LOCATION,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     LINE."LINE" AS LINE_LINE,
+     PCAT."PDESC" AS PCAT_PDESC,
+     PMAST."CODE" AS PMAST_CODE,
+     PMAST."PNAME" AS PMAST_PNAME,
+     PMAST."PSIZE" AS PMAST_PSIZE,
+     PMAST."SALEPRICE" AS PMAST_SALEPRICE,
+     PMAST."CLQTY" AS PMAST_CLQTY,
+     PMAST."CLVALUE" AS PMAST_CLVALUE,
+     PMAST."REMARKS" AS PMAST_REMARKS,
+     SOCITY."NAME" AS SOCITY_NAME,
+     STOCKTYPE."NAME" AS STOCKTYPE_NAME,
+     PMAST."COSTPRICE" AS PMAST_COSTPRICE
+FROM
+     "PAK"."BLOCK" BLOCK INNER JOIN "PAK"."PMAST" PMAST ON BLOCK."CODE" = PMAST."BLOCKCODE"
+     INNER JOIN "PAK"."PCAT" PCAT ON PMAST."CATCODE" = PCAT."CCODE"
+     INNER JOIN "PAK"."STOCKTYPE" STOCKTYPE ON PMAST."STTYPECODE" = STOCKTYPE."CODE"
+     INNER JOIN "PAK"."SOCITY" SOCITY ON PMAST."SOCITYCODE" = SOCITY."CODE"
+     INNER JOIN "PAK"."LINE" LINE ON PMAST."LINECODE" = LINE."CODE",
+     "PAK"."DSPCLIENT" DSPCLIENT
+WHERE
+     PMAST."CLQTY" != 0]]>
+	</queryString>
+	<field name="BLOCK_LOCATION" class="java.lang.String"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="LINE_LINE" class="java.lang.String"/>
+	<field name="PCAT_PDESC" class="java.lang.String"/>
+	<field name="PMAST_CODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_PNAME" class="java.lang.String"/>
+	<field name="PMAST_PSIZE" class="java.lang.String"/>
+	<field name="PMAST_SALEPRICE" class="java.lang.Double"/>
+	<field name="PMAST_CLQTY" class="java.lang.Double"/>
+	<field name="PMAST_CLVALUE" class="java.lang.Double"/>
+	<field name="PMAST_REMARKS" class="java.lang.String"/>
+	<field name="SOCITY_NAME" class="java.lang.String"/>
+	<field name="STOCKTYPE_NAME" class="java.lang.String"/>
+	<field name="PMAST_COSTPRICE" class="java.lang.Double"/>
+	<sortField name="SOCITY_NAME"/>
+	<sortField name="BLOCK_LOCATION"/>
+	<sortField name="STOCKTYPE_NAME"/>
+	<sortField name="PMAST_CODE"/>
+	<variable name="CLValue" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{PMAST_CLQTY} * $F{PMAST_COSTPRICE}]]></variableExpression>
+	</variable>
+	<variable name="SocitySum" class="java.math.BigDecimal" resetType="Group" resetGroup="SOCITY_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{CLValue}.setScale(2,BigDecimal. ROUND_HALF_UP)]]></variableExpression>
+	</variable>
+	<variable name="BlockSum" class="java.math.BigDecimal" resetType="Group" resetGroup="BLOCK_LOCATION" calculation="Sum">
+		<variableExpression><![CDATA[$V{CLValue}.setScale(2,BigDecimal. ROUND_HALF_UP)]]></variableExpression>
+	</variable>
+	<variable name="TypeSum" class="java.math.BigDecimal" resetType="Group" resetGroup="STOCKTYPE_NAME" calculation="Sum">
+		<variableExpression><![CDATA[$V{CLValue}.setScale(2,BigDecimal. ROUND_HALF_UP)]]></variableExpression>
+	</variable>
+	<variable name="PageSum" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$V{CLValue}.setScale(2,BigDecimal. ROUND_HALF_UP)]]></variableExpression>
+	</variable>
+	<variable name="GrandSum" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{CLValue}.setScale(2,BigDecimal. ROUND_HALF_UP)]]></variableExpression>
+	</variable>
+	<group name="SOCITY_NAME">
+		<groupExpression><![CDATA[$F{SOCITY_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d6e4bb5e-f2cc-4aff-93d7-6e02ff0afbe1"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SOCITY_NAME}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="19" width="595" height="1" forecolor="#666666" uuid="acffd6c9-f1be-4cb9-ab73-b75f74160b87"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+			<band height="20">
+				<staticText>
+					<reportElement x="332" y="0" width="121" height="20" uuid="eb1ff994-e655-472f-8d7f-f7943393c5ad"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Socity Total:]]></text>
+				</staticText>
+				<textField pattern="###,###,###.##;(###,###,###.##)">
+					<reportElement x="453" y="0" width="100" height="20" uuid="c8427e7d-a0ad-4a4c-bdc2-3c430106f052"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SocitySum}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="BLOCK_LOCATION">
+		<groupExpression><![CDATA[$F{BLOCK_LOCATION}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="16" forecolor="#006699" uuid="dcf646c0-6e4d-4d8b-b6e6-5d91330b1440"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{BLOCK_LOCATION}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="STOCKTYPE_NAME">
+		<groupExpression><![CDATA[$F{STOCKTYPE_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement mode="Opaque" x="35" y="0" width="520" height="15" forecolor="#006699" backcolor="#E9E9E9" uuid="b7e7d233-c6da-4761-a0d6-243461db4b5a"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STOCKTYPE_NAME}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="34" y="14" width="520" height="1" uuid="7e47c5b8-9d51-4537-b96b-9f9b3a31484a"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="90">
+			<elementGroup/>
+			<textField>
+				<reportElement mode="Opaque" x="2" y="0" width="554" height="34" backcolor="#009999" uuid="65355fa0-45de-4ab3-9bd4-18e177ba7de0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="2" y="32" width="554" height="41" backcolor="#009999" uuid="7e579fde-26f3-4242-ad89-289049cb2adf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="75" y="53" width="407" height="36" uuid="3b28cdf2-1d06-4358-8c2b-e168d926ee11"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17">
+			<staticText>
+				<reportElement x="2" y="0" width="551" height="17" uuid="b1d35c12-fc66-4dc2-b45a-02ce8b703c4e"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Statement Showing The Avaiable Products]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="79c64b7c-42f8-48a6-acf6-200ab8eb0916"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="35" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c8bb1dff-6dc2-4313-b597-0cafef1cc570"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="34" y="0" width="109" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2f85e290-9198-4738-8d8c-8f41dec25b54"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="143" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f49cdc27-9130-47b6-9281-c4c2ddc4dec0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="65" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cf734a5c-68f1-495f-861e-37681ada4f43"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="287" y="0" width="102" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b9d3b67d-8123-4603-80df-64e26a8584e4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Demand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="389" y="0" width="52" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4e16039a-200f-4c5a-84a2-fc94686c0ffe"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Line]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="441" y="0" width="115" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6acbabad-99f4-4a0b-b01c-bfce01930db7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Catagory]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="5c4d3e68-b988-4af2-bcaf-556c7f88f44a"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="35" height="20" uuid="f8424cbc-54ff-4b40-a222-85313f16a5c6"/>
+				<textElement>
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="35" y="0" width="108" height="20" uuid="81b66e5b-6bea-4839-84ba-b12597373e65"/>
+				<textElement>
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PNAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="143" y="0" width="79" height="20" uuid="826fd60a-9e4f-44fe-80e5-0a90afde584b"/>
+				<textElement>
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PSIZE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="222" y="0" width="65" height="20" uuid="042518b5-f9ce-4985-a95f-822ff822f931"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_CLQTY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="287" y="0" width="100" height="20" uuid="a211098d-405c-4738-b380-6eec5490adaf"/>
+				<textElement>
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_SALEPRICE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="389" y="0" width="52" height="20" uuid="2cf30f7f-5f88-4894-bc6b-31ad0803b4b0"/>
+				<textElement>
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LINE_LINE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="441" y="0" width="113" height="20" uuid="c16e8371-fb2e-4841-88fe-1ebf8bc3ebef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PCAT_PDESC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="42">
+			<textField>
+				<reportElement x="453" y="8" width="100" height="20" uuid="4eb25c7e-f966-444f-b2a3-4511360a4d96"/>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PageSum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="8" width="119" height="20" uuid="3257594e-2149-4b11-a31f-72b797a7f5e9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="28" width="354" height="13" backcolor="#E6E6E6" uuid="c80abd26-1a46-407f-a61a-11005bd571a5"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="453" y="28" width="63" height="13" backcolor="#E6E6E6" uuid="8e743f2c-2add-41cc-b65b-339ca5e7a694"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="28" width="40" height="13" backcolor="#E6E6E6" uuid="3078f126-b60b-4842-a1b2-579d3b6f950f"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="1" y="28" width="100" height="13" backcolor="#E6E6E6" uuid="9a084ca2-baf5-418d-8554-de1a9930ed7f"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="5" width="551" height="1" uuid="e6096c8b-04a8-4217-a12a-d50ecb6b52de"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="453" y="0" width="100" height="20" uuid="1d6feefb-a4c8-4912-8288-8076010bae61"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GrandSum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="0" width="119" height="20" uuid="632b3889-1963-4c30-9bcd-c2f32b2ef9bc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

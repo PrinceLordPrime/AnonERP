@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fdd33a0c-912e-4cbb-ac6a-9d6ede630b8d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     BLOCK."LOCATION" AS BLOCK_LOCATION,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     LINE."LINE" AS LINE_LINE,
+     PCAT."PDESC" AS PCAT_PDESC,
+     PMAST."CODE" AS PMAST_CODE,
+     PMAST."PNAME" AS PMAST_PNAME,
+     PMAST."PSIZE" AS PMAST_PSIZE,
+     PMAST."SALEPRICE" AS PMAST_SALEPRICE,
+     PMAST."COSTPRICE" AS PMAST_COSTPRICE,
+     PMAST."BLOCKCODE" AS PMAST_BLOCKCODE,
+     PMAST."CATCODE" AS PMAST_CATCODE,
+     PMAST."COMPANYCODE" AS PMAST_COMPANYCODE,
+     PMAST."CLQTY" AS PMAST_CLQTY,
+     PMAST."CLVALUE" AS PMAST_CLVALUE,
+     PMAST."LINECODE" AS PMAST_LINECODE,
+     PMAST."REMARKS" AS PMAST_REMARKS,
+     SOCITY."NAME" AS SOCITY_NAME,
+     STOCKTYPE."NAME" AS STOCKTYPE_NAME,
+     PMAST."STTYPECODE" AS PMAST_STTYPECODE,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1
+FROM
+     "PAK"."SOCITY" SOCITY INNER JOIN "PAK"."PMAST" PMAST ON SOCITY."CODE" = PMAST."COMPANYCODE"
+     INNER JOIN "PAK"."STOCKTYPE" STOCKTYPE ON PMAST."STTYPECODE" = STOCKTYPE."CODE"
+     INNER JOIN "PAK"."LINE" LINE ON PMAST."LINECODE" = LINE."CODE"
+     INNER JOIN "PAK"."PCAT" PCAT ON PMAST."CATCODE" = PCAT."CCODE"
+     INNER JOIN "PAK"."BLOCK" BLOCK ON PMAST."BLOCKCODE" = BLOCK."CODE",
+     "PAK"."DSPCLIENT" DSPCLIENT]]>
+	</queryString>
+	<field name="BLOCK_LOCATION" class="java.lang.String"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="LINE_LINE" class="java.lang.String"/>
+	<field name="PCAT_PDESC" class="java.lang.String"/>
+	<field name="PMAST_CODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_PNAME" class="java.lang.String"/>
+	<field name="PMAST_PSIZE" class="java.lang.String"/>
+	<field name="PMAST_SALEPRICE" class="java.lang.Double"/>
+	<field name="PMAST_COSTPRICE" class="java.lang.Double"/>
+	<field name="PMAST_BLOCKCODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_CATCODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_COMPANYCODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_CLQTY" class="java.lang.Double"/>
+	<field name="PMAST_CLVALUE" class="java.lang.Double"/>
+	<field name="PMAST_LINECODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_REMARKS" class="java.lang.String"/>
+	<field name="SOCITY_NAME" class="java.lang.String"/>
+	<field name="STOCKTYPE_NAME" class="java.lang.String"/>
+	<field name="PMAST_STTYPECODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<sortField name="SOCITY_NAME"/>
+	<sortField name="PCAT_PDESC"/>
+	<sortField name="STOCKTYPE_NAME"/>
+	<sortField name="PMAST_CODE"/>
+	<group name="SOCITY_NAME">
+		<groupExpression><![CDATA[$F{SOCITY_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="aabda423-1654-4589-a8ca-1e7053856fcb"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SOCITY_NAME}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="18" width="595" height="1" forecolor="#666666" uuid="c69cdaf6-dc3e-4854-9d28-0ff191f81782"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="PCAT_PDESC">
+		<groupExpression><![CDATA[$F{PCAT_PDESC}]]></groupExpression>
+		<groupHeader>
+			<band height="19">
+				<textField>
+					<reportElement x="-1" y="1" width="555" height="18" forecolor="#006699" uuid="30886ba3-c919-41bd-92ae-5605b63bd82f"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PCAT_PDESC}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="STOCKTYPE_NAME">
+		<groupExpression><![CDATA[$F{STOCKTYPE_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField>
+					<reportElement mode="Opaque" x="30" y="0" width="525" height="17" forecolor="#006699" backcolor="#E7E7E7" uuid="d13cc5f6-7189-4024-8a1c-eb5843289a64"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STOCKTYPE_NAME}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="30" y="18" width="524" height="1" uuid="17b86410-8c25-4791-98e1-0465aed7fe95"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="91">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="32" width="554" height="41" backcolor="#009999" uuid="503b6058-199e-4840-bef0-7ae7586c646c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="74" y="53" width="407" height="36" uuid="c651770d-21d1-4542-adac-848fc2667c39"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="0" width="554" height="34" backcolor="#009999" uuid="65d9e294-048c-4b6c-a98f-c8eb23baf268"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13">
+			<staticText>
+				<reportElement x="0" y="1" width="555" height="12" uuid="bb41fdaa-e3c8-4c19-bcae-495d730f51aa"/>
+				<textElement textAlignment="Center">
+					<font size="9" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Statement Showing The List Of Products]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="4ec30b8a-6e31-4bf3-9baf-adb88b769189"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="48" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="8075fd6e-2e54-4ffc-aeb1-45c9ffa96ad9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="48" y="0" width="136" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="1dfc4048-ee6b-468f-9e78-86a7d67f68d1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="0" width="92" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="aeb95359-83f4-40f8-93f0-55704f9da54e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="460" y="0" width="95" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="3d424f68-85c5-491a-b3bd-0cc29b9aae13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Sales Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="92" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="42b49b97-4b1d-497d-bf5f-e5427fd5f3fe"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Block]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="367" y="0" width="93" height="20" forecolor="#006666" backcolor="#E6E6E6" uuid="55b24beb-2239-4088-9801-4f89e06a8756"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Line #]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="121f37f7-f7c0-434a-93ce-c8a86eb77114"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="0" y="0" width="48" height="16" uuid="b254fb22-77b0-4c01-a92c-7edad9a82dec"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="48" y="0" width="136" height="16" uuid="d5df1ec5-7f2c-4cd0-b906-484b00bf251b"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PNAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="184" y="0" width="92" height="16" uuid="01d52aa2-a5a5-46de-9970-289dd37dd1e3"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PSIZE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="460" y="0" width="95" height="16" uuid="fdd4f745-4d39-4793-a7d5-b10a6e0710bb"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_SALEPRICE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="275" y="0" width="92" height="16" uuid="44f7b348-cf24-4fa1-9630-e9bc10ed4291"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BLOCK_LOCATION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="365" y="0" width="95" height="16" uuid="18835c26-3748-4701-9ad5-fe95959400a4"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LINE_LINE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="0" y="3" width="146" height="13" backcolor="#E6E6E6" uuid="77c0d8ce-8496-49a3-8b23-de81a9a97b9b"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="440" y="3" width="75" height="13" backcolor="#E6E6E6" uuid="d0ed7452-0307-488b-a07f-d36a2aea3895"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="3" width="40" height="13" backcolor="#E6E6E6" uuid="2bf3e2c9-3de8-49ee-b5c1-8d72fe829ba9"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="121" y="3" width="339" height="13" backcolor="#E6E6E6" uuid="0cf16cde-e7cf-47b4-af74-01b7447d562c"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

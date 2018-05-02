@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9444922a-4c0c-43b0-87f7-40a627b067a2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="userdocno" class="java.lang.String"/>
+	<parameter name="userdocno1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CLIENTS."NAME" AS CLIENTS_NAME,
+     CLIENTS."ADD1" AS CLIENTS_ADD1,
+     CLIENTS."CNIC" AS CLIENTS_CNIC,
+     CLIENTS."CONTACT" AS CLIENTS_CONTACT,
+     CLIENTS."PREVIOUSBAL" AS CLIENTS_PREVIOUSBAL,
+     CLIENTS."AREACODE" AS CLIENTS_AREACODE,
+     CLIENTS."REMARKS" AS CLIENTS_REMARKS,
+     CLIENTS."REFFERENCE" AS CLIENTS_REFFERENCE,
+     CLIENTS."CLBAL" AS CLIENTS_CLBAL,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN,
+     EMPREC."NAME" AS EMPREC_NAME,
+     EMPREC."CNIC" AS EMPREC_CNIC,
+     EMPREC."CONTACT" AS EMPREC_CONTACT,
+     EMPREC."ADD1" AS EMPREC_ADD1,
+     EMPREC."ADD2" AS EMPREC_ADD2,
+     EMPREC."ACTIVETYPE" AS EMPREC_ACTIVETYPE,
+     EMPREC."POST" AS EMPREC_POST,
+     EMPREC."SALARY" AS EMPREC_SALARY,
+     ORDERDTL."SEQNO" AS ORDERDTL_SEQNO,
+     ORDERDTL."SALEQTY" AS ORDERDTL_SALEQTY,
+     ORDERDTL."SALERATE" AS ORDERDTL_SALERATE,
+     ORDERDTL."GROSSAMOUNT" AS ORDERDTL_GROSSAMOUNT,
+     ORDERDTL."DISCPER" AS ORDERDTL_DISCPER,
+     ORDERDTL."DISCRS" AS ORDERDTL_DISCRS,
+     ORDERDTL."TAXPER" AS ORDERDTL_TAXPER,
+     ORDERDTL."TAXRS" AS ORDERDTL_TAXRS,
+     ORDERDTL."NETAMOUNT" AS ORDERDTL_NETAMOUNT,
+     ORDERDTL."UNITTYPE" AS ORDERDTL_UNITTYPE,
+     ORDERDTL."SIDEA" AS ORDERDTL_SIDEA,
+     ORDERDTL."SIDEB" AS ORDERDTL_SIDEB,
+     ORDERDTL."TOTALSIZE" AS ORDERDTL_TOTALSIZE,
+     ORDERDTL."RETURNQTY" AS ORDERDTL_RETURNQTY,
+     ORDERDTL."DELIVERED" AS ORDERDTL_DELIVERED,
+     ORDERDTL."HELD" AS ORDERDTL_HELD,
+     ORDERDTL."CUSTOMSIZE" AS ORDERDTL_CUSTOMSIZE,
+     ORDERMAIN."ODATE" AS ORDERMAIN_ODATE,
+     ORDERMAIN."DOCNO" AS ORDERMAIN_DOCNO,
+     ORDERMAIN."REFNO" AS ORDERMAIN_REFNO,
+     ORDERMAIN."TGROSSAMT" AS ORDERMAIN_TGROSSAMT,
+     ORDERMAIN."SPLPER" AS ORDERMAIN_SPLPER,
+     ORDERMAIN."SPLRS" AS ORDERMAIN_SPLRS,
+     ORDERMAIN."OTHEREXP" AS ORDERMAIN_OTHEREXP,
+     ORDERMAIN."AVDISCPER" AS ORDERMAIN_AVDISCPER,
+     ORDERMAIN."TDISCRS" AS ORDERMAIN_TDISCRS,
+     ORDERMAIN."AVTAXPER" AS ORDERMAIN_AVTAXPER,
+     ORDERMAIN."TTAXRS" AS ORDERMAIN_TTAXRS,
+     ORDERMAIN."TNETAMOUNT" AS ORDERMAIN_TNETAMOUNT,
+     ORDERMAIN."REMAINING" AS ORDERMAIN_REMAINING,
+     ORDERMAIN."PAID" AS ORDERMAIN_PAID,
+     ORDERMAIN."REMARKS" AS ORDERMAIN_REMARKS,
+     ORDERMAIN."NETPAYABLE" AS ORDERMAIN_NETPAYABLE,
+     ORDERMAIN."DCODE" AS ORDERMAIN_DCODE,
+     ORDERMAIN."STATUS" AS ORDERMAIN_STATUS,
+     ORDERMAIN."DLDATE" AS ORDERMAIN_DLDATE,
+     ORDERMAIN."CUSTCODE" AS ORDERMAIN_CUSTCODE,
+     PMAST."PNAME" AS PMAST_PNAME,
+     ORDERDTL."PCODE" AS ORDERDTL_PCODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME
+FROM
+     "DSPADMIN"."ORDERDTL" ORDERDTL INNER JOIN "DSPADMIN"."ORDERMAIN" ORDERMAIN ON ORDERDTL."DOCNO" = ORDERMAIN."DOCNO"
+     INNER JOIN "DSPADMIN"."CLIENTS" CLIENTS ON ORDERMAIN."CUSTCODE" = CLIENTS."CODE"
+     INNER JOIN "DSPADMIN"."EMPREC" EMPREC ON ORDERMAIN."DCODE" = EMPREC."CODE"
+     INNER JOIN "DSPADMIN"."PMAST" PMAST ON ORDERDTL."PCODE" = PMAST."CODE",
+     "DSPADMIN"."DSPCLIENT" DSPCLIENT
+WHERE
+     ORDERMAIN."DOCNO" >= $P{userdocno}
+ AND ORDERMAIN."DOCNO" <= $P{userdocno1}]]>
+	</queryString>
+	<field name="CLIENTS_NAME" class="java.lang.String"/>
+	<field name="CLIENTS_ADD1" class="java.lang.String"/>
+	<field name="CLIENTS_CNIC" class="java.lang.String"/>
+	<field name="CLIENTS_CONTACT" class="java.lang.String"/>
+	<field name="CLIENTS_PREVIOUSBAL" class="java.math.BigDecimal"/>
+	<field name="CLIENTS_AREACODE" class="java.lang.String"/>
+	<field name="CLIENTS_REMARKS" class="java.lang.String"/>
+	<field name="CLIENTS_REFFERENCE" class="java.lang.String"/>
+	<field name="CLIENTS_CLBAL" class="java.lang.Double"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<field name="EMPREC_NAME" class="java.lang.String"/>
+	<field name="EMPREC_CNIC" class="java.lang.String"/>
+	<field name="EMPREC_CONTACT" class="java.lang.String"/>
+	<field name="EMPREC_ADD1" class="java.lang.String"/>
+	<field name="EMPREC_ADD2" class="java.lang.String"/>
+	<field name="EMPREC_ACTIVETYPE" class="java.lang.String"/>
+	<field name="EMPREC_POST" class="java.math.BigDecimal"/>
+	<field name="EMPREC_SALARY" class="java.lang.Double"/>
+	<field name="ORDERDTL_SEQNO" class="java.math.BigDecimal"/>
+	<field name="ORDERDTL_SALEQTY" class="java.lang.Double"/>
+	<field name="ORDERDTL_SALERATE" class="java.lang.Double"/>
+	<field name="ORDERDTL_GROSSAMOUNT" class="java.lang.Double"/>
+	<field name="ORDERDTL_DISCPER" class="java.lang.Double"/>
+	<field name="ORDERDTL_DISCRS" class="java.lang.Double"/>
+	<field name="ORDERDTL_TAXPER" class="java.lang.Double"/>
+	<field name="ORDERDTL_TAXRS" class="java.lang.Double"/>
+	<field name="ORDERDTL_NETAMOUNT" class="java.lang.Double"/>
+	<field name="ORDERDTL_UNITTYPE" class="java.math.BigDecimal"/>
+	<field name="ORDERDTL_SIDEA" class="java.lang.Double"/>
+	<field name="ORDERDTL_SIDEB" class="java.lang.Double"/>
+	<field name="ORDERDTL_TOTALSIZE" class="java.lang.Double"/>
+	<field name="ORDERDTL_RETURNQTY" class="java.lang.Double"/>
+	<field name="ORDERDTL_DELIVERED" class="java.lang.Double"/>
+	<field name="ORDERDTL_HELD" class="java.lang.Double"/>
+	<field name="ORDERDTL_CUSTOMSIZE" class="java.lang.String"/>
+	<field name="ORDERMAIN_ODATE" class="java.sql.Timestamp"/>
+	<field name="ORDERMAIN_DOCNO" class="java.math.BigDecimal"/>
+	<field name="ORDERMAIN_REFNO" class="java.lang.String"/>
+	<field name="ORDERMAIN_TGROSSAMT" class="java.lang.Double"/>
+	<field name="ORDERMAIN_SPLPER" class="java.lang.Double"/>
+	<field name="ORDERMAIN_SPLRS" class="java.lang.Double"/>
+	<field name="ORDERMAIN_OTHEREXP" class="java.lang.Double"/>
+	<field name="ORDERMAIN_AVDISCPER" class="java.lang.Double"/>
+	<field name="ORDERMAIN_TDISCRS" class="java.lang.Double"/>
+	<field name="ORDERMAIN_AVTAXPER" class="java.lang.Double"/>
+	<field name="ORDERMAIN_TTAXRS" class="java.lang.Double"/>
+	<field name="ORDERMAIN_TNETAMOUNT" class="java.lang.Double"/>
+	<field name="ORDERMAIN_REMAINING" class="java.lang.Double"/>
+	<field name="ORDERMAIN_PAID" class="java.lang.Double"/>
+	<field name="ORDERMAIN_REMARKS" class="java.lang.String"/>
+	<field name="ORDERMAIN_NETPAYABLE" class="java.lang.Double"/>
+	<field name="ORDERMAIN_DCODE" class="java.math.BigDecimal"/>
+	<field name="ORDERMAIN_STATUS" class="java.lang.String"/>
+	<field name="ORDERMAIN_DLDATE" class="java.sql.Timestamp"/>
+	<field name="ORDERMAIN_CUSTCODE" class="java.math.BigDecimal"/>
+	<field name="PMAST_PNAME" class="java.lang.String"/>
+	<field name="ORDERDTL_PCODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<sortField name="ORDERMAIN_DOCNO"/>
+	<sortField name="ORDERDTL_PCODE"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="97">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="46" width="555" height="33" backcolor="#009999" uuid="89ccd35d-c267-42ee-8e07-b2e46a2ccef0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Britannic Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="101" y="62" width="354" height="33" uuid="abcb4663-8d2a-4b8c-914b-b470139b7ea4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="48" backcolor="#009999" uuid="04524d11-cf74-4c5b-a38c-6be8ab1be6e0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Algerian" size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="335b6049-d84d-446a-beb2-6cc1b643612e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<text><![CDATA[SALES INVOICE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="178">
+			<line>
+				<reportElement x="-20" y="156" width="595" height="1" forecolor="#666666" uuid="9b09ed5d-2b1b-4b29-898b-093065de8db9"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="74" width="93" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="154c578e-573b-44dc-aa8f-303fe71a7e90"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Client Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="94" width="93" height="22" forecolor="#006699" backcolor="#FFFFFF" uuid="6a6f4e56-64c8-452d-8e39-7bcf85a21017"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Client Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="115" width="93" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="1249fa06-9c29-4e31-bdf8-9e4d511e6299"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="134" width="93" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="2ee08275-aa53-4e16-ae8b-b969a3a4f55c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sale By]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="131" y="74" width="420" height="20" uuid="58cf9937-f085-4cb9-a77c-3fc8985ab67c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="94" width="451" height="20" uuid="d5db436d-a6fd-470b-9d9e-8c65c5eb1822"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="114" width="451" height="20" uuid="304f797e-5062-4a7d-a1b5-dce914d1014f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_CONTACT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="134" width="451" height="20" uuid="7a5ec9c7-27de-4348-95b0-6a9c3ff09a3e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMPREC_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="29" width="93" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="aa989514-24a8-4d6a-bdaf-030d29e3e66e"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Order Date]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement x="100" y="29" width="157" height="20" uuid="20c893ef-4d36-4512-a12b-94fc4b26e388"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_ODATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="49" width="80" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="05cf9501-6719-45f7-ac3c-573ee0d30ce0"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reference #]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="49" width="157" height="20" uuid="cc00ed32-618f-4df5-8d15-c27e5c11e401"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_REFNO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="74" width="31" height="20" uuid="9d04946d-ab0b-4b10-afe5-6011b42aca75"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_CUSTCODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement x="448" y="29" width="103" height="20" uuid="4e041a19-bbeb-4cc7-90f8-4819aa1c2000"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_DLDATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="323" y="29" width="111" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="ae884e5b-2d82-4c2c-9d65-22198b408fe7"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dilivery Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="355" y="49" width="79" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="88175ce4-27eb-4759-92cc-a6f9b7d5e7a2"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Order #]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="448" y="49" width="103" height="20" uuid="5c6d5834-a297-490b-b3b9-ad956e55ad48"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_DCODE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="4" y="158" width="47" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="2b1c1fed-dc7f-43ce-809c-d6f9d1ac8881"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="42" y="158" width="107" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="63a5a6f7-c579-46c8-b9c9-847eb2a184e0"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="149" y="158" width="90" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="1e6eac31-eb2b-4aec-89b4-a8b47eee72a2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="239" y="158" width="48" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="c44dd4e5-08b0-496a-b8a9-55587afbaf3e"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Size]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="158" width="50" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="1d0ae14c-34e2-4f8e-b735-88a8cca3242a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Order]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="449" y="158" width="32" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="e056ee53-5cff-477e-b4b0-534c458edf15"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="481" y="158" width="70" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="e66ef5eb-9313-4a84-9080-1ef5ceb725be"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="338" y="158" width="50" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="ae83cfda-ae95-4ad5-94b9-1590f2cc5ac3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dileverd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="388" y="158" width="60" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="f91fe914-beee-4f01-947b-a3b719436282"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pending]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="4" y="2" width="38" height="20" uuid="01b91243-2075-402a-bfd8-f777d94763e2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_PCODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="42" y="2" width="107" height="20" uuid="fa6c2942-5ec6-449e-ab10-196086305501"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PMAST_PNAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="288" y="2" width="50" height="20" uuid="04cb4e08-23fd-49ac-b676-3a39ffad0dcd"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_SALEQTY}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="449" y="2" width="32" height="20" uuid="b2a45083-0ece-47db-9f51-d6a8a0afaffb"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_SALERATE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="481" y="2" width="70" height="20" uuid="f415fd63-fb47-4cdd-ae9f-e77eb1d2e6b5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_GROSSAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="239" y="2" width="47" height="20" uuid="8055c826-d160-476a-9419-b7911e5d1c2b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_TOTALSIZE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="149" y="2" width="90" height="20" uuid="a617b891-e703-4d28-a764-45ab5c41c902"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_CUSTOMSIZE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="2" width="50" height="20" uuid="553e47de-0a53-441f-a742-af0509afc202"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_DELIVERED}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="2" width="60" height="20" uuid="009a474f-dee8-40f1-83bf-d8ce26f41b33"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERDTL_HELD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="434" y="4" width="75" height="13" backcolor="#E6E6E6" uuid="41c273d0-9b8b-42d8-a92c-4e4da8da1d3e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="509" y="4" width="46" height="13" backcolor="#E6E6E6" uuid="8d13432c-d4e9-4648-adf3-772731eb07a4"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="106" y="4" width="328" height="13" backcolor="#E6E6E6" uuid="abb77f0a-3c13-480e-acd1-10324e6b982b"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="3" y="4" width="103" height="13" backcolor="#E6E6E6" uuid="46c179e5-a939-43ca-9776-3b9d9deacd09"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="97">
+			<line>
+				<reportElement x="2" y="2" width="553" height="1" uuid="11687c97-19f2-466e-b7c0-88cff26e9ed9"/>
+			</line>
+			<staticText>
+				<reportElement x="355" y="11" width="100" height="20" uuid="ffa10663-3890-4ab7-9e64-ad0c8a6914a0"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Gross Amount:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="455" y="11" width="96" height="20" uuid="b3521ae8-23bc-4cda-8841-7684391d6b51"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_TGROSSAMT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="31" width="100" height="20" uuid="a9117e7b-845d-40a4-a0ef-dc97cf66b524"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Net Receivables:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="51" width="100" height="20" uuid="990d8304-182c-4d42-8658-348c2543d9a5"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Advance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="11" width="100" height="20" uuid="941286d4-7bde-4685-8a8a-f5178ee487a8"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Discount:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="31" width="100" height="20" uuid="ca377f17-806f-40a6-983e-61daaaa1a567"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Other Expences:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="71" width="100" height="20" uuid="2b4df5a0-ac78-488e-8f84-f1b1e688deb5"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Remaining:]]></text>
+			</staticText>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="455" y="31" width="96" height="20" uuid="8dd97c94-225f-4177-a3ea-6e8dfd110ae7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_TNETAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="455" y="51" width="96" height="20" uuid="c8a0450b-efa0-4ec7-8e5c-15b1259d05fd"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_PAID}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="455" y="71" width="96" height="20" uuid="3c95277d-b62d-45ae-a5de-3f6cbd44a6e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_REMAINING}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="122" y="11" width="100" height="20" uuid="48e83f91-996c-48cd-8128-ae50154fc6f4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_SPLRS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)">
+				<reportElement x="122" y="31" width="100" height="20" uuid="beee5d53-dfd4-4551-b530-6d43b895cdd2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ORDERMAIN_OTHEREXP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="71" width="100" height="20" uuid="6c4ba9f9-3211-43bc-87c7-8f5192d43bab"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

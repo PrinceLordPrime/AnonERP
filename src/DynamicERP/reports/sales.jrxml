@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="30029632-c996-486e-a534-344601445e00">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="231"/>
+	<property name="ireport.y" value="146"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="USER_DOCNO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Oracle DMS software\\PakMarketing\\src\\oracledms\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     SMAIN."ODATE" AS SMAIN_ODATE,
+     SMAIN."DOCNO" AS SMAIN_DOCNO,
+     SMAIN."REFNO" AS SMAIN_REFNO,
+     SMAIN."CUSTCODE" AS SMAIN_CUSTCODE,
+     SMAIN."TGROSSAMT" AS SMAIN_TGROSSAMT,
+     SMAIN."SPLPER" AS SMAIN_SPLPER,
+     SMAIN."SPLRS" AS SMAIN_SPLRS,
+     SMAIN."OTHEREXP" AS SMAIN_OTHEREXP,
+     SMAIN."AVDISCPER" AS SMAIN_AVDISCPER,
+     SMAIN."TDISCRS" AS SMAIN_TDISCRS,
+     SMAIN."AVTAXPER" AS SMAIN_AVTAXPER,
+     SMAIN."TTAXRS" AS SMAIN_TTAXRS,
+     SMAIN."TNETAMOUNT" AS SMAIN_TNETAMOUNT,
+     SMAIN."REMAINING" AS SMAIN_REMAINING,
+     SMAIN."PAID" AS SMAIN_PAID,
+     SMAIN."REMARKS" AS SMAIN_REMARKS,
+     SMAIN."NETPAYABLE" AS SMAIN_NETPAYABLE,
+     SMAIN."DCODE" AS SMAIN_DCODE
+FROM
+     "PAK"."SMAIN" SMAIN
+WHERE
+     SMAIN."DOCNO" = $P{USER_DOCNO}]]>
+	</queryString>
+	<field name="SMAIN_ODATE" class="java.sql.Timestamp"/>
+	<field name="SMAIN_DOCNO" class="java.math.BigDecimal"/>
+	<field name="SMAIN_REFNO" class="java.lang.String"/>
+	<field name="SMAIN_CUSTCODE" class="java.math.BigDecimal"/>
+	<field name="SMAIN_TGROSSAMT" class="java.lang.Double"/>
+	<field name="SMAIN_SPLPER" class="java.lang.Double"/>
+	<field name="SMAIN_SPLRS" class="java.lang.Double"/>
+	<field name="SMAIN_OTHEREXP" class="java.lang.Double"/>
+	<field name="SMAIN_AVDISCPER" class="java.lang.Double"/>
+	<field name="SMAIN_TDISCRS" class="java.lang.Double"/>
+	<field name="SMAIN_AVTAXPER" class="java.lang.Double"/>
+	<field name="SMAIN_TTAXRS" class="java.lang.Double"/>
+	<field name="SMAIN_TNETAMOUNT" class="java.lang.Double"/>
+	<field name="SMAIN_REMAINING" class="java.lang.Double"/>
+	<field name="SMAIN_PAID" class="java.lang.Double"/>
+	<field name="SMAIN_REMARKS" class="java.lang.String"/>
+	<field name="SMAIN_NETPAYABLE" class="java.lang.Double"/>
+	<field name="SMAIN_DCODE" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="3567e1fb-ca8a-47f6-b5de-f56919b92496"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="43728eca-d19b-4fdd-acd7-64591a016686"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="61c35db9-1ff9-4ae4-9d1a-9f6e6de591a6"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="ec36c173-9282-4105-8fd3-2299c123448e"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="199" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="09e8dc7c-c385-4d18-a94f-ef337305affb"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="123" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="26" width="541" height="87" uuid="bdb902ad-a02a-4bac-a7f5-3c34807633be"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sales_dtl.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="2" y="0" width="100" height="20" uuid="2bbec881-f044-470a-8cf0-8848254f8e0b"/>
+				<textFieldExpression><![CDATA[$F{SMAIN_DOCNO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="8c106c94-2a88-47ee-9900-9886181bd981"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="0ae5dc93-ab25-4146-b355-3d7d5e1c9672"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="403f9131-e55f-4f87-9b5b-c0543a6333e0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="64952e88-66d8-494a-9f6b-8e1b8477ff8f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="d330b06e-16c1-4a91-820b-409ad7239cea"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

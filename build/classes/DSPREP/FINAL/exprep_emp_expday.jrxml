@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a851a0a9-b13d-484b-933e-70738798c09c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN,
+     EMPREC."NAME" AS EMPREC_NAME,
+     EXP_DTL_EMPLWISE."ODATE" AS EXP_DTL_EMPLWISE_ODATE,
+     EXP_DTL_EMPLWISE."SMCODE" AS EXP_DTL_EMPLWISE_SMCODE,
+     EXP_DTL_EMPLWISE."EXPCODE" AS EXP_DTL_EMPLWISE_EXPCODE,
+     EXP_DTL_EMPLWISE."EXP_EMPL" AS EXP_DTL_EMPLWISE_EXP_EMPL,
+     EXPENCE."EXPENCE" AS EXPENCE_EXPENCE
+FROM
+     "DSP001"."EMPREC" EMPREC INNER JOIN "DSP001"."EXP_DTL_EMPLWISE" EXP_DTL_EMPLWISE ON EMPREC."CODE" = EXP_DTL_EMPLWISE."SMCODE"
+     INNER JOIN "DSP001"."EXPENCE" EXPENCE ON EXP_DTL_EMPLWISE."EXPCODE" = EXPENCE."CODE",
+     "DSP001"."DSPCLIENT" DSPCLIENT]]>
+	</queryString>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<field name="EMPREC_NAME" class="java.lang.String"/>
+	<field name="EXP_DTL_EMPLWISE_ODATE" class="java.sql.Timestamp"/>
+	<field name="EXP_DTL_EMPLWISE_SMCODE" class="java.math.BigDecimal"/>
+	<field name="EXP_DTL_EMPLWISE_EXPCODE" class="java.math.BigDecimal"/>
+	<field name="EXP_DTL_EMPLWISE_EXP_EMPL" class="java.math.BigDecimal"/>
+	<field name="EXPENCE_EXPENCE" class="java.lang.String"/>
+	<group name="EMPREC_NAME">
+		<groupExpression><![CDATA[$F{EMPREC_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement mode="Opaque" x="51" y="1" width="504" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="90a0905f-555f-4262-9633-d308ca1eda88"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EMPREC_NAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="51" y="22" width="504" height="19" forecolor="#006699" uuid="a03297a9-a261-4dd5-8793-1f85b41a58c6"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EXPENCE_EXPENCE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="3" y="21" width="48" height="20" forecolor="#006699" uuid="d1046c6d-678d-4423-a6e5-e5b89c363369"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EXP_DTL_EMPLWISE_EXPCODE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="3" y="1" width="48" height="21" forecolor="#006699" backcolor="#E6E6E6" uuid="68cc859e-5f72-436c-9f19-942b0c666572"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EXP_DTL_EMPLWISE_SMCODE}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="21" width="595" height="1" forecolor="#666666" uuid="e09d3ba2-8cee-4305-a0c0-7e8493087950"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="EXPENCE_EXPENCE">
+		<groupExpression><![CDATA[$F{EXPENCE_EXPENCE}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="89">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="32" width="554" height="41" backcolor="#009999" uuid="ec2ba011-4693-4ea6-bf59-3eda40f2431c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="34" backcolor="#009999" uuid="d367b2f0-210d-498c-b57b-657b45a150d2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="73" y="53" width="407" height="36" uuid="5e06c19e-9dce-4841-8f2d-8e33141f1ae1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="3" y="0" width="552" height="20" uuid="6d353a3c-38ba-4e78-8e6a-59a213f58c1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Statement Showing Employee & Expence Wise Expence Detail]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a8e6dd95-526f-4f37-a9a7-ef434c69e8c6"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="0" width="324" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b07bb198-7151-410a-98cc-5a318c1fcdca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="327" y="0" width="228" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1936f78e-441a-4d81-9efe-96eccdf1630a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="accd7a2c-b5c2-4fcf-9beb-bf590e64de77"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="327" height="20" uuid="0b7b3975-3c84-48aa-8ebe-23a6f6001a49"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXP_DTL_EMPLWISE_ODATE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="327" y="0" width="228" height="20" uuid="a1074150-da78-4382-b179-f1fb6503ef0c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXP_DTL_EMPLWISE_EXP_EMPL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13">
+			<textField>
+				<reportElement mode="Opaque" x="440" y="0" width="75" height="13" backcolor="#E6E6E6" uuid="c591d5ac-f880-4302-9a08-4e1f99719c3e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="0" y="0" width="146" height="13" backcolor="#E6E6E6" uuid="6cdca73f-adc6-424a-a599-0ad4560a4970"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="0" width="40" height="13" backcolor="#E6E6E6" uuid="07bb6763-4fd0-4ef2-877b-6c60d61b9f86"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="121" y="0" width="328" height="13" backcolor="#E6E6E6" uuid="cea55a91-9fe3-4852-8704-a2bfa0028c18"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 496 | http://dspak.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

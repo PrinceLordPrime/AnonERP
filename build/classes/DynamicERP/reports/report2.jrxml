@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28b151c2-0621-4f3c-81dd-c83223946137">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     VOCDTL."DOCNO" AS VOCDTL_DOCNO,
+     VOCDTL."ACCODE" AS VOCDTL_ACCODE,
+     VOCDTL."TYPE" AS VOCDTL_TYPE,
+     VOCDTL."DEBIT" AS VOCDTL_DEBIT,
+     VOCDTL."SEQNO" AS VOCDTL_SEQNO,
+     VOCDTL."CREDIT" AS VOCDTL_CREDIT
+FROM
+     "PAK"."VOCDTL" VOCDTL]]>
+	</queryString>
+	<field name="VOCDTL_DOCNO" class="java.math.BigDecimal"/>
+	<field name="VOCDTL_ACCODE" class="java.math.BigDecimal"/>
+	<field name="VOCDTL_TYPE" class="java.lang.String"/>
+	<field name="VOCDTL_DEBIT" class="java.lang.Double"/>
+	<field name="VOCDTL_SEQNO" class="java.math.BigDecimal"/>
+	<field name="VOCDTL_CREDIT" class="java.lang.Double"/>
+	<group name="VOCDTL_DOCNO">
+		<groupExpression><![CDATA[$F{VOCDTL_DOCNO}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="4" width="555" height="51" forecolor="#CCCCFF" backcolor="#006666" uuid="50d3bde8-f847-495d-9fa3-7c08193de49c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Pak Marketing]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24">
+			<staticText>
+				<reportElement x="22" y="1" width="100" height="20" uuid="d33ca171-8b53-4951-b8f7-157d82e1be8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Seq No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="0" width="100" height="20" uuid="fefb2285-4aec-4ec3-a31b-cf9ffe6735e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Credit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="0" width="100" height="20" uuid="ec9e667f-7d9a-4450-baa8-e1d72d69388c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Debit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="100" height="20" uuid="dca57c4e-27b8-4211-bfa0-67f3ea3969d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="0" width="100" height="20" uuid="0de48990-93c8-4340-882a-be2f424384da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[A/C Code]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="422" y="1" width="100" height="20" uuid="5bc5d16c-3102-417e-994e-8d598e862d91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VOCDTL_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="0" width="100" height="20" uuid="2c631ad1-2335-4896-a7c1-84b71c4b1a5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VOCDTL_SEQNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="1" width="100" height="20" uuid="7ba11501-e036-4808-879d-fd3f2d2d15c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VOCDTL_DEBIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="1" width="100" height="20" uuid="125784c9-88b6-40bf-922b-a1678c1ded74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VOCDTL_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="0" width="100" height="20" uuid="d6b7f07c-244a-49f6-adff-122aaf080d26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VOCDTL_ACCODE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="50"/>
+	</lastPageFooter>
+</jasperReport>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CustBal" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dceec894-7d3a-47d2-a727-30894f21f664">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fromroute" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="toroute" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CUSTBALANCE."ZONECODE" AS CUSTBALANCE_ZONECODE,
+     CUSTBALANCE."ROUTECODE" AS CUSTBALANCE_ROUTECODE,
+     CUSTBALANCE."AREACODE" AS CUSTBALANCE_AREACODE,
+     CUSTBALANCE."CUSTOMER" AS CUSTBALANCE_CUSTOMER,
+     CUSTBALANCE."BALANCE" AS CUSTBALANCE_BALANCE,
+     ZONE."ZONE" AS ZONE_ZONE,
+     ROUTE."ROUTEDESC" AS ROUTE_ROUTEDESC,
+     DISTRICT."DISTRICT" AS DISTRICT_DISTRICT,
+     CLIENTS."NAME" AS CLIENTS_NAME,
+     CLIENTS."ADD1" AS CLIENTS_ADD1,
+     CLIENTS."CONTACT" AS CLIENTS_CONTACT,
+     DSPCLIENT."CODE" AS DSPCLIENT_CODE,
+     DSPCLIENT."NAME" AS DSPCLIENT_NAME,
+     DSPCLIENT."ADD1" AS DSPCLIENT_ADD1,
+     DSPCLIENT."ADD2" AS DSPCLIENT_ADD2,
+     DSPCLIENT."CONTACT" AS DSPCLIENT_CONTACT,
+     DSPCLIENT."NTN" AS DSPCLIENT_NTN,
+     CUSTTYPE."TYPE" AS CUSTTYPE_TYPE,
+     CLIENTS."CUSTTYPE" AS CLIENTS_CUSTTYPE
+FROM
+     "DSP001"."CUSTBALANCE" CUSTBALANCE INNER JOIN "DSP001"."DISTRICT" DISTRICT ON CUSTBALANCE."AREACODE" = DISTRICT."CODE"
+     INNER JOIN "DSP001"."CLIENTS" CLIENTS ON CUSTBALANCE."CUSTOMER" = CLIENTS."CODE"
+     INNER JOIN "DSP001"."ZONE" ZONE ON CUSTBALANCE."ZONECODE" = ZONE."CODE"
+     INNER JOIN "DSP001"."ROUTE" ROUTE ON CUSTBALANCE."ROUTECODE" = ROUTE."CODE"
+     INNER JOIN "DSP001"."CUSTTYPE" CUSTTYPE ON CLIENTS."CUSTTYPE" = CUSTTYPE."CODE",
+     "DSP001"."DSPCLIENT" DSPCLIENT
+WHERE
+     CUSTBALANCE."ROUTECODE" >= $P{fromroute} AND CUSTBALANCE."ROUTECODE" <= $P{toroute} 
+AND CUSTBALANCE."BALANCE" != 0]]>
+	</queryString>
+	<field name="CUSTBALANCE_ZONECODE" class="java.math.BigDecimal"/>
+	<field name="CUSTBALANCE_ROUTECODE" class="java.math.BigDecimal"/>
+	<field name="CUSTBALANCE_AREACODE" class="java.lang.String"/>
+	<field name="CUSTBALANCE_CUSTOMER" class="java.math.BigDecimal"/>
+	<field name="CUSTBALANCE_BALANCE" class="java.math.BigDecimal"/>
+	<field name="ZONE_ZONE" class="java.lang.String"/>
+	<field name="ROUTE_ROUTEDESC" class="java.lang.String"/>
+	<field name="DISTRICT_DISTRICT" class="java.lang.String"/>
+	<field name="CLIENTS_NAME" class="java.lang.String"/>
+	<field name="CLIENTS_ADD1" class="java.lang.String"/>
+	<field name="CLIENTS_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
+	<field name="DSPCLIENT_NAME" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>
+	<field name="DSPCLIENT_ADD2" class="java.lang.String"/>
+	<field name="DSPCLIENT_CONTACT" class="java.lang.String"/>
+	<field name="DSPCLIENT_NTN" class="java.lang.String"/>
+	<field name="CUSTTYPE_TYPE" class="java.lang.String"/>
+	<field name="CLIENTS_CUSTTYPE" class="java.math.BigDecimal"/>
+	<sortField name="ZONE_ZONE"/>
+	<sortField name="ROUTE_ROUTEDESC"/>
+	<sortField name="DISTRICT_DISTRICT"/>
+	<sortField name="CUSTTYPE_TYPE"/>
+	<sortField name="CLIENTS_NAME"/>
+	<variable name="SumCustType" class="java.math.BigDecimal" resetType="Group" resetGroup="CUSTTYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{CUSTBALANCE_BALANCE}]]></variableExpression>
+	</variable>
+	<variable name="SumArea" class="java.math.BigDecimal" resetType="Group" resetGroup="DISTRICT_DISTRICT" calculation="Sum">
+		<variableExpression><![CDATA[$F{CUSTBALANCE_BALANCE}]]></variableExpression>
+	</variable>
+	<variable name="SumAll" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{CUSTBALANCE_BALANCE}]]></variableExpression>
+	</variable>
+	<group name="ZONE_ZONE">
+		<groupExpression><![CDATA[$F{ZONE_ZONE}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="ROUTE_ROUTEDESC">
+		<groupExpression><![CDATA[$F{ROUTE_ROUTEDESC}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="DISTRICT_DISTRICT">
+		<groupExpression><![CDATA[$F{DISTRICT_DISTRICT}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement mode="Opaque" x="38" y="0" width="122" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="24dbf9a2-ed2f-4dd0-a1b6-27c695d0cdc0"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DISTRICT_DISTRICT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="193" y="0" width="223" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="7f07f944-95fa-4d18-8309-824d1d72dc26"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ROUTE_ROUTEDESC}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="444" y="0" width="111" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="7135e425-9851-46cc-9f65-5d48855bf8ac"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ZONE_ZONE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="416" y="0" width="28" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="a1105395-16eb-4869-806f-3884b637a7ce"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CUSTBALANCE_ZONECODE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="160" y="0" width="33" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="6ef5d305-4cde-4ca8-b259-cad889479b08"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CUSTBALANCE_ROUTECODE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="38" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="45270a8f-9c18-46dc-b59d-7068a34b9f98"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CUSTBALANCE_AREACODE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="476" y="0" width="79" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="4425220a-a11a-4aef-b925-edbc32739b85"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumArea}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="0" width="476" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="c7771881-30c6-40d4-9542-c53c1bed73ac"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Area Total:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CUSTTYPE">
+		<groupExpression><![CDATA[$F{CUSTTYPE_TYPE}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="101" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="d39903fc-c277-41f0-9fe9-0b112bed4b37"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CLIENTS_CUSTTYPE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="101" y="0" width="454" height="15" forecolor="#006699" backcolor="#E6E6E6" uuid="81167bec-7031-4a91-8a39-84dd30812e36"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CUSTTYPE_TYPE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="476" y="0" width="79" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="d7433eae-db7e-4a72-a5dc-2843d45aaa1f"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SumCustType}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="0" width="476" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="df86bcf2-54a2-4d77-a37a-712d78ea34b9"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Customers Type Total:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="42">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="0" width="554" height="28" backcolor="#99CCFF" uuid="f2de52f9-1461-4004-8d7d-857100176ec2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="67" y="16" width="422" height="23" uuid="266e8366-3c08-4533-91ae-16400a80b6ed"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DSPCLIENT_CONTACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="17" forecolor="#006699" backcolor="#E6E6E6" uuid="7690381e-1827-4200-a810-4cececf8323d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Customer Balances Report (Route Wise - Only Balance)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="38" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="b82fe9a6-41da-4c36-9b10-7c4f650822ea"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="38" y="0" width="155" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="9476f9f8-16ed-4b05-81c4-47db5181ccf5"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="193" y="0" width="167" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="6375d849-616b-4a2b-be0a-f75b36524f98"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="360" y="0" width="116" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="83fb9bfc-9625-43da-9d75-cc2e0b2fbec1"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Contact #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="476" y="0" width="79" height="14" forecolor="#006699" backcolor="#E6E6E6" uuid="c5cd12e3-84da-43e7-b3a8-82523b04aeed"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="0" y="0" width="38" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="faebafca-7619-4c2e-a10b-006a80230356"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTBALANCE_CUSTOMER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="38" y="0" width="155" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="2fe2f1c7-5944-41c0-9aa0-3539a73ce007"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="193" y="0" width="167" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="3eaa91a8-6d26-44f3-bf2b-dd4aa6aa8e6f"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_ADD1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="360" y="0" width="116" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="66bcebee-fa37-47dd-82dc-a720013b9fa4"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTS_CONTACT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="476" y="0" width="79" height="14" forecolor="#000000" backcolor="#E6E6E6" uuid="354e8e0d-578e-4f41-b602-fc4026c550bd"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUSTBALANCE_BALANCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="1" y="4" width="100" height="13" backcolor="#E6E6E6" uuid="1cdf4a86-7cb0-4de0-832b-68c933b5dae8"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="30c27844-5715-479a-8eca-a1f1029c364b"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="4" width="352" height="13" backcolor="#E6E6E6" uuid="7e3158e3-0a49-49e1-b585-01e41af30846"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Software By: Dynamic Solutions Pakistan | 0302-5555493 & 0302-5555496 | http://dspak.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-19" y="2" width="596" height="1" forecolor="#666666" uuid="23f9592d-7f08-456c-a38f-61c96d58c247"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement mode="Opaque" x="453" y="4" width="63" height="13" backcolor="#E6E6E6" uuid="9749d544-6e5a-41dd-b923-cd13843542ae"/>
+				<textElement textAlignment="Right">
+					<font fontName="Book Antiqua" size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15">
+			<textField pattern="###,###,###.##;(###,###,###.##)" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="475" y="0" width="80" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="6f260f7f-e80c-4c48-8f40-d09badc30fe9"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumAll}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="475" height="15" forecolor="#006699" backcolor="#F0F0F0" uuid="f0e4b807-9d86-43a8-896f-af3caf61ac6d"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

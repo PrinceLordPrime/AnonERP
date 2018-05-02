@@ -173,7 +173,7 @@ public class LOGIN1 extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setFont(new java.awt.Font("PMingLiU", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Welcome to DynamicSP ERP");
+        jLabel1.setText("Anon Matrix ERP");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -181,7 +181,7 @@ public class LOGIN1 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
         jPanel3Layout.setVerticalGroup(

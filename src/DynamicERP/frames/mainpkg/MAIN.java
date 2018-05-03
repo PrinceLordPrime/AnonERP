@@ -1057,7 +1057,7 @@ public class MAIN extends javax.swing.JFrame {
         link9.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         link9.setForeground(new java.awt.Color(0, 102, 102));
         link9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        link9.setText("http://dspak.com | https://ds-pak.com | https://facebook.com/dspak | https://dailymotion.com/dspak");
+        link9.setText("Uzair Ahmed | Muhammad Shahab Ul Hassan");
         link9.setToolTipText("");
         link9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         link9.addMouseListener(new java.awt.event.MouseAdapter() {

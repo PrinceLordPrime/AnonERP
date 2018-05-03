@@ -333,7 +333,7 @@ public class PAK_RECOVERY_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql;
              Sql="UPDATE RMAIN SET PCODE= '"+pcode+"', NUMINST = '"+numinst+"', PCYCLE = '"+pcycle+
-                     "',INSTAMOUNT = '"+instamount+"',LASTPAMENT= '"+lastpament+"',REQDATE= TO_DATE('" + reqdate +
+                     "',INSTAMOUNT = '"+instamount+"',LASTPAMENT= '"+lastpament+"',REQDATE= DATE('" + reqdate +
                      "' , 'MM/DD/YY') ,RECAMOUNT= '"+recamount+"',REMAMOUNT= '"+remamount+"' WHERE DOCNO ="+docno;
              statement.executeUpdate(Sql);
 
@@ -378,7 +378,7 @@ public class PAK_RECOVERY_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO RMAIN(REQDATE,DOCNO,PCODE,NUMINST,PCYCLE,INSTAMOUNT,LASTPAMENT,RECAMOUNT,REMAMOUNT)"
-                    + "VALUES (TO_DATE('"+reqdate+"' ,'MM/DD/YY'),'" 
+                    + "VALUES (DATE('"+reqdate+"' ,'MM/DD/YY'),'" 
                     + Integer.parseInt(docno)+ "','" + Integer.parseInt(pcode)+ "',"
                     + "'"+Integer.parseInt(numinst)+"','"+Integer.parseInt(pcycle)+"','"+Float.parseFloat(instamount)+"','"+Float.parseFloat(lastpament)+"',"
                     + "'"+Float.parseFloat(recamount)+"','"+Float.parseFloat(remamount)+"')";
@@ -515,8 +515,8 @@ public class PAK_RECOVERY_DB extends PAK_GLOBAL_DB{
                 String Sql;
 //                System.out.println("duedate::::::::"+duedate);
 
-                 Sql="UPDATE RDTL SET SEQNO= '"+seqno+"', DUEDATE = TO_DATE('"+duedate+"' , 'MM/DD/YY') , DESCRIPTION = '"+description+
-                         "',DUEAMOUNT = '"+dueamount+"',RCDATE= TO_DATE('"+rcdate+"' , 'MM/DD/YY') ,RCAMOUNT= '"+rcamount+
+                 Sql="UPDATE RDTL SET SEQNO= '"+seqno+"', DUEDATE = DATE('"+duedate+"' , 'MM/DD/YY') , DESCRIPTION = '"+description+
+                         "',DUEAMOUNT = '"+dueamount+"',RCDATE= DATE('"+rcdate+"' , 'MM/DD/YY') ,RCAMOUNT= '"+rcamount+
                          "' WHERE DOCNO ="+docno +"AND SEQNO="+Integer.parseInt(seqno);
                  statement.executeQuery(Sql);
 
@@ -588,10 +588,10 @@ public class PAK_RECOVERY_DB extends PAK_GLOBAL_DB{
             
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO RDTL(SEQNO,DUEDATE,DESCRIPTION,DUEAMOUNT,RCDATE,RCAMOUNT,DOCNO) VALUES ("
-                    + Integer.parseInt(seqno)+ ", TO_DATE('"+duedate+"' ,'MM/DD/YY')" 
+                    + Integer.parseInt(seqno)+ ", DATE('"+duedate+"' ,'MM/DD/YY')" 
                     + ",'" +description
                     + "'," + Float.parseFloat(dueamount)+ ","
-                    + "TO_DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
+                    + "DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
                     +Integer.parseInt(docno)+")";
                    
             statement.executeUpdate(Sql);

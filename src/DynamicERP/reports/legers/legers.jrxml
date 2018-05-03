@@ -26,8 +26,8 @@ FROM
      "DSPADMIN"."CUSTLEG" CUSTLEG 
 WHERE
      CUSTLEG."CUSTCODE" = $P{get_cust_code} AND 
-	CUSTLEG."DOCDATE" >= TO_DATE($P{get_d_date} ,'MM/DD/YY') AND
-	CUSTLEG."DOCDATE" <= TO_DATE($P{get_c_date} ,'MM/DD/YY')]]>
+	CUSTLEG."DOCDATE" >= DATE($P{get_d_date} ,'MM/DD/YY') AND
+	CUSTLEG."DOCDATE" <= DATE($P{get_c_date} ,'MM/DD/YY')]]>
 	</queryString>
 	<field name="CUSTLEG_CUSTCODE" class="java.math.BigDecimal"/>
 	<field name="CUSTLEG_DOCDATE" class="java.sql.Timestamp"/>

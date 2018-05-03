@@ -71,7 +71,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
 
     private String get_proQty_from_empTarget(Connection conn, String date, String empCode, String returned1) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM EMPTARGET WHERE  PROCODE= '"+returned1+"' AND EMPCODE= '"+empCode+"' AND TDATE = TO_DATE('"+date+"' ,'MM/DD/YY')" ;
+        String Sql = "SELECT * FROM EMPTARGET WHERE  PROCODE= '"+returned1+"' AND EMPCODE= '"+empCode+"' AND TDATE = DATE('"+date+"' ,'MM/DD/YY')" ;
 	ResultSet resultset = statement.executeQuery(Sql);
         
         String returned="0";
@@ -86,7 +86,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
         boolean tf=false;
         try {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "SELECT * FROM EMPTARGET WHERE  PROCODE= '"+returned1+"' AND EMPCODE= '"+empCode+"' AND TDATE = TO_DATE('"+date+"' ,'MM/DD/YY')" ;
+            String Sql = "SELECT * FROM EMPTARGET WHERE  PROCODE= '"+returned1+"' AND EMPCODE= '"+empCode+"' AND TDATE = DATE('"+date+"' ,'MM/DD/YY')" ;
             ResultSet resultset = statement.executeQuery(Sql);
             
             if(resultset.next())
@@ -106,7 +106,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql;
             
-            Sql="UPDATE EMPTARGET SET PROQTY = "+Integer.parseInt(proqty)+" WHERE  PROCODE= '"+code+"' AND EMPCODE= '"+empCode+"' AND TDATE = TO_DATE('"+date+"' ,'MM/DD/YY')" ;
+            Sql="UPDATE EMPTARGET SET PROQTY = "+Integer.parseInt(proqty)+" WHERE  PROCODE= '"+code+"' AND EMPCODE= '"+empCode+"' AND TDATE = DATE('"+date+"' ,'MM/DD/YY')" ;
             int r = statement.executeUpdate(Sql);
             if(r!=0){
                 var = true;
@@ -133,7 +133,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
                     + Integer.parseInt(empCode)+ "','" 
                     + Integer.parseInt(code)+ "','" 
                     + Integer.parseInt(proqty)+ "'," 
-                    + "TO_DATE('"+date+"' ,'MM/DD/YY'))";
+                    + "DATE('"+date+"' ,'MM/DD/YY'))";
              
             statement.executeUpdate(Sql);
             var = true;

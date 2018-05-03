@@ -23,8 +23,8 @@
 FROM
      "DSP001"."DSRFINAL" DSRFINAL
 WHERE
-     DSRFINAL."DEALDATE" >= TO_DATE($P{subfromdate},'MM/DD/YY')
- AND DSRFINAL."DEALDATE" <= TO_DATE($P{subtodate},'MM/DD/YY')
+     DSRFINAL."DEALDATE" >= DATE($P{subfromdate},'MM/DD/YY')
+ AND DSRFINAL."DEALDATE" <= DATE($P{subtodate},'MM/DD/YY')
 GROUP BY
       DSRFINAL."DEALDATE"]]>
 	</queryString>

@@ -248,7 +248,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
             System.out.println("toDateString : "+toDateString);
             System.out.println("smCode : "+text);
             System.out.println("vanCode : "+text0);
-            String Sql = " select * from DSRCOUNTER WHERE DDATE=TO_DATE('"+toDateString+"' ,'MM/DD/YY') AND SMCODE ='"+text+"' AND VANCODE ='"+text0+"'";
+            String Sql = " select * from DSRCOUNTER WHERE DDATE=DATE('"+toDateString+"' ,'MM/DD/YY') AND SMCODE ='"+text+"' AND VANCODE ='"+text0+"'";
             result=statement.executeQuery(Sql);
             if(result.next()){
                 System.out.println(" -V- Found DSR");
@@ -278,7 +278,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
             System.out.println("toDateString : "+toDateString);
             System.out.println("smCode : "+text);
             System.out.println("vanCode : "+text0);
-            String Sql = " select * from SMAIN WHERE DDATE=TO_DATE('"+toDateString+"' ,'MM/DD/YY') AND DCODE ='"+text+"' AND VANREC ='"+text0+"'";
+            String Sql = " select * from SMAIN WHERE DDATE=DATE('"+toDateString+"' ,'MM/DD/YY') AND DCODE ='"+text+"' AND VANREC ='"+text0+"'";
             result=statement.executeQuery(Sql);
             if(result.next()){
                 System.out.println(" -V- Found DSR SMAIN");
@@ -309,7 +309,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
             System.out.println("toDateString : "+toDateString);
             System.out.println("smCode : "+text);
             System.out.println("vanCode : "+text0);
-            String Sql = " select * from ISMAIN WHERE ODATE=TO_DATE('"+toDateString+"' ,'MM/DD/YY') AND DCODE ='"+text+"' AND VANCODE ='"+text0+"'";
+            String Sql = " select * from ISMAIN WHERE ODATE=DATE('"+toDateString+"' ,'MM/DD/YY') AND DCODE ='"+text+"' AND VANCODE ='"+text0+"'";
             result=statement.executeQuery(Sql);
             if(result.next()){
                 System.out.println(" -V- Found DSR ISMAIN");
@@ -365,7 +365,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
         {//DSRCOUNTER 
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO DSRCOUNTER(CODE ,DDATE ,SMCODE ,VANCODE) VALUES ('"+Integer.parseInt(code)+ "',"
-                    +" TO_DATE('"+toDateString+"' ,'MM/DD/YY'),'"+Integer.parseInt(text)+ "','" + Integer.parseInt(text0)+ "')";
+                    +" DATE('"+toDateString+"' ,'MM/DD/YY'),'"+Integer.parseInt(text)+ "','" + Integer.parseInt(text0)+ "')";
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -384,7 +384,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
             java.sql.Statement statement = conn.createStatement();
             String Sql=null;
 
-            Sql = "DELETE FROM DSRCOUNTER WHERE DDATE=TO_DATE('"+toDateString+"' ,'MM/DD/YY') AND SMCODE ='"+text+"' AND VANCODE ='"+text0+"'";
+            Sql = "DELETE FROM DSRCOUNTER WHERE DDATE=DATE('"+toDateString+"' ,'MM/DD/YY') AND SMCODE ='"+text+"' AND VANCODE ='"+text0+"'";
             statement.executeUpdate(Sql);
             System.out.println(" -V- Deleted");
             var = true;
@@ -406,7 +406,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
         try
         {
             statement = conn.createStatement();
-            String Sql = "select * from VANLOAD WHERE DDATE= TO_DATE('" + toDateString +"' , 'MM/DD/YY') AND VANREC = "+text0+"AND DCODE = "+text;
+            String Sql = "select * from VANLOAD WHERE DDATE= DATE('" + toDateString +"' , 'MM/DD/YY') AND VANREC = "+text0+"AND DCODE = "+text;
 
             result=statement.executeQuery(Sql);
 
@@ -464,7 +464,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
         try
         {
             statement = conn.createStatement();
-            String Sql = "select * from VANLOAD WHERE DDATE= TO_DATE('" + toDateString +"' , 'MM/DD/YY')AND VANREC = "+text0+" AND DCODE = "+text;
+            String Sql = "select * from VANLOAD WHERE DDATE= DATE('" + toDateString +"' , 'MM/DD/YY')AND VANREC = "+text0+" AND DCODE = "+text;
 
             result=statement.executeQuery(Sql);
 

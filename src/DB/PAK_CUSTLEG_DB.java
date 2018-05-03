@@ -54,7 +54,7 @@ public class PAK_CUSTLEG_DB extends PAK_GLOBAL_DB{
 //        int s = find_count_in_purchase_products(conn, asset_rec);
 //        String returned[][] = new String[s][6];
 	java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM CUSTLEGER WHERE  CUSTOMER = '"+asset_rec+"' AND DOCDATE BETWEEN TO_DATE('"+ddate+"' ,'MM/DD/YY') AND TO_DATE('"+cdate+"' ,'MM/DD/YY') ORDER BY DOCDATE ASC" ;
+        String Sql = "SELECT * FROM CUSTLEGER WHERE  CUSTOMER = '"+asset_rec+"' AND DOCDATE BETWEEN DATE('"+ddate+"' ,'MM/DD/YY') AND DATE('"+cdate+"' ,'MM/DD/YY') ORDER BY DOCDATE ASC" ;
         ResultSet resultset = statement.executeQuery(Sql);
         
        
@@ -220,7 +220,7 @@ public class PAK_CUSTLEG_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql="UPDATE CUSTLEGER SET  CUSTOMER = '"+custcode+"', DOCDATE= TO_DATE('" + docdate +
+            String Sql="UPDATE CUSTLEGER SET  CUSTOMER = '"+custcode+"', DOCDATE= DATE('" + docdate +
                      "' , 'MM/DD/YY') ,DESCRIPTION= '"+descr+"',DEBIT= '"+debit+"',CREDIT = '"+credit+"' WHERE DOCNO ="+docno+" AND DESCRIPTION LIKE '"+docno1+"%'";
             statement.executeUpdate(Sql);
             var = true;
@@ -279,7 +279,7 @@ public class PAK_CUSTLEG_DB extends PAK_GLOBAL_DB{
         int count=0;
         try {
             java.sql.Statement statement = conn.createStatement();
-            String Sql1 = "SELECT COUNT(CUSTOMER) AS Count FROM CUSTLEGER WHERE  CUSTOMER = '"+asset_rec+"' AND DOCDATE BETWEEN TO_DATE('"+ddate+"' ,'MM/DD/YY') AND TO_DATE('"+cdate+"' ,'MM/DD/YY')" ;
+            String Sql1 = "SELECT COUNT(CUSTOMER) AS Count FROM CUSTLEGER WHERE  CUSTOMER = '"+asset_rec+"' AND DOCDATE BETWEEN DATE('"+ddate+"' ,'MM/DD/YY') AND DATE('"+cdate+"' ,'MM/DD/YY')" ;
             ResultSet resultset1 = statement.executeQuery(Sql1);
             resultset1.next();
             String temp=resultset1.getString("Count");
@@ -296,7 +296,7 @@ public class PAK_CUSTLEG_DB extends PAK_GLOBAL_DB{
 
     public String get_sum_opngBal(Connection conn, String text, String toDateString) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM CUSTLEGER WHERE  CUSTOMER = '"+text+"' AND DOCDATE < TO_DATE('"+toDateString+"' ,'MM/DD/YY')" ;
+        String Sql = "SELECT * FROM CUSTLEGER WHERE  CUSTOMER = '"+text+"' AND DOCDATE < DATE('"+toDateString+"' ,'MM/DD/YY')" ;
 	ResultSet resultset = statement.executeQuery(Sql);
         
         String returned="";
@@ -397,7 +397,7 @@ public class PAK_CUSTLEG_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO CUSTLEGER(CUSTOMER,DOCDATE,DESCRIPTION,DEBIT,CREDIT,DOCNO) VALUES ("+
-                    Integer.parseInt(custcode)+ ",TO_DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
+                    Integer.parseInt(custcode)+ ",DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
             statement.executeUpdate(Sql);
             var = true;
         }

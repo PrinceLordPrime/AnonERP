@@ -325,7 +325,7 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql;
 //            TONO,ODATE,REFNO,DESCR,TD,TC
-             Sql="UPDATE SCHQTYPRO SET  REFNO = '"+refno+"', ODATE= TO_DATE('" + odate +
+             Sql="UPDATE SCHQTYPRO SET  REFNO = '"+refno+"', ODATE= DATE('" + odate +
                      "' , 'MM/DD/YY') ,DESCR= '"+descr+"',TD= '"+td+"',TC = '"+tc+"' WHERE TONO ="+docno;
              statement.executeUpdate(Sql);
 
@@ -370,7 +370,7 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
                 String Sql = "INSERT INTO SUPPLEG(CUSTCODE,DOCDATE,DESCR,DEBIT,CREDIT,TONO) VALUES ("+
-                    Integer.parseInt(custcode)+ ",TO_DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
+                    Integer.parseInt(custcode)+ ",DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -386,7 +386,7 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql="UPDATE SUPPLEG SET  CUSTCODE = '"+custcode+"', DOCDATE= TO_DATE('" + docdate +
+            String Sql="UPDATE SUPPLEG SET  CUSTCODE = '"+custcode+"', DOCDATE= DATE('" + docdate +
                      "' , 'MM/DD/YY') ,DESCR= '"+descr+"',DEBIT= '"+debit+"',CREDIT = '"+credit+"' WHERE TONO ="+docno+" AND DESCR  = '"+docno1+"'";
             statement.executeUpdate(Sql);
             var = true;
@@ -406,7 +406,7 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
             
             String Sql = "INSERT INTO SCHQTYPRO(TONO,ODATE,REFNO,DESCR,TD,TC) VALUES ("
                     + Integer.parseInt(docno)+
-                    ",TO_DATE('"+odate+"' ,'MM/DD/YY')," 
+                    ",DATE('"+odate+"' ,'MM/DD/YY')," 
                     + "'" + refno+ "',"
                     + "'"+descr+"',"+Float.parseFloat(td)+","+Float.parseFloat(tc)+ ")";
              
@@ -589,8 +589,8 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
             //TONO,PCODE,SRNO,ODATE,CDATE,STPCS,ENDPCS,UNITD,SCHRS
                 java.sql.Statement statement = conn.createStatement();
                 String Sql;
-                 Sql="UPDATE SCHQTYPRO SET TONO= '"+tono+"', PCODE = '"+pcode+"', SRNO = '"+srno+"', ODATE= TO_DATE('" + odate +
-                     "' , 'MM/DD/YY'),CDATE= TO_DATE('" + cdate +
+                 Sql="UPDATE SCHQTYPRO SET TONO= '"+tono+"', PCODE = '"+pcode+"', SRNO = '"+srno+"', ODATE= DATE('" + odate +
+                     "' , 'MM/DD/YY'),CDATE= DATE('" + cdate +
                      "' , 'MM/DD/YY'),STPCS = '"+stpcs+"', ENDPCS = '"+endpcs+"', UNITD= '"+unitd+
                          "', SCHRS= '"+schrs+
                          "' WHERE TONO ="+tono +"AND SRNO="+srno;
@@ -698,7 +698,7 @@ public class PAK_SCHQTYPRO_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             
             String Sql = "INSERT INTO SCHQTYPRO(TONO,PCODE,SRNO,ODATE,CDATE,STPCS,ENDPCS,UNITD,SCHRS,PCODE1) VALUES ('"+Float.parseFloat(tono)+"','"
-                    + Integer.parseInt(pcode)+"','" + Integer.parseInt(srno)+ "',TO_DATE('"+odate+"' ,'MM/DD/YY'),TO_DATE('"+cdate+"' ,'MM/DD/YY'),'"
+                    + Integer.parseInt(pcode)+"','" + Integer.parseInt(srno)+ "',DATE('"+odate+"' ,'MM/DD/YY'),DATE('"+cdate+"' ,'MM/DD/YY'),'"
                     +Float.parseFloat(stpcs)+"','"+Float.parseFloat(endpcs)+"','"+Float.parseFloat(unitd)+"','"+Float.parseFloat(schrs)+"','"
                     + Integer.parseInt(pro)+"')";
             statement.executeUpdate(Sql);

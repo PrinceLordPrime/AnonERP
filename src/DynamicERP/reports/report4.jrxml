@@ -6,7 +6,7 @@
 	<parameter name="FROM_DATE" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="TO_DATE" class="java.util.Date"/>
+	<parameter name="DATE" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[SELECT
      sum(RDTL."DUEAMOUNT") AS DUEAMOUNT,
@@ -16,7 +16,7 @@
 FROM
      "PAK"."SMAIN" SMAIN INNER JOIN "PAK"."RDTL" RDTL ON SMAIN."DOCNO" = RDTL."DOCNO"
      INNER JOIN "PAK"."CLIENTS" CLIENTS ON SMAIN."CUSTCODE" = CLIENTS."CODE"
-WHERE "PAK"."RDTL"."DUEDATE" BETWEEN $P{TO_DATE} AND $P{FROM_DATE}	
+WHERE "PAK"."RDTL"."DUEDATE" BETWEEN $P{DATE} AND $P{FROM_DATE}	
 GROUP BY
      "PAK"."CLIENTS"."NAME","PAK"."SMAIN"."DOCNO"]]>
 	</queryString>

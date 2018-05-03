@@ -84,8 +84,8 @@ FROM
      "DSP001"."DSPCLIENT" DSPCLIENT
 WHERE
 
-      SMAIN."DDATE" >= TO_DATE($P{fromdate},'MM/DD/YY')
- AND  SMAIN."DDATE" <= TO_DATE($P{todate},'MM/DD/YY')  AND  SMAIN."DCODE" = $P{smcode}
+      SMAIN."DDATE" >= DATE($P{fromdate},'MM/DD/YY')
+ AND  SMAIN."DDATE" <= DATE($P{todate},'MM/DD/YY')  AND  SMAIN."DCODE" = $P{smcode}
  AND SMAIN."VANREC"  = $P{vancode}]]>
 	</queryString>
 	<field name="CLIENTS_NAME" class="java.lang.String"/>

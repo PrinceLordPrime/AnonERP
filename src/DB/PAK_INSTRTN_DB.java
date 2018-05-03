@@ -27,10 +27,10 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO RDTL(SEQNO,DUEDATE,DESCRIPTION,DUEAMOUNT,RCDATE,RCAMOUNT,DOCNO) VALUES ("
-                    + Integer.parseInt(seqno)+ ", TO_DATE('"+duedate+"' ,'MM/DD/YY')" 
+                    + Integer.parseInt(seqno)+ ", DATE('"+duedate+"' ,'MM/DD/YY')" 
                     + ",'" +description
                     + "'," + Float.parseFloat(dueamount)+ ","
-                    + "TO_DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
+                    + "DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
                     +Integer.parseInt(docno)+")";
                    
             statement.executeUpdate(Sql);
@@ -556,7 +556,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
              statement = conn.createStatement();
             String Sql;
              Sql="UPDATE  RETURNMAIN SET  REFNO = '"+refno+"', CUSTCODE = '"+supcode+
-                     "',REMARKS= '"+remarks+"',ODATE= TO_DATE('" + odate +
+                     "',REMARKS= '"+remarks+"',ODATE= DATE('" + odate +
                      "' , 'MM/DD/YY') ,SPLRS= '"+splrs+"',OTHEREXP = '"+otherexp+
                      "',TNETAMOUNT = '"+tnetamount+"',REMAINING = '"+remaning+"',PAID = '"+paid+"',NETPAYABLE = '"+netpayable+
                      "',DCODE = '"+dealerCode+"' WHERE DOCNO ="+docno;
@@ -622,7 +622,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
             statement = conn.createStatement();
             String Sql = "INSERT INTO  RETURNMAIN(ODATE,DOCNO,REFNO,CUSTCODE,SPLRS,OTHEREXP"
                     + ",TNETAMOUNT,REMAINING,PAID,REMARKS,NETPAYABLE,DCODE) "
-                    + "VALUES (TO_DATE('"+odate+"' ,'MM/DD/YY'),'" 
+                    + "VALUES (DATE('"+odate+"' ,'MM/DD/YY'),'" 
                     + Integer.parseInt(docno)+ "','" +refno+ "',"
                     + "'"+Integer.parseInt(supcode)+"','"+Float.parseFloat(splrs)+"',"
                     + "'"+Float.parseFloat(otherexp)+"','"+Float.parseFloat(tnetamount)+"',"
@@ -889,7 +889,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
                 String Sql;
                  Sql="UPDATE RETURNDTL SET SEQNO= '"+seqno+"', PCODE = '"+pcode+"', SALEQTY = '"+saleqty+
                          "',SALERATE = '"+salerate+"',DAMAGE= '"+damage+"',DMGRATE= '"+dmgrate+"',EXPIRYQTY = '"+expiryqty+
-                         "',"+ "NETAMOUNT = '"+netamount+"',EXPIRYRATE = '"+expiryrate+"' ,EXPIRYDATE= TO_DATE('" + expirydate +"' , 'MM/DD/YY')WHERE DOCNO ="+docno +"AND SEQNO="+seqno;
+                         "',"+ "NETAMOUNT = '"+netamount+"',EXPIRYRATE = '"+expiryrate+"' ,EXPIRYDATE= DATE('" + expirydate +"' , 'MM/DD/YY')WHERE DOCNO ="+docno +"AND SEQNO="+seqno;
                  statement.executeQuery(Sql);
 
 
@@ -994,7 +994,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
                     + "','"+Float.parseFloat(expQty)
                     + "','"+Float.parseFloat(taxper)+"','"
                     +Float.parseFloat(netamount)+"',"
-                    +"TO_DATE('" + dmg +"' , 'MM/DD/YY'))";
+                    +"DATE('" + dmg +"' , 'MM/DD/YY'))";
             //,,,,
             statement.executeUpdate(Sql);
 //            }

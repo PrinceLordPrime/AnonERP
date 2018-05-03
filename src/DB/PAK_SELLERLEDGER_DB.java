@@ -55,7 +55,7 @@ public class PAK_SELLERLEDGER_DB extends PAK_GLOBAL_DB{
 //        int s = find_count_in_purchase_products(conn, asset_rec);
 //        String returned[][] = new String[s][6];
 	java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM SUPPLEG WHERE  SELLER = '"+asset_rec+"' AND DOCDATE BETWEEN TO_DATE('"+ddate+"' ,'MM/DD/YY') AND TO_DATE('"+cdate+"' ,'MM/DD/YY') ORDER BY DOCDATE ASC" ;
+        String Sql = "SELECT * FROM SUPPLEG WHERE  SELLER = '"+asset_rec+"' AND DOCDATE BETWEEN DATE('"+ddate+"' ,'MM/DD/YY') AND DATE('"+cdate+"' ,'MM/DD/YY') ORDER BY DOCDATE ASC" ;
 	ResultSet resultset = statement.executeQuery(Sql);
         
        
@@ -155,7 +155,7 @@ public class PAK_SELLERLEDGER_DB extends PAK_GLOBAL_DB{
         int count=0;
         try {
             java.sql.Statement statement = conn.createStatement();
-            String Sql1 = "SELECT COUNT(SELLER) AS Count FROM SUPPLEG WHERE  SELLER = '"+asset_rec+"' AND DOCDATE BETWEEN TO_DATE('"+ddate+"' ,'MM/DD/YY') AND TO_DATE('"+cdate+"' ,'MM/DD/YY')" ;
+            String Sql1 = "SELECT COUNT(SELLER) AS Count FROM SUPPLEG WHERE  SELLER = '"+asset_rec+"' AND DOCDATE BETWEEN DATE('"+ddate+"' ,'MM/DD/YY') AND DATE('"+cdate+"' ,'MM/DD/YY')" ;
             ResultSet resultset1 = statement.executeQuery(Sql1);
             resultset1.next();
             String temp=resultset1.getString("Count");
@@ -172,7 +172,7 @@ public class PAK_SELLERLEDGER_DB extends PAK_GLOBAL_DB{
 
     public String get_sum_opngBal(Connection conn, String text, String toDateString) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM SUPPLEG WHERE  SELLER = '"+text+"' AND DOCDATE < TO_DATE('"+toDateString+"' ,'MM/DD/YY')" ;
+        String Sql = "SELECT * FROM SUPPLEG WHERE  SELLER = '"+text+"' AND DOCDATE < DATE('"+toDateString+"' ,'MM/DD/YY')" ;
 	ResultSet resultset = statement.executeQuery(Sql);
         
         String returned="";

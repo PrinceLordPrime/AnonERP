@@ -52,7 +52,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
     Conversions ccc =new Conversions();
     public String[][] search_sailPaid(Connection conn, String dCode,String ddate,String vanCode) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM SMAIN WHERE  DCODE = '"+dCode+"' AND DDATE = TO_DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
+        String Sql = "SELECT * FROM SMAIN WHERE  DCODE = '"+dCode+"' AND DDATE = DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
         ResultSet resultset = statement.executeQuery(Sql);int s =  find_count_in_result(conn,dCode,ddate,vanCode);
         String returned[][] = new String[s][5];int i=0;
        while(resultset.next()){
@@ -66,7 +66,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
     }
     public String[][] search_sailManPaid(Connection conn, String dCode,String ddate,String vanCode) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT DOCNO,CUSTCODE,DCODE,VANREC,OBCODE,to_char(DDATE,'MM/DD/YY') as DDATE FROM SMAIN WHERE  DCODE = '"+dCode+"' AND DDATE = TO_DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
+        String Sql = "SELECT DOCNO,CUSTCODE,DCODE,VANREC,OBCODE,to_char(DDATE,'MM/DD/YY') as DDATE FROM SMAIN WHERE  DCODE = '"+dCode+"' AND DDATE = DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
         ResultSet resultset = statement.executeQuery(Sql);int s =  find_count_in_result(conn,dCode,ddate,vanCode);
         String returned[][] = new String[s][9];int i=0;
         while(resultset.next()){
@@ -265,7 +265,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql="UPDATE SMAIN SET  DCODE = '"+docdate+"',VANREC = '"+vanCode+"',OBCODE = '"+obCode+"',DDATE = TO_DATE('"+ddate+"','MM/DD/YY') WHERE DOCNO ="+custcode;
+            String Sql="UPDATE SMAIN SET  DCODE = '"+docdate+"',VANREC = '"+vanCode+"',OBCODE = '"+obCode+"',DDATE = DATE('"+ddate+"','MM/DD/YY') WHERE DOCNO ="+custcode;
             System.err.println(""+docdate+" , "+custcode);
             statement.executeUpdate(Sql);
             var = true;
@@ -308,7 +308,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
 		try
 		{
 //              ************ ***********************************************************                                                                     
-                    java.sql.Statement statement = conn.createStatement();//                                                             ************ +  "',TO_DATE('" + date+ " ', 'yyyy/mm/dd ')," + **********                                                                     
+                    java.sql.Statement statement = conn.createStatement();//                                                             ************ +  "',DATE('" + date+ " ', 'yyyy/mm/dd ')," + **********                                                                     
                     String Sql = "INSERT INTO RECOVERY(DOCCODE,CUSTCODE,SM1CODE,SM2CODE,CASHTPCD,RDATE,AMOUNT,"
                             + "FREIGHT,CREDITAMOUNT) VALUES ("+
                             (find_max_all_in_recovery_credit_rec_code(conn)+1)+ "," 
@@ -316,7 +316,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
                             Integer.parseInt(empCode) +  "," +
                             Integer.parseInt(empCode) +  "," +
                             1 +  ","+ 
-                            " TO_DATE('" + date + "' , 'MM/DD/YY')," +
+                            " DATE('" + date + "' , 'MM/DD/YY')," +
                             Integer.parseInt(recAmt) +  "," +
                             Integer.parseInt("0") +  "," +
                             Integer.parseInt("0") +")";
@@ -432,7 +432,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
         int count=0;
         try {
             java.sql.Statement statement = conn.createStatement();
-            String Sql1 = "SELECT COUNT(DOCNO) AS Count FROM SMAIN WHERE  DCODE = '"+smCode+"' AND DDATE = TO_DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
+            String Sql1 = "SELECT COUNT(DOCNO) AS Count FROM SMAIN WHERE  DCODE = '"+smCode+"' AND DDATE = DATE('"+ddate+"' ,'MM/DD/YY') AND VANREC = '"+vanCode+"' ORDER BY DOCNO ASC" ;
             ResultSet resultset1 = statement.executeQuery(Sql1);
             resultset1.next();
             String temp=resultset1.getString("Count");
@@ -530,7 +530,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
     }
     public String get_sum_opngBal(Connection conn, String text, String toDateString) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "SELECT * FROM CUSTLEG WHERE  CUSTCODE = '"+text+"' AND DOCDATE < TO_DATE('"+toDateString+"' ,'MM/DD/YY')" ;
+        String Sql = "SELECT * FROM CUSTLEG WHERE  CUSTCODE = '"+text+"' AND DOCDATE < DATE('"+toDateString+"' ,'MM/DD/YY')" ;
 	ResultSet resultset = statement.executeQuery(Sql);
         
         String returned="";
@@ -631,7 +631,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO CUSTLEG(CUSTCODE,DOCDATE,DESCR,DEBIT,CREDIT,DOCNO) VALUES ("+
-                    Integer.parseInt(custcode)+ ",TO_DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
+                    Integer.parseInt(custcode)+ ",DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
             statement.executeUpdate(Sql);
             var = true;
         }

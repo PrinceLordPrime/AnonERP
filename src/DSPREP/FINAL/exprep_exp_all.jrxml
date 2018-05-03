@@ -43,8 +43,8 @@ FROM
      "DSPADMIN"."DSPCLIENT" DSPCLIENT
 WHERE
         EXPENCEDEP."EXPCODE" =  $P{get_expcode} AND
-        EXPENCEDEP."ODATE" >= TO_DATE($P{fromdate} ,'MM/DD/YY') AND
-        EXPENCEDEP."ODATE" <= TO_DATE($P{todate} ,'MM/DD/YY')]]>
+        EXPENCEDEP."ODATE" >= DATE($P{fromdate} ,'MM/DD/YY') AND
+        EXPENCEDEP."ODATE" <= DATE($P{todate} ,'MM/DD/YY')]]>
 	</queryString>
 	<field name="DSPCLIENT_CODE" class="java.math.BigDecimal"/>
 	<field name="DSPCLIENT_ADD1" class="java.lang.String"/>

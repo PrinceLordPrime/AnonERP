@@ -42,8 +42,8 @@ FROM
      INNER JOIN "DSP001"."SUBCAT" SUBCAT ON PMAST."SUBCAT" = SUBCAT."CODE",
      "DSP001"."DSPCLIENT" DSPCLIENT
 WHERE
-     STOCKPOSITION."DEALDATE" >= TO_DATE($P{fromdate},'MM/DD/YY')
- AND STOCKPOSITION."DEALDATE" <= TO_DATE($P{todate},'MM/DD/YY')]]>
+     STOCKPOSITION."DEALDATE" >= DATE($P{fromdate},'MM/DD/YY')
+ AND STOCKPOSITION."DEALDATE" <= DATE($P{todate},'MM/DD/YY')]]>
 	</queryString>
 	<field name="STOCKPOSITION_PURQTY" class="java.math.BigDecimal"/>
 	<field name="STOCKPOSITION_TOTALOUT" class="java.math.BigDecimal"/>

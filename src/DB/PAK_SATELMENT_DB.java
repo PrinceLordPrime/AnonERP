@@ -27,10 +27,10 @@ public class PAK_SATELMENT_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO SATELMENTDTL(SEQNO,DUEDATE,DESCRIPTION,DUEAMOUNT,RCDATE,RCAMOUNT,DOCNO) VALUES ("
-                    + Integer.parseInt(seqno)+ ", TO_DATE('"+duedate+"' ,'MM/DD/YY')" 
+                    + Integer.parseInt(seqno)+ ", DATE('"+duedate+"' ,'MM/DD/YY')" 
                     + ",'" +description
                     + "'," + Float.parseFloat(dueamount)+ ","
-                    + "TO_DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
+                    + "DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
                     +Integer.parseInt(docno)+")";
                    
             statement.executeUpdate(Sql);
@@ -412,7 +412,7 @@ public class PAK_SATELMENT_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql;
              Sql="UPDATE  SATELMENTMAIN SET  REFNO = '"+refno+"', SATELMENTTYPE = '"+supcode+
-                     "',REMARKS= '"+remarks+"',ODATE= TO_DATE('" + odate +
+                     "',REMARKS= '"+remarks+"',ODATE= DATE('" + odate +
                      "' , 'MM/DD/YY') ,TNETAMOUNT = '"+tnetamount+"',DCODE = '"+dealerCode+"' WHERE DOCNO ="+docno;
              statement.executeUpdate(Sql);
 
@@ -456,7 +456,7 @@ public class PAK_SATELMENT_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO  SATELMENTMAIN(ODATE,DOCNO,REFNO,SATELMENTTYPE"
                     + ",TNETAMOUNT,REMARKS,DCODE) "
-                    + "VALUES (TO_DATE('"+odate+"' ,'MM/DD/YY'),'" 
+                    + "VALUES (DATE('"+odate+"' ,'MM/DD/YY'),'" 
                     + Integer.parseInt(docno)+ "','" +refno+ "',"
                     + "'"+Integer.parseInt(supcode)+"',"
                     + "'"+Float.parseFloat(tnetamount)+"',"
@@ -688,7 +688,7 @@ public class PAK_SATELMENT_DB extends PAK_GLOBAL_DB{
                 java.sql.Statement statement = conn.createStatement();
                 String Sql;
                  Sql="UPDATE SATELMENTDTL SET SEQNO= '"+seqno+"', PCODE = '"+pcode+"', SALEQTY = '"+saleqty+
-                         "',SALERATE = '"+salerate+"',"+ "NETAMOUNT = '"+netamount+"',EXPIRYDATE= TO_DATE('" + expirydate +"' , 'MM/DD/YY')WHERE DOCNO ="+docno +"AND SEQNO="+seqno;
+                         "',SALERATE = '"+salerate+"',"+ "NETAMOUNT = '"+netamount+"',EXPIRYDATE= DATE('" + expirydate +"' , 'MM/DD/YY')WHERE DOCNO ="+docno +"AND SEQNO="+seqno;
                  statement.executeQuery(Sql);
 
 
@@ -766,7 +766,7 @@ public class PAK_SATELMENT_DB extends PAK_GLOBAL_DB{
             String Sql = "INSERT INTO SATELMENTDTL(DOCNO,SEQNO,PCODE,SALEQTY,SALERATE,"
                     + "NETAMOUNT,EXPIRYDATE) VALUES ('"+ Integer.parseInt(docno)+"','" + Integer.parseInt(seqno)+ "','"
                     +Float.parseFloat(pcode)+"','"+Float.parseFloat(perqty)+"','"+Float.parseFloat(perrate)+"','"
-                    +Float.parseFloat(netamount)+"', TO_DATE('"
+                    +Float.parseFloat(netamount)+"', DATE('"
                     +dmg+"','MM/DD/YY'))";
             //,,,,
             statement.executeUpdate(Sql);

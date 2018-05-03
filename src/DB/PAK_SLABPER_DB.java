@@ -324,7 +324,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql;
 //            SLABNO,FROMDATE,REFNO,DESCR,TD,TC
-             Sql="UPDATE SLAB SET  REFNO = '"+refno+"', FROMDATE= TO_DATE('" + odate +
+             Sql="UPDATE SLAB SET  REFNO = '"+refno+"', FROMDATE= DATE('" + odate +
                      "' , 'MM/DD/YY') ,DESCR= '"+descr+"',TD= '"+td+"',TC = '"+tc+"' WHERE SLABNO ="+docno;
              statement.executeUpdate(Sql);
 
@@ -369,7 +369,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
                 String Sql = "INSERT INTO SUPPLEG(CUSTCODE,DOCDATE,DESCR,DEBIT,CREDIT,SLABNO) VALUES ("+
-                    Integer.parseInt(custcode)+ ",TO_DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
+                    Integer.parseInt(custcode)+ ",DATE('"+docdate+"' ,'MM/DD/YY'),'" + descr +  "'," + Float.parseFloat(debit) +  "," +Float.parseFloat(credit) +  "," + Integer.parseInt(docno)  + ")";
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -385,7 +385,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql="UPDATE SUPPLEG SET  CUSTCODE = '"+custcode+"', DOCDATE= TO_DATE('" + docdate +
+            String Sql="UPDATE SUPPLEG SET  CUSTCODE = '"+custcode+"', DOCDATE= DATE('" + docdate +
                      "' , 'MM/DD/YY') ,DESCR= '"+descr+"',DEBIT= '"+debit+"',CREDIT = '"+credit+"' WHERE SLABNO ="+docno+" AND DESCR  = '"+docno1+"'";
             statement.executeUpdate(Sql);
             var = true;
@@ -405,7 +405,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
             
             String Sql = "INSERT INTO SLAB(SLABNO,FROMDATE,REFNO,DESCR,TD,TC) VALUES ("
                     + Integer.parseInt(docno)+
-                    ",TO_DATE('"+odate+"' ,'MM/DD/YY')," 
+                    ",DATE('"+odate+"' ,'MM/DD/YY')," 
                     + "'" + refno+ "',"
                     + "'"+descr+"',"+Float.parseFloat(td)+","+Float.parseFloat(tc)+ ")";
              
@@ -588,8 +588,8 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
             //SLABNO,PCODE,SRNO,FROMDATE,TODATE,FROMAMOUNT,TOAMOUNT,UNITD,SLABPER
                 java.sql.Statement statement = conn.createStatement();
                 String Sql;
-                 Sql="UPDATE SLAB SET SLABNO= '"+tono+"', SRNO = '"+srno+"', FROMDATE= TO_DATE('" + odate +
-                     "' , 'MM/DD/YY'),TODATE= TO_DATE('" + cdate +
+                 Sql="UPDATE SLAB SET SLABNO= '"+tono+"', SRNO = '"+srno+"', FROMDATE= DATE('" + odate +
+                     "' , 'MM/DD/YY'),TODATE= DATE('" + cdate +
                      "' , 'MM/DD/YY'),FROMAMOUNT = '"+stpcs+"', TOAMOUNT = '"+endpcs+"', SLABPER= '"+schrs+
                          "' WHERE SLABNO ="+tono +"AND SRNO="+srno;
                  statement.executeQuery(Sql);
@@ -695,7 +695,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             
-            String Sql = "INSERT INTO SLAB(SLABNO,SRNO,FROMDATE,TODATE,FROMAMOUNT,TOAMOUNT,SLABPER) VALUES ('"+Float.parseFloat(tono)+"','" + Integer.parseInt(srno)+ "',TO_DATE('"+odate+"' ,'MM/DD/YY'),TO_DATE('"+cdate+"' ,'MM/DD/YY'),'"
+            String Sql = "INSERT INTO SLAB(SLABNO,SRNO,FROMDATE,TODATE,FROMAMOUNT,TOAMOUNT,SLABPER) VALUES ('"+Float.parseFloat(tono)+"','" + Integer.parseInt(srno)+ "',DATE('"+odate+"' ,'MM/DD/YY'),DATE('"+cdate+"' ,'MM/DD/YY'),'"
                     +Float.parseFloat(stpcs)+"','"+Float.parseFloat(endpcs)+"','"+Float.parseFloat(schrs)+"')";
             statement.executeUpdate(Sql);
             var = true;

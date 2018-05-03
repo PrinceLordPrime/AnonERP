@@ -27,10 +27,10 @@ public class PAK_SALEORDER_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO RDTL(SEQNO,DUEDATE,DESCRIPTION,DUEAMOUNT,RCDATE,RCAMOUNT,DOCNO) VALUES ("
-                    + Integer.parseInt(seqno)+ ", TO_DATE('"+duedate+"' ,'MM/DD/YY')" 
+                    + Integer.parseInt(seqno)+ ", DATE('"+duedate+"' ,'MM/DD/YY')" 
                     + ",'" +description
                     + "'," + Float.parseFloat(dueamount)+ ","
-                    + "TO_DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
+                    + "DATE('"+rcdate+"' ,'MM/DD/YY'),"+Float.parseFloat(rcamount)+","
                     +Integer.parseInt(docno)+")";
                    
             statement.executeUpdate(Sql);
@@ -411,7 +411,7 @@ public class PAK_SALEORDER_DB extends PAK_GLOBAL_DB{
 //ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,SPLPER,SPLRS,OTHEREXP,AVDISCPER,TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,
 //PAID,REMARKS,NETPAYABLE,DCODE
              Sql="UPDATE SMAIN SET AVDISCPER= '"+avdiscper+"', REFNO = '"+refno+"', CUSTCODE = '"+supcode+
-                     "',TGROSSAMT = '"+tgrossamt+"',REMARKS= '"+remarks+"',ODATE= TO_DATE('" + odate +
+                     "',TGROSSAMT = '"+tgrossamt+"',REMARKS= '"+remarks+"',ODATE= DATE('" + odate +
                      "' , 'MM/DD/YY') ,SPLPER= '"+splper+"',SPLRS= '"+splrs+"',OTHEREXP = '"+otherexp+
                      "',TDISCRS = '"+tdiscrs+"',AVTAXPER = '"+avtaxper+"',TTAXRS = '"+ttaxrs+"',TNETAMOUNT = '"+
                      tnetamount+"',REMAINING = '"+remaning+"',PAID = '"+paid+"',NETPAYABLE = '"+netpayable+
@@ -462,7 +462,7 @@ public class PAK_SALEORDER_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO SMAIN(ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,SPLPER,SPLRS,OTHEREXP,AVDISCPER,"
                     + "TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,PAID,REMARKS,NETPAYABLE,DCODE) "
-                    + "VALUES (TO_DATE('"+odate+"' ,'MM/DD/YY'),'" 
+                    + "VALUES (DATE('"+odate+"' ,'MM/DD/YY'),'" 
                     + Integer.parseInt(docno)+ "','" +refno+ "',"
                     + "'"+Integer.parseInt(supcode)+"','"+Float.parseFloat(tgrossamt)+"','"+Float.parseFloat(splper)+"','"+Float.parseFloat(splrs)+"',"
                     + "'"+Float.parseFloat(otherexp)+"','"+Float.parseFloat(avdiscper)+"','"+Float.parseFloat(tdiscrs)
@@ -486,7 +486,7 @@ public class PAK_SALEORDER_DB extends PAK_GLOBAL_DB{
             java.sql.Statement statement = conn.createStatement();
             String Sql = "INSERT INTO RMAIN(DOCNO,PCODE,NUMINST,PCYCLE,REQDATE,INSTAMOUNT,LASTPAMENT,RECAMOUNT,REMAMOUNT) VALUES ('"
                     +Integer.parseInt(docno)+ "','" + Integer.parseInt(pcode)+ "',"
-                    + "'"+Integer.parseInt(numinst)+"','"+pcycle+"',"+" TO_DATE('"+reqdate+"' ,'MM/DD/YY'),'" 
+                    + "'"+Integer.parseInt(numinst)+"','"+pcycle+"',"+" DATE('"+reqdate+"' ,'MM/DD/YY'),'" 
                     +Float.parseFloat(instamount)+"','"+Float.parseFloat(lastpament)+"',"
                     + "'"+Float.parseFloat(recamount)+"','"+Float.parseFloat(remamount)+ "')";
             statement.executeUpdate(Sql);

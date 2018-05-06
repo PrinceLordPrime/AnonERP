@@ -118,6 +118,11 @@ public class LOGIN1 extends javax.swing.JFrame {
         btnLogIn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnLogIn.setForeground(new java.awt.Color(255, 255, 255));
         btnLogIn.setText("LOGIN");
+        btnLogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogInMouseClicked(evt);
+            }
+        });
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogInActionPerformed(evt);
@@ -419,12 +424,11 @@ public class LOGIN1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserPassKeyPressed
 
     private void txtUserPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserPassFocusLost
-        try {
-            //System.out.println("UserPassKeyFocus Lost");
-            checkPass();
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            checkPass();
+//        } catch (UnsupportedEncodingException ex) {
+//            Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_txtUserPassFocusLost
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
@@ -438,6 +442,10 @@ public class LOGIN1 extends javax.swing.JFrame {
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void btnLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogInMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogInMouseClicked
 
     public String Class;
     public String Package;

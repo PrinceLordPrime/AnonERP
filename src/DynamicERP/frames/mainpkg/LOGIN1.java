@@ -420,6 +420,7 @@ public class LOGIN1 extends javax.swing.JFrame {
 
     private void txtUserPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserPassFocusLost
         try {
+            //System.out.println("UserPassKeyFocus Lost");
             checkPass();
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
@@ -427,11 +428,11 @@ public class LOGIN1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserPassFocusLost
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        try {
-            findtxtUserIdinDB(txtUserId1);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            findtxtUserIdinDB(txtUserId1);
+//        } catch (UnsupportedEncodingException ex) {
+//            Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_btnLogInActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -478,6 +479,7 @@ public class LOGIN1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //System.out.println("Running");
                 new LOGIN1().setVisible(true);
             }
         });
@@ -511,10 +513,12 @@ public class LOGIN1 extends javax.swing.JFrame {
     public static LoggerClass newLoggerClass;
     
     private boolean findtxtUserIdinDB(JTextField txtUserId) throws UnsupportedEncodingException {
+        //System.out.println("Calling FindtxtUserIdinDB");
         boolean b=false;
         PAK_DB data =new PAK_DB();
         Connection conn = null;
         try {
+            System.out.println("Connecting Database");
             conn = data.connect_database();
             String s=new String(txtUserPass.getPassword());
             if(data.compare(conn,txtUserId.getText(),s)){
@@ -626,6 +630,7 @@ public class LOGIN1 extends javax.swing.JFrame {
                 PAK_DB data =new PAK_DB();
                 Connection conn;
                 try {
+                    System.out.println("Checking ID");
                     conn = data.connect_database();
                     String s=data.find_name_rec_by_id(conn, txtUserId1.getText());
                     if (s!=null){
@@ -652,6 +657,7 @@ public class LOGIN1 extends javax.swing.JFrame {
     }
 
     private void checkPass() throws UnsupportedEncodingException {
+        System.out.println("Checking the Password");
         if(findtxtUserIdinDB(txtUserId1)){
             }else{
                 JFrame j=new JFrame();

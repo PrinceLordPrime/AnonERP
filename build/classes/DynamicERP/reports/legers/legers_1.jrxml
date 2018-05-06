@@ -26,8 +26,8 @@ FROM
      "DSPADMIN"."FINLEG" FINLEG
 WHERE
      FINLEG."CUSTCODE" = $P{get_cust_code}
- AND FINLEG."DOCDATE" >= TO_DATE($P{get_d_date},'MM/DD/YY')
- AND FINLEG."DOCDATE" <= TO_DATE($P{get_c_date},'MM/DD/YY')]]>
+ AND FINLEG."DOCDATE" >= DATE($P{get_d_date},'MM/DD/YY')
+ AND FINLEG."DOCDATE" <= DATE($P{get_c_date},'MM/DD/YY')]]>
 	</queryString>
 	<field name="FINLEG_CUSTCODE" class="java.math.BigDecimal"/>
 	<field name="FINLEG_DOCDATE" class="java.sql.Timestamp"/>

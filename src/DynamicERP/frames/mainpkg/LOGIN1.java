@@ -92,7 +92,7 @@ public class LOGIN1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(51, 255, 51));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -164,7 +164,7 @@ public class LOGIN1 extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(java.awt.Color.darkGray);
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setFont(new java.awt.Font("PMingLiU", 1, 36)); // NOI18N
@@ -176,16 +176,16 @@ public class LOGIN1 extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(270, 270, 270)
+                .addGap(273, 273, 273)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap())
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -390,6 +390,7 @@ public class LOGIN1 extends javax.swing.JFrame {
     private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
         this.setVisible(false);
         this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnexitActionPerformed
 
     private void txtUserId1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserId1KeyReleased
@@ -437,6 +438,12 @@ public class LOGIN1 extends javax.swing.JFrame {
 //        } catch (UnsupportedEncodingException ex) {
 //            Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+
+        try {
+                checkPass();
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(LOGIN1.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btnLogInActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed

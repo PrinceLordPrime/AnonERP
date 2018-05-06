@@ -77,8 +77,10 @@ public class MAIN extends javax.swing.JFrame {
         }
         return instance;
     }
+    
     PAK_GLOBAL_DB dataAA =new PAK_GLOBAL_DB();
     Connection connAA;
+    
     public MAIN(String s) {
         initComponents();
           setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("clean.png")));
@@ -127,7 +129,7 @@ public class MAIN extends javax.swing.JFrame {
         }
         
 //        imgreal.setBorder(BorderFactory.createTitledBorder(""));
-        imghome.setBorder(BorderFactory.createTitledBorder(""));
+        //imghome.setBorder(BorderFactory.createTitledBorder(""));
         tfclient.setBorder(BorderFactory.createTitledBorder(""));
         jpanfooter.setBorder(BorderFactory.createTitledBorder(""));
         jPanel1.setBorder(BorderFactory.createTitledBorder("Your Info:"));
@@ -172,7 +174,6 @@ public class MAIN extends javax.swing.JFrame {
         DMS_PAN = new javax.swing.JTree();
         btnexit = new javax.swing.JButton();
         pan_menu = new javax.swing.JPanel();
-        DSPLOGO = new javax.swing.JLabel();
         ico_purinv = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
@@ -206,7 +207,6 @@ public class MAIN extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         dspwelcome = new javax.swing.JTextField();
-        imghome = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tftooltip = new javax.swing.JTextArea();
         jpanfooter = new javax.swing.JPanel();
@@ -516,10 +516,6 @@ public class MAIN extends javax.swing.JFrame {
         pan_menu.setBackground(new java.awt.Color(0, 102, 102));
         pan_menu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        DSPLOGO.setForeground(new java.awt.Color(255, 255, 255));
-        DSPLOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oracledms/frames/resources/DynamicSP logo.png"))); // NOI18N
-        DSPLOGO.setToolTipText("");
-
         ico_purinv.setForeground(new java.awt.Color(255, 255, 255));
         ico_purinv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ico_purinv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oracledms/frames/resources/purchase invoice 72.png"))); // NOI18N
@@ -809,9 +805,7 @@ public class MAIN extends javax.swing.JFrame {
                     .addComponent(btncustbalance, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(DSPLOGO)
-                .addContainerGap())
+                .addContainerGap(386, Short.MAX_VALUE))
         );
         pan_menuLayout.setVerticalGroup(
             pan_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -830,7 +824,6 @@ public class MAIN extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnfinanceledger1))
                         .addGroup(pan_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(DSPLOGO)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pan_menuLayout.createSequentialGroup()
                                 .addGroup(pan_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pan_menuLayout.createSequentialGroup()
@@ -994,10 +987,6 @@ public class MAIN extends javax.swing.JFrame {
             }
         });
 
-        imghome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imghome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oracledms/frames/resources/DynamicSP ERP.jpg"))); // NOI18N
-        imghome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         tftooltip.setEditable(false);
         tftooltip.setBackground(new java.awt.Color(240, 240, 240));
         tftooltip.setColumns(20);
@@ -1023,13 +1012,12 @@ public class MAIN extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(imghome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3)))
                     .addComponent(tfclient)
-                    .addComponent(dspwelcome, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(dspwelcome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
         jPanel2Layout.setVerticalGroup(
@@ -1040,12 +1028,9 @@ public class MAIN extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(imghome)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
         );
 
@@ -3018,7 +3003,7 @@ public class MAIN extends javax.swing.JFrame {
     private void EXIT(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXIT
         // TODO add your handling code here:
           if(JOptionPane.showConfirmDialog(new javax.swing.JFrame(),
-            "Are you sure To Exit DynamicSP ERP...! \n\n click on \"Yes\" to Exit", "Confermation Diloge",
+            "Are you sure To Exit AnonMatrix ERP...! \n\n click on \"Yes\" to Exit", "Confermation Diloge",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){        // TODO add your handling code here:
 
         this.setVisible(false);
@@ -3027,17 +3012,19 @@ public class MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_EXIT
 
     private void btnexitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnexitMouseEntered
-            tftooltip.setText("If you Want to Exit DynamicSP ERP Then Click Here");
+            tftooltip.setText("If you Want to Exit AnonMatrix ERP Then Click Here");
 
     }//GEN-LAST:event_btnexitMouseEntered
 
     private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
         if(JOptionPane.showConfirmDialog(new javax.swing.JFrame(),
-            "Are you sure To Exit DynamicSP ERP...! \n\n click on \"Yes\" to Exit", "Confermation Diloge",
+            "Are you sure To Exit AnonMatrix ERP...! \n\n click on \"Yes\" to Exit", "Confermation Diloge",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){        // TODO add your handling code here:
 
         this.setVisible(false);
-        this.dispose();}
+        this.dispose();
+        System.exit(0);
+        }
     }//GEN-LAST:event_btnexitActionPerformed
 
     private void DMS_PANTreeCollapsed(javax.swing.event.TreeExpansionEvent evt) {//GEN-FIRST:event_DMS_PANTreeCollapsed
@@ -3465,7 +3452,7 @@ public class MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jmitemrecoveriesActionPerformed
 
     private void jmpurchaseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmpurchaseMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Purchase Invoices & Records...");
+     tftooltip.setText("Check & Enter Purchase Invoices & Records...");
     }//GEN-LAST:event_jmpurchaseMouseEntered
 
     private void jmpurchaseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmpurchaseMouseExited
@@ -3473,95 +3460,95 @@ public class MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jmpurchaseMouseExited
 
     private void jmitempurMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempurMouseEntered
-     tftooltip.setText("This is the Menu For Enter & Check Records For Sellers & Purchase...");
+     tftooltip.setText("Menu For Enter & Check Records For Sellers & Purchase...");
     }//GEN-LAST:event_jmitempurMouseEntered
 
     private void jmitemcusttypeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttypeMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Custiomers Type...");
+     tftooltip.setText("Check & Enter Custiomers Type...");
     }//GEN-LAST:event_jmitemcusttypeMouseEntered
 
     private void jmitemcustrecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustrecMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Customers Records...");
+     tftooltip.setText("Check & Enter Customers Records...");
     }//GEN-LAST:event_jmitemcustrecMouseEntered
 
     private void jmrouteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmrouteMouseEntered
-    tftooltip.setText("This is the Menu For Enter & Check Records For Clients, Ledgers & Their Balances...");
+    tftooltip.setText("Menu For Enter & Check Records For Clients, Ledgers & Their Balances...");
     }//GEN-LAST:event_jmrouteMouseEntered
 
     private void jmitemcusttype2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttype2MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Customers Type...");
+     tftooltip.setText("Check & Enter Customers Type...");
     }//GEN-LAST:event_jmitemcusttype2MouseEntered
 
     private void jmitemcustrec2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustrec2MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Customers Records...");
+     tftooltip.setText("Check & Enter Customers Records...");
     }//GEN-LAST:event_jmitemcustrec2MouseEntered
 
     private void jmitemcustlistMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustlistMouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Customers List...");
+     tftooltip.setText("Check Different Types of Customers List...");
     }//GEN-LAST:event_jmitemcustlistMouseEntered
 
     private void jmitemcustbalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustbalMouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Customers Balances...");
+     tftooltip.setText("Check Different Types of Customers Balances...");
     }//GEN-LAST:event_jmitemcustbalMouseEntered
 
     private void jmitemcustledgerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustledgerMouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Customers Ledgers...");
+     tftooltip.setText("Check Different Types of Customers Ledgers...");
     }//GEN-LAST:event_jmitemcustledgerMouseEntered
 
     private void jmhrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmhrMouseEntered
-    tftooltip.setText("This is the Menu For Enter & Check Records For Employee, Dealers & Thier Expences...");
+    tftooltip.setText("Menu For Enter & Check Records For Employee, Dealers & Their Expences...");
     }//GEN-LAST:event_jmhrMouseEntered
 
     private void jmitempostMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempostMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Employee Desiginations or Post Records...");
+     tftooltip.setText("Check & Enter Employee Desiginations or Post Records...");
     }//GEN-LAST:event_jmitempostMouseEntered
 
     private void jmitememployeeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitememployeeMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Employee & Dealers Records...");
+     tftooltip.setText("Check & Enter Employee & Dealers Records...");
     }//GEN-LAST:event_jmitememployeeMouseEntered
 
     private void jmitemexpcodeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemexpcodeMouseEntered
-     tftooltip.setText("Click Here for Check & Genrate Expences Accounts (Mean Which type of expences you will do)...");
+     tftooltip.setText("Check & Genrate Expences Accounts (Mean Which type of expences you will do)...");
     }//GEN-LAST:event_jmitemexpcodeMouseEntered
 
     private void jmitemexprecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemexprecMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Expences...");
+     tftooltip.setText("Check & Enter Expences...");
     }//GEN-LAST:event_jmitemexprecMouseEntered
 
     private void jmitembalancesheetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitembalancesheetMouseEntered
-     tftooltip.setText("Click Here for Check Balance Sheet or ROI Statements...");
+     tftooltip.setText("Check Balance Sheet or ROI Statements...");
     }//GEN-LAST:event_jmitembalancesheetMouseEntered
 
     private void jmitemrecoveriesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemrecoveriesMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Recoveries of installment Amounts...");
+     tftooltip.setText("Check & Enter Recoveries of installment Amounts...");
     }//GEN-LAST:event_jmitemrecoveriesMouseEntered
 
     private void jmitemfinacMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemfinacMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Custom Finance Account...");
+     tftooltip.setText("Check & Enter Custom Finance Account...");
     }//GEN-LAST:event_jmitemfinacMouseEntered
 
     private void jmitemvocMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemvocMouseEntered
-     tftooltip.setText("Click Here for Enter Debits or Credits for your Financial Account or Sellers...");
+     tftooltip.setText("Enter Debits or Credits for your Financial Account or Sellers...");
     }//GEN-LAST:event_jmitemvocMouseEntered
 
     private void jmitempaytosellerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempaytosellerMouseEntered
-     tftooltip.setText("Click Here for Check & Enter Payment which you give to the sellers...");
+     tftooltip.setText("Check & Enter Payment which you give to the sellers...");
     }//GEN-LAST:event_jmitempaytosellerMouseEntered
 
     private void jmitemcomledgerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcomledgerMouseEntered
-     tftooltip.setText("Click Here for Check Different types of Sellers Ledger...");
+     tftooltip.setText("Check Different types of Sellers Ledger...");
     }//GEN-LAST:event_jmitemcomledgerMouseEntered
 
     private void jmitempayacMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempayacMouseEntered
-         tftooltip.setText("Click Here for Check Customers Payable Accounts...");
+         tftooltip.setText("Check Customers Payable Accounts...");
     }//GEN-LAST:event_jmitempayacMouseEntered
 
     private void jmitemrcableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemrcableMouseEntered
-     tftooltip.setText("Click Here for Check Customers Recieveable Accounts ...");
+     tftooltip.setText("Check Customers Recieveable Accounts ...");
     }//GEN-LAST:event_jmitemrcableMouseEntered
 
     private void jmfinanceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmfinanceMouseEntered
-    tftooltip.setText("This is the Menu For Enter & Check Records For Finance, Recoveries, & Custom Finance Manamgements...");
+    tftooltip.setText("Menu For Enter & Check Records For Finance, Recoveries, & Custom Finance Manamgements...");
     }//GEN-LAST:event_jmfinanceMouseEntered
 
     private void jmfinanceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmfinanceMouseExited
@@ -3569,11 +3556,11 @@ public class MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jmfinanceMouseExited
 
     private void jmexitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmexitMouseEntered
-            tftooltip.setText("This is The Menu For DynamicSP Options.....  (',')");
+            tftooltip.setText("Menu For AnonMatrix Options.....  (',')");
     }//GEN-LAST:event_jmexitMouseEntered
 
     private void jmitemexitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemexitMouseEntered
-            tftooltip.setText("If you Want to Exit DynamicSP ERP Then Click Here");
+            tftooltip.setText("If you Want to Exit AnonMatrix ERP Then Click Here");
     }//GEN-LAST:event_jmitemexitMouseEntered
 
     private void jmitemvocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitemvocActionPerformed
@@ -3639,7 +3626,7 @@ try {
     }//GEN-LAST:event_add2KeyPressed
 
     private void jmitemcomledger1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcomledger1MouseEntered
-        tftooltip.setText("Click Here for Check Finance Ledgers");
+        tftooltip.setText("Check Finance Ledgers");
     }//GEN-LAST:event_jmitemcomledger1MouseEntered
 
     private void jmitemcomledger1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcomledger1MouseExited
@@ -3652,7 +3639,7 @@ try {
     }//GEN-LAST:event_jmitemcomledger1ActionPerformed
 
     private void jmitemcustledger1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustledger1MouseEntered
-        tftooltip.setText("Click Here for Check Customers Ledgers");
+        tftooltip.setText("Check Customers Ledgers");
     }//GEN-LAST:event_jmitemcustledger1MouseEntered
 
     private void jmitemcustledger1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustledger1MouseExited
@@ -3710,7 +3697,7 @@ try {
     }//GEN-LAST:event_jmitempayacActionPerformed
 
     private void jmiteminvoiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiteminvoiceMouseEntered
-        tftooltip.setText("Click Here for Check & Enter Invoices Against Customers");
+        tftooltip.setText("Check & Enter Invoices Against Customers");
     }//GEN-LAST:event_jmiteminvoiceMouseEntered
 
     private void jmitemrcableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitemrcableActionPerformed
@@ -3729,7 +3716,7 @@ try {
      }//GEN-LAST:event_jmitemrcableActionPerformed
 
     private void jmitemrcable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemrcable1MouseEntered
-     tftooltip.setText("Click Here for Check Sellers Recieveable Accounts ...");
+     tftooltip.setText("Check Sellers Recieveable Accounts ...");
     }//GEN-LAST:event_jmitemrcable1MouseEntered
 
     private void jmitemrcable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemrcable1MouseExited
@@ -3749,7 +3736,7 @@ try {
     }//GEN-LAST:event_jmitemrcable1ActionPerformed
 
     private void jmitempayac1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempayac1MouseEntered
-     tftooltip.setText("Click Here for Check Sellers Payables Accounts...");
+     tftooltip.setText("Check Sellers Payables Accounts...");
     }//GEN-LAST:event_jmitempayac1MouseEntered
 
     private void jmitempayac1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitempayac1MouseExited
@@ -3769,7 +3756,7 @@ try {
     }//GEN-LAST:event_jmitempayac1ActionPerformed
 
     private void jmitemcustrec3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustrec3MouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Sellers Record...");
+     tftooltip.setText("Check Different Types of Sellers Record...");
     }//GEN-LAST:event_jmitemcustrec3MouseEntered
 
     private void jmitemcustrec3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustrec3MouseExited
@@ -3785,7 +3772,7 @@ try {
     }//GEN-LAST:event_jmitemcustrec3ActionPerformed
 
     private void jmitemcustlist1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustlist1MouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Sellers List...");
+     tftooltip.setText("Check Different Types of Sellers List...");
     }//GEN-LAST:event_jmitemcustlist1MouseEntered
 
     private void jmitemcustlist1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustlist1MouseExited
@@ -3806,7 +3793,7 @@ try {
     }//GEN-LAST:event_jmitemcustlist1ActionPerformed
 
     private void jmitemcustbal1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustbal1MouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Sellers Balances...");
+     tftooltip.setText("Check Different Types of Sellers Balances...");
     }//GEN-LAST:event_jmitemcustbal1MouseEntered
 
     private void jmitemcustbal1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustbal1MouseExited
@@ -3826,7 +3813,7 @@ try {
     }//GEN-LAST:event_jmitemcustbal1ActionPerformed
 
     private void jmitemcustledger2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustledger2MouseEntered
-     tftooltip.setText("Click Here for Check Different Types of Sellers Ledgers...");
+     tftooltip.setText("Check Different Types of Sellers Ledgers...");
     }//GEN-LAST:event_jmitemcustledger2MouseEntered
 
     private void jmitemcustledger2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustledger2MouseExited
@@ -3839,7 +3826,7 @@ try {
     }//GEN-LAST:event_jmitemcustledger2ActionPerformed
 
     private void jmclients1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmclients1MouseEntered
-    tftooltip.setText("This is the Menu For Enter & Check Records For Sellers, Ledgers & Their Balances...");
+    tftooltip.setText("Menu For Enter & Check Records For Sellers, Ledgers & Their Balances...");
     }//GEN-LAST:event_jmclients1MouseEntered
 
     private void jmclients1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmclients1MouseExited
@@ -3847,11 +3834,11 @@ try {
     }//GEN-LAST:event_jmclients1MouseExited
 
     private void jmitemcustlist1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcustlist1MouseClicked
-     tftooltip.setText("Click Here for Check Different Types of Customers List...");
+     tftooltip.setText("Check Different Types of Customers List...");
     }//GEN-LAST:event_jmitemcustlist1MouseClicked
 
     private void jmitemfinac1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemfinac1MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Custom Finance Account...");
+     tftooltip.setText("Check & Enter Custom Finance Account...");
     }//GEN-LAST:event_jmitemfinac1MouseEntered
 
     private void jmitemfinac1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemfinac1MouseExited
@@ -3889,7 +3876,7 @@ try {
     }//GEN-LAST:event_jmproMouseExited
 
     private void jmproMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmproMouseEntered
-        tftooltip.setText("This is the Menu For Enter & Check Records For Products & Relevent Records...");
+        tftooltip.setText("Menu For Enter & Check Records For Products & Relevent Records...");
     }//GEN-LAST:event_jmproMouseEntered
 
     private void imitemproductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imitemproductsActionPerformed
@@ -3908,7 +3895,7 @@ try {
     }//GEN-LAST:event_imitemproductsMouseExited
 
     private void imitemproductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imitemproductsMouseEntered
-        tftooltip.setText("Click Here for Check & Enter Products Record...");
+        tftooltip.setText("Check & Enter Products Record...");
     }//GEN-LAST:event_imitemproductsMouseEntered
 
     private void stocktype(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocktype
@@ -3924,11 +3911,11 @@ try {
     }//GEN-LAST:event_jmitemtypeMouseExited
 
     private void jmitemtypeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemtypeMouseEntered
-        tftooltip.setText("Click Here for Check & Enter Products Type Records...Mean Which Type of Products you Have");
+        tftooltip.setText("Check & Enter Products Type Records...Mean Which Type of Products you Have");
     }//GEN-LAST:event_jmitemtypeMouseEntered
 
     private void jmitemtype1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemtype1MouseEntered
-        tftooltip.setText("Click Here for Check & Enter Brand or Company Record");
+        tftooltip.setText("Check & Enter Brand or Company Record");
     }//GEN-LAST:event_jmitemtype1MouseEntered
 
     private void jmitemtype1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemtype1MouseExited
@@ -3988,7 +3975,7 @@ try {
     }//GEN-LAST:event_jmitemtype3stocktype
 
     private void jmitemcusttype3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttype3MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Customers Area or District Record...");
+     tftooltip.setText("Check & Enter Customers Area or District Record...");
     }//GEN-LAST:event_jmitemcusttype3MouseEntered
 
     private void jmitemcusttype3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttype3MouseExited
@@ -4011,7 +3998,7 @@ try {
 
     private void btnemployeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnemployeMouseEntered
         btnemploye.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Employee Records");
+        tftooltip.setText("Check & Enter Employee Records");
     }//GEN-LAST:event_btnemployeMouseEntered
 
     private void btnemployeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnemployeMouseClicked
@@ -4036,7 +4023,7 @@ try {
 
     private void btnvoccreationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnvoccreationMouseEntered
         btnvoccreation.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Payments Against Financial Accounts");
+        tftooltip.setText("Check & Enter Payments Against Financial Accounts");
     }//GEN-LAST:event_btnvoccreationMouseEntered
 
     private void btnvoccreationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnvoccreationMouseClicked
@@ -4054,7 +4041,7 @@ try {
 
     private void btnexpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnexpMouseEntered
         btnexp.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Expences");
+        tftooltip.setText("Check & Enter Expences");
     }//GEN-LAST:event_btnexpMouseEntered
 
     private void btnexpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnexpMouseClicked
@@ -4073,7 +4060,7 @@ try {
 
     private void ico_productMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_productMouseEntered
         ico_product.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Products Records");
+        tftooltip.setText("Check & Enter Products Records");
     }//GEN-LAST:event_ico_productMouseEntered
 
     private void ico_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_productMouseClicked
@@ -4091,7 +4078,7 @@ try {
 
     private void btnfinanceledgerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnfinanceledgerMouseEntered
         btnfinanceledger.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check Finance Ledgers");
+        tftooltip.setText("Check Finance Ledgers");
     }//GEN-LAST:event_btnfinanceledgerMouseEntered
 
     private void btnfinanceledgerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnfinanceledgerMouseClicked
@@ -4106,7 +4093,7 @@ try {
 
     private void btnrecoveriesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnrecoveriesMouseEntered
         btnrecoveries.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Client Recoveries");
+        tftooltip.setText("Check & Enter Client Recoveries");
     }//GEN-LAST:event_btnrecoveriesMouseEntered
 
     private void btnrecoveriesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnrecoveriesMouseClicked
@@ -4126,7 +4113,7 @@ try {
 
     private void btncustomerledgerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncustomerledgerMouseEntered
         btncustomerledger.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check Customers Ledgers");
+        tftooltip.setText("Check Customers Ledgers");
     }//GEN-LAST:event_btncustomerledgerMouseEntered
 
     private void btncustomerledgerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncustomerledgerMouseClicked
@@ -4141,7 +4128,7 @@ try {
 
     private void btncustbalanceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncustbalanceMouseEntered
         btncustbalance.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check Payables & Receivables against customers");
+        tftooltip.setText("Check Payables & Receivables against customers");
     }//GEN-LAST:event_btncustbalanceMouseEntered
 
     private void btncustbalanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncustbalanceMouseClicked
@@ -4164,7 +4151,7 @@ try {
 
     private void ico_salesinvMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_salesinvMouseEntered
         ico_salesinv.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Invoices Against Customers");
+        tftooltip.setText("Check & Enter Invoices Against Customers");
     }//GEN-LAST:event_ico_salesinvMouseEntered
 
     private void ico_salesinvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_salesinvMouseClicked
@@ -4179,7 +4166,7 @@ try {
 
     private void btnclientsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnclientsMouseEntered
         btnclients.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Clients Record");
+        tftooltip.setText("Check & Enter Clients Record");
     }//GEN-LAST:event_btnclientsMouseEntered
 
     private void btnclientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnclientsMouseClicked
@@ -4197,7 +4184,7 @@ try {
 
     private void ico_purinvMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_purinvMouseEntered
         ico_purinv.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Purchase invoices");
+        tftooltip.setText("Check & Enter Purchase invoices");
     }//GEN-LAST:event_ico_purinvMouseEntered
 
     private void ico_purinvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico_purinvMouseClicked
@@ -4213,7 +4200,7 @@ try {
 
     private void btnfinanceledger1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnfinanceledger1MouseEntered
         btnfinanceledger1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check Seller or Company Ledgers");
+        tftooltip.setText("Check Seller or Company Ledgers");
     }//GEN-LAST:event_btnfinanceledger1MouseEntered
 
     private void btnfinanceledger1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnfinanceledger1MouseExited
@@ -4235,7 +4222,7 @@ try {
 
     private void btnvoccreation1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnvoccreation1MouseEntered
         btnvoccreation1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check Payables & Receivables against Sellers or Company");
+        tftooltip.setText("Check Payables & Receivables against Sellers or Company");
     }//GEN-LAST:event_btnvoccreation1MouseEntered
 
     private void btnvoccreation1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnvoccreation1MouseExited
@@ -4253,7 +4240,7 @@ try {
 
     private void btnexp1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnexp1MouseEntered
     btnexp1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Payments to the Sellers or Company");
+        tftooltip.setText("Check & Enter Payments to the Sellers or Company");
         }//GEN-LAST:event_btnexp1MouseEntered
 
     private void btnexp1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnexp1MouseExited
@@ -4271,7 +4258,7 @@ try {
 
     private void btnemploye1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnemploye1MouseEntered
         btnemploye1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        tftooltip.setText("Click Here for Check & Enter Sellers Records");
+        tftooltip.setText("Check & Enter Sellers Records");
     }//GEN-LAST:event_btnemploye1MouseEntered
 
     private void btnemploye1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnemploye1MouseExited
@@ -4280,7 +4267,7 @@ try {
     }//GEN-LAST:event_btnemploye1MouseExited
 
     private void jmitememployee1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitememployee1MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Employee Tardgets...");
+     tftooltip.setText("Check & Enter Employee Tardgets...");
     }//GEN-LAST:event_jmitememployee1MouseEntered
 
     private void jmitememployee1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitememployee1MouseExited
@@ -4297,7 +4284,7 @@ try {
     }//GEN-LAST:event_jmitememployee1ActionPerformed
 
     private void jmitememployee2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitememployee2MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Employee Incentives on Sale...");
+     tftooltip.setText("Check & Enter Employee Incentives on Sale...");
     }//GEN-LAST:event_jmitememployee2MouseEntered
 
     private void jmitememployee2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitememployee2MouseExited
@@ -4313,7 +4300,7 @@ try {
         }    }//GEN-LAST:event_jmitememployee2ActionPerformed
 
     private void jmitemcusttype4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttype4MouseEntered
-     tftooltip.setText("Click Here for Check & Enter Customers Type Auto Discounts...");
+     tftooltip.setText("Check & Enter Customers Type Auto Discounts...");
     }//GEN-LAST:event_jmitemcusttype4MouseEntered
 
     private void jmitemcusttype4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitemcusttype4MouseExited
@@ -5192,7 +5179,6 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree DMS_PAN;
-    private javax.swing.JLabel DSPLOGO;
     private javax.swing.JMenuItem DSP_ADMIN;
     private javax.swing.JTextField add1;
     private javax.swing.JTextField add2;
@@ -5215,7 +5201,6 @@ try {
     private javax.swing.JLabel ico_product;
     private javax.swing.JLabel ico_purinv;
     private javax.swing.JLabel ico_salesinv;
-    private javax.swing.JLabel imghome;
     private javax.swing.JMenuItem imitemproducts;
     private javax.swing.JMenuItem imitemproducts1;
     private javax.swing.JLabel jLabel1;

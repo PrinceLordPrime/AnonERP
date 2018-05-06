@@ -1124,7 +1124,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             }else{
                 cat=null;
             }
-        }catch(SQLException e){}
+        }catch(SQLException e){System.out.println("SQL Exception Occured in Retrieveing Data");}
         finally{
             try{
 		if (statement != null) statement.close();

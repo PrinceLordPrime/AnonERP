@@ -436,7 +436,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
         {
             statement = conn.createStatement();
             String Sql = "select BALANCE from CUSTBALANCE WHERE CUSTOMER='"+code+"'";
-            
+            System.out.println("SQL for custbalance : "+Sql);
             result=statement.executeQuery(Sql);
             //System.out.println("Result : " + result);
             

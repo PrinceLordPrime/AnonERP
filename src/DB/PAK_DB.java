@@ -10,9 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import logical.Conversions;
+// PrinceLord Prime
+import java.util.Date;
+import princelordprime.princecode;
 //"jdbc:oracle:thin:dsp/dynamic001@BlackPearl:1521:dspak"); 
 
 public class PAK_DB extends PAK_GLOBAL_DB {
+    
+    princecode prince = new princecode();
 	       
 //	public Connection connect_database() throws SQLException
 //	{
@@ -487,8 +492,10 @@ public class PAK_DB extends PAK_GLOBAL_DB {
     }
 
 
-    public boolean insert_cust_rec_in_table(Connection conn, String Code, String name, String add1, String cnic, String contact, String preBal, String custType, String relation, String ref, String c,String ct,String ppt,String zone,String route,String odate) {
+    public boolean insert_cust_rec_in_table(Connection conn, String Code, String name, String add1, String cnic, String contact, String preBal, String custType, String relation, String ref, String c,String ct,String ppt,String zone,String route,Date odate) {
        boolean var = false;
+       
+       String input_date = prince.get_correct_date(odate);
         
         java.sql.Statement statement = null;
         try
@@ -496,7 +503,10 @@ public class PAK_DB extends PAK_GLOBAL_DB {
             statement = conn.createStatement();
             String Sql = "INSERT INTO CLIENTS(CODE,NAME,ADD1,CNIC,CONTACT,PREVIOUSBAL,AREACODE,REMARKS,REFFERENCE,CLBAL,ACTYPE,CUSTTYPE,ZONECODE,ROUTECODE,DATEOFJOINING) VALUES ("+
                     Integer.parseInt(Code)+ ",'" + name +  "','" + add1 +  "','" + cnic +  "','" +contact +  "'," + Integer.parseInt(preBal)  +",'" + 
-                    custType + "','" +  relation + "','" +   ref + "',"+ Integer.parseInt(c)+ ",'" +ct + "','" +ppt + "'," + Integer.parseInt(zone)  +","+ Integer.parseInt(route)+ ",DATE('"+odate+"' ,'MM/DD/YY'))";
+                    custType + "','" +  relation + "','" +   ref + "',"+ Integer.parseInt(c)+ ",'" +ct + "','" +ppt + "'," + Integer.parseInt(zone)  +","+ Integer.parseInt(route)+ "," + input_date;
+            
+            System.out.println("SQL : "+Sql);
+            
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -2546,7 +2556,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
                         Logger.getLogger(PAK_SELLERLEDGER_DB.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     returned[i][3]=find_supp_name_by_code(conn, resultset.getString("SUPCODE"));//get Name
-                    returned[i][4]=find_sm_name_by_code(conn, resultset.getString("DCODE"));//get Name
+                    returned[i][4]=find_sm_name_by_code(conn, resultset.getString("DOCNO"));//get Name
                     returned[i][5]=resultset.getString("TGROSSAMT");
                     returned[i][6]=resultset.getString("TDISCRS");
                     returned[i][7]=resultset.getString("TTAXRS");
@@ -2591,7 +2601,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
                         Logger.getLogger(PAK_SELLERLEDGER_DB.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     returned[i][3]=find_cust_rec_code_by_name(conn, resultset.getString("CUSTCODE"));//get Name
-                    returned[i][4]=find_sm_name_by_code(conn, resultset.getString("DCODE"));//get Name
+                    returned[i][4]=find_sm_name_by_code(conn, resultset.getString("DOCNO"));//get Name
                     returned[i][5]=resultset.getString("TGROSSAMT");
                     returned[i][6]=resultset.getString("TDISCRS");
                     returned[i][7]=resultset.getString("TTAXRS");
@@ -11287,7 +11297,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
                 String am1 = result.getString("PAID");
                 String rem = result.getString("REMARKS");
                 String np = result.getString("NETPAYABLE");
-                String np1 = result.getString("DCODE");
+                String np1 = result.getString("DOCNO");
                 String np2 = result.getString("SPLFMR");
                 cat.add(0,code );
                 cat.add(1,c );
@@ -11835,7 +11845,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "select * from PERMAIN WHERE DCODE='"+code+"'";
+            String Sql = "select * from PERMAIN WHERE DCONE='"+code+"'";
             result=statement.executeQuery(Sql);
             if(result.next()){
                 isPresent=true;
@@ -11858,7 +11868,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "select * from SMAIN WHERE DCODE='"+code+"'";
+            String Sql = "select * from SMAIN WHERE DOCNO='"+code+"'";
             result=statement.executeQuery(Sql);
             if(result.next()){
                 isPresent=true;
@@ -12456,7 +12466,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             }catch(SQLException e){}
         }
 //ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"//ODATE,DOCNO,REFNO,CUSTCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"
-//                    + "TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,PAID,REMARKS,NETPAYABLE,DCODE
+//                    + "TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,PAID,REMARKS,NETPAYABLE,DOCNO
         return isPresent;
     }
 

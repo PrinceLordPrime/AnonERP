@@ -29,12 +29,19 @@ import static DynamicERP.dialoge.viewforms.ViewForm11.isSaved;
 import static DynamicERP.dialoge.viewforms.dialogeClass.createViewCustRecWin;
 import java.text.ParseException;
 import javax.swing.BorderFactory;
+// PrinceLord Prime
+import java.util.Date;
+import princelordprime.princecode;
 
 /**
  *
  * @author UzairYousafZai
  */
 public class CUSTREC extends javax.swing.JFrame {
+    
+    // Prince Lord Code
+    princecode prince = new princecode();
+    
     private Conversions f =new Conversions();
 
     /**
@@ -1036,8 +1043,8 @@ public class CUSTREC extends javax.swing.JFrame {
                     ///Max String.valueOf(codeInt)
                 }
                 try {
-                    tf=data.insert_cust_rec_in_table(conn,String.valueOf(codeInt),name.getText(),add1.getText(),cni.getText(),contact.getText(),preBalance.getText(),CustType.getText(),relation.getText(),ref.getText(),preBalance.getText(),custType.getSelectedItem().toString(),custTypeCode.getText(),zoneCode.getText(),routeCode.getText(), dateField.toDateString(odDate.getDate().toString()));
-                } catch (ParseException ex) {
+                    tf=data.insert_cust_rec_in_table(conn,String.valueOf(codeInt),name.getText(),add1.getText(),cni.getText(),contact.getText(),preBalance.getText(),CustType.getText(),relation.getText(),ref.getText(),preBalance.getText(),custType.getSelectedItem().toString(),custTypeCode.getText(),zoneCode.getText(),routeCode.getText(), odDate.getDate());
+                } catch (Exception ex) {
                     Logger.getLogger(CUSTREC.class.getName()).log(Level.SEVERE, null, ex);
                 }
 

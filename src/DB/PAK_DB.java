@@ -10156,11 +10156,13 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
     }
     public String find_cust_type_name_by_code(Connection conn, String code) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "select * from CUSTTYPE WHERE CODE="+code;
+        String Sql = "select * from CUSTTYPE WHERE CODE="+"'"+code+"'";
 
         ResultSet result = null;
+//        System.out.println("SQL : "+Sql);
+//        System.out.println("Executing Query");
         result=statement.executeQuery(Sql);
-        //System.out.println("Result : " + result);
+//        System.out.println("Query Result : " + result);
         String cat;
 
         if(result.next()){

@@ -20,20 +20,27 @@ import java.util.Locale;
 public class Conversions {
 //    private static SimpleDateFormat iso8601formatter = new SimpleDateFormat("MM,dd,yyyy");
     public Date toDate(String charDate) throws ParseException {
-//        System.out.println("Date : "+charDate);
+        //System.out.println("Date : "+charDate);
+        
+        System.out.println("Char Date Here : "+charDate);
         
         if(charDate==null){
             Date date1= null;
             return date1;
         }
-        String mm=charDate.substring(5, 7);
+        
+        
+        
+        String MM=charDate.substring(5, 7);
         String dd=charDate.substring(8,10);
         String yyyy=charDate.substring(0, 4);
         
 //        System.out.println(mm+","+dd+","+yyyy);
         
-        String string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
-        DateFormat format = new SimpleDateFormat("MM,dd,yyyy", Locale.ENGLISH);
+        //String string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
+        
+        String string = (yyyy+"-"+MM+"-"+dd) ;//"Jan,02,2010";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         
 //        Date date = iso8601formatter.parse(string);
         Date date = format.parse(string);
@@ -45,12 +52,12 @@ public class Conversions {
             Date date1= null;
             return date1;
         }
-        String mm=charDate.substring(4, 7);
+        String MM=charDate.substring(4, 7);
         String dd=charDate.substring(8,10);
         String yyyy=charDate.substring(24, 28);
         
-        String string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
-        DateFormat format = new SimpleDateFormat("MMM,dd,yyyy", Locale.ENGLISH);
+        String string = (yyyy+"-"+MM+"-"+dd) ;//"Jan,02,2010";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         Date date = format.parse(string);
         return date;
     }
@@ -59,17 +66,17 @@ public class Conversions {
             Date date1= null;
             return date1;
         }
-        String mm=charDate.substring(5, 7);
+        String MM=charDate.substring(5, 7);
         String dd=charDate.substring(8,10);
         String yyyy=charDate.substring(0, 4);
         
-        String string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
-        DateFormat format = new SimpleDateFormat("MMM,dd,yyyy", Locale.ENGLISH);
+        String string = (yyyy+"-"+MM+"-"+dd) ;//"Jan,02,2010";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         Date date = format.parse(string);
         return date;
     }
     public java.util.Date getPresentDate() throws ParseException {
-        DateFormat format = new SimpleDateFormat("MMM,dd,yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         Calendar cal = Calendar.getInstance();
         String string=format.format(cal.getTime()).toString(); 
         //System.out.println("string"+string);
@@ -82,12 +89,12 @@ public class Conversions {
         if(charDate==null){
             return ""; 
         }else{
-            String mm=charDate.substring(4, 7);
+            String MM=charDate.substring(4, 7);
             String dd=charDate.substring(8,10);
             String yyyy=charDate.substring(24, 28);
 
     //        System.out.println("mm"+mm +"dd"+dd+"yyyy"+yyyy);
-            string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
+            string = (yyyy+"-"+MM+"-"+dd) ;//"Jan,02,2010";
             //System.out.println("string"+string);
         }
         return string;
@@ -98,12 +105,12 @@ public class Conversions {
         if(charDate=="0"){
             return "0"; 
         }else{
-            String mm=charDate.substring(4, 7);
+            String MM=charDate.substring(4, 7);
             String dd=charDate.substring(8,10);
             String yyyy=charDate.substring(24, 28);
 
     //        System.out.println("mm"+mm +"dd"+dd+"yyyy"+yyyy);
-            string = (mm+","+dd+","+yyyy) ;//"Jan,02,2010";
+            string = (yyyy+"-"+MM+"-"+dd) ;//"Jan,02,2010";
             //System.out.println("string"+string);
         }
         return string;

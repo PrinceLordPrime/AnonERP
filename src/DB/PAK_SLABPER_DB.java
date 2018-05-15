@@ -169,7 +169,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(SLABNO))as ID from SLAB ";
+                Sql = "Select MIN(SLABNO))as ID from SLAB ";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -669,7 +669,7 @@ public class PAK_SLABPER_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(SLABNO))as ID from SLAB";
+            String Sql = "Select MAX(SLABNO))as ID from SLAB";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();

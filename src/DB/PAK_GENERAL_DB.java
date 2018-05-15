@@ -335,7 +335,7 @@ public String get_role_from_userLogin(Connection conn, String code) {
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from DSRCOUNTER";
+            String Sql = "Select MAX(CODE))as ID from DSRCOUNTER";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");

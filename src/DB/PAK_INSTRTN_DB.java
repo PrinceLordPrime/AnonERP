@@ -418,7 +418,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
         {
             statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(DOCNO))as ID from  RETURNMAIN ";
+                Sql = "Select MIN(DOCNO))as ID from  RETURNMAIN ";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -951,7 +951,7 @@ public class PAK_INSTRTN_DB extends PAK_GLOBAL_DB{
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(DOCNO))as ID from  RETURNMAIN";
+            String Sql = "Select MAX(DOCNO))as ID from  RETURNMAIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");

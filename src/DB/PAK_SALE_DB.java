@@ -529,7 +529,7 @@ public class PAK_SALE_DB extends PAK_GLOBAL_DB{
         {
             statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(DOCNO))as ID from SMAIN ";
+                Sql = "Select MIN(DOCNO))as ID from SMAIN ";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -562,7 +562,7 @@ public class PAK_SALE_DB extends PAK_GLOBAL_DB{
         {
             statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(DOCNO))as ID from SMAIN WHERE CUSTCODE="+cust;
+                Sql = "Select MIN(DOCNO))as ID from SMAIN WHERE CUSTCODE="+cust;
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -1349,7 +1349,7 @@ public class PAK_SALE_DB extends PAK_GLOBAL_DB{
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(DOCNO))as ID from SMAIN";
+            String Sql = "Select MAX(DOCNO))as ID from SMAIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -1381,7 +1381,7 @@ public class PAK_SALE_DB extends PAK_GLOBAL_DB{
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(DOCNO))as ID from SMAIN WHERE CUSTCODE ="+cust;
+            String Sql = "Select MAX(DOCNO))as ID from SMAIN WHERE CUSTCODE ="+cust;
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -2380,7 +2380,7 @@ public class PAK_SALE_DB extends PAK_GLOBAL_DB{
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(SEQNO))as ID from SDTL WHERE DOCNO = "+text;
+            String Sql = "Select MAX(SEQNO))as ID from SDTL WHERE DOCNO = "+text;
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");

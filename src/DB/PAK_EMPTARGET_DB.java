@@ -48,7 +48,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from PMAST ";
+            String Sql = "Select COUNT(CODE))as Count from PMAST ";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -151,7 +151,7 @@ public class PAK_EMPTARGET_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from  EMPTARGET";
+            String Sql = "Select MAX(CODE))as ID from  EMPTARGET";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();

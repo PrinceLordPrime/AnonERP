@@ -104,7 +104,7 @@ public class PAK_EMPINCENTIVE_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from PMAST ";
+            String Sql = "Select COUNT(CODE))as Count from PMAST ";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -130,7 +130,7 @@ public class PAK_EMPINCENTIVE_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from POST";
+            String Sql = "Select COUNT(CODE))as Count from POST";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -155,7 +155,7 @@ public class PAK_EMPINCENTIVE_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from CUSTTYPE";
+            String Sql = "Select COUNT(CODE))as Count from CUSTTYPE";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -368,7 +368,7 @@ public class PAK_EMPINCENTIVE_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from  EMPINCENTIVE";
+            String Sql = "Select MAX(CODE))as ID from  EMPINCENTIVE";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -393,7 +393,7 @@ public class PAK_EMPINCENTIVE_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CUSTTYPE))as ID from  CUSTTYPEDISC";
+            String Sql = "Select MAX(CUSTTYPE))as ID from  CUSTTYPEDISC";
             ResultSet result = null;//CUSTTYPEDISC , CUSTTYPE,PMAST,DISC
             result=statement.executeQuery(Sql);
             result.next();

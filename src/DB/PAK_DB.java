@@ -1430,7 +1430,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from ASSETREC";
+            String Sql = "Select MAX(CODE))as ID from ASSETREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -1462,7 +1462,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from COMPANY";
+            String Sql = "Select MAX(CODE))as ID from COMPANY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -1494,7 +1494,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from ASSETREC";
+            String Sql = "Select MIN(CODE))as ID from ASSETREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -2743,7 +2743,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from ASSETREC";
+            String Sql = "Select COUNT(CODE))as Count from ASSETREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2775,7 +2775,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from CASHTYPE";
+            String Sql = "Select COUNT(CODE))as Count from CASHTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2807,7 +2807,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from EXPENCEDEP";
+            String Sql = "Select COUNT(CODE))as Count from EXPENCEDEP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2839,7 +2839,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(DOCCODE))as Count from RECOVERY";
+            String Sql = "Select COUNT(DOCCODE))as Count from RECOVERY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2871,7 +2871,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(DOCCODE))as Count from RECOVERY Where AMOUNT <> "+Integer.parseInt("0");
+            String Sql = "Select COUNT(DOCCODE))as Count from RECOVERY Where AMOUNT <> "+Integer.parseInt("0");
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2903,7 +2903,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(DOCCODE))as Count from RECOVERY Where CREDITAMOUNT <> "+Integer.parseInt("0");
+            String Sql = "Select COUNT(DOCCODE))as Count from RECOVERY Where CREDITAMOUNT <> "+Integer.parseInt("0");
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2935,7 +2935,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CCODE))as Count from PCAT";
+            String Sql = "Select COUNT(CCODE))as Count from PCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2967,7 +2967,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from ZONE";
+            String Sql = "Select COUNT(CODE))as Count from ZONE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -2999,7 +2999,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from SUBCAT";
+            String Sql = "Select COUNT(CODE))as Count from SUBCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3031,7 +3031,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from DSPCLIENT";
+            String Sql = "Select COUNT(CODE))as Count from DSPCLIENT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3063,7 +3063,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from CLIENTS";
+            String Sql = "Select COUNT(CODE))as Count from CLIENTS";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3095,7 +3095,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from PMAST";
+            String Sql = "Select COUNT(CODE))as Count from PMAST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3127,7 +3127,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from EMPREC";
+            String Sql = "Select COUNT(CODE))as Count from EMPREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3159,7 +3159,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(TONO))as Count from SCHEMERS";
+            String Sql = "Select COUNT(TONO))as Count from SCHEMERS";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3191,7 +3191,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(SLABNO))as Count from SLAB";
+            String Sql = "Select COUNT(SLABNO))as Count from SLAB";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3223,7 +3223,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(TONO))as Count from SCHEMEPROCAT";
+            String Sql = "Select COUNT(TONO))as Count from SCHEMEPROCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3255,7 +3255,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(TONO))as Count from SCHEMERPOCATPRO";
+            String Sql = "Select COUNT(TONO))as Count from SCHEMERPOCATPRO";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3287,7 +3287,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(TONO))as Count from SCHQTYPRO";
+            String Sql = "Select COUNT(TONO))as Count from SCHQTYPRO";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3319,7 +3319,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(TONO))as Count from SCHEMEQTY";
+            String Sql = "Select COUNT(TONO))as Count from SCHEMEQTY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3351,7 +3351,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from STOCKTYPE";
+            String Sql = "Select COUNT(CODE))as Count from STOCKTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3383,7 +3383,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from ASSETTYPE";
+            String Sql = "Select COUNT(CODE))as Count from ASSETTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3416,7 +3416,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from CUSTTYPE";
+            String Sql = "Select COUNT(CODE))as Count from CUSTTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3448,7 +3448,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from DISTRICT";
+            String Sql = "Select COUNT(CODE))as Count from DISTRICT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3480,7 +3480,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from EXPENCE";
+            String Sql = "Select COUNT(CODE))as Count from EXPENCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3512,7 +3512,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from POST";
+            String Sql = "Select COUNT(CODE))as Count from POST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3544,7 +3544,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(DOCNO))as Count from PERMAIN";
+            String Sql = "Select COUNT(DOCNO))as Count from PERMAIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3576,7 +3576,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from FINANCE";
+            String Sql = "Select COUNT(CODE))as Count from FINANCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3608,7 +3608,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from VANREC";
+            String Sql = "Select COUNT(CODE))as Count from VANREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3640,7 +3640,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from SUPP";
+            String Sql = "Select COUNT(CODE))as Count from SUPP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -3697,7 +3697,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from COMPANY";
+            String Sql = "Select MIN(CODE))as ID from COMPANY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -3728,7 +3728,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from DISTRICT";
+            String Sql = "Select MIN(CODE))as ID from DISTRICT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -3945,7 +3945,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from COMPANY";
+            String Sql = "Select COUNT(CODE))as Count from COMPANY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -4217,7 +4217,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from CASHDEPOSIT";
+            String Sql = "Select MAX(CODE))as ID from CASHDEPOSIT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -4251,7 +4251,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from CASHDEPOSIT";
+            String Sql = "Select MIN(CODE))as ID from CASHDEPOSIT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -4318,7 +4318,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(SMCODE))as Count from CASHDEPOSIT";
+            String Sql = "Select COUNT(SMCODE))as Count from CASHDEPOSIT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -4538,7 +4538,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from DISTRICT";
+            String Sql = "Select MAX(CODE))as ID from DISTRICT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -4756,7 +4756,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from ASSETTYPE";
+            String Sql = "Select MAX(CODE))as ID from ASSETTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -4789,7 +4789,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from ASSETTYPE";
+            String Sql = "Select MIN(CODE))as ID from ASSETTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5001,7 +5001,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CCODE))as ID from PCAT";
+            String Sql = "Select MAX(CCODE)as ID from PCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5034,7 +5034,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CCODE))as ID from PCAT";
+            String Sql = "Select MIN(CCODE))as ID from PCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5479,7 +5479,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from ROUTE";
+            String Sql = "Select MAX(CODE)as ID from ROUTE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5511,7 +5511,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(DOCNO))as ID from PERMAIN";
+            String Sql = "Select MAX(DOCNO)as ID from PERMAIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5544,7 +5544,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from ROUTE";
+            String Sql = "Select MIN(CODE)as ID from ROUTE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5892,7 +5892,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from ZONE";
+            String Sql = "Select MAX(CODE)as ID from ZONE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5925,7 +5925,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from ZONE";
+            String Sql = "Select MIN(CODE)as ID from ZONE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -5982,7 +5982,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from SUPP";
+            String Sql = "Select MAX(CODE)as ID from SUPP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6360,7 +6360,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from CUSTTYPE";
+            String Sql = "Select MAX(CODE)as ID from CUSTTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6392,7 +6392,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from CASHTYPE";
+            String Sql = "Select MAX(CODE) as ID from CASHTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6425,7 +6425,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from CUSTTYPE";
+            String Sql = "Select MIN(CODE)as ID from CUSTTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6624,7 +6624,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from STOCKTYPE";
+            String Sql = "Select MAX(CODE)as ID from STOCKTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6657,7 +6657,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from STOCKTYPE";
+            String Sql = "Select MIN(CODE)as ID from STOCKTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6857,7 +6857,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from SUBCAT";
+            String Sql = "Select MAX(CODE)as ID from SUBCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -6890,7 +6890,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from SUBCAT";
+            String Sql = "Select MIN(CODE)as ID from SUBCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7151,7 +7151,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from EXPENCE";
+            String Sql = "Select MAX(CODE)as ID from EXPENCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7184,7 +7184,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from EXPENCE";
+            String Sql = "Select MIN(CODE)as ID from EXPENCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7244,7 +7244,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from SUPP";
+            String Sql = "Select MIN(CODE)as ID from SUPP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7369,7 +7369,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
 
-            Sql="UPDATE SUPP SET NAME = '"+name+"',ADD1 = '"+add1+"',CNIC = '"+add2+"',CONTACT = '"+contact+"',REFRANCE = '"+dist+"',FNAME = '"+fname+"' WHERE TO_NUMBER(CODE)="+Integer.parseInt(code);
+            Sql="UPDATE SUPP SET NAME = '"+name+"',ADD1 = '"+add1+"',CNIC = '"+add2+"',CONTACT = '"+contact+"',REFRANCE = '"+dist+"',FNAME = '"+fname+"' WHERE CODE)="+Integer.parseInt(code);
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -7489,7 +7489,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from DSPCLIENT";
+            String Sql = "Select MIN(CODE)as ID from DSPCLIENT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7610,7 +7610,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
 
-                Sql="UPDATE VANREC SET VANNAME = '"+van+"',VANNUMBER = '"+num+"', CAPACITY = '"+Float.parseFloat(capacity)+"'WHERE TO_NUMBER(CODE)="+Integer.parseInt(code);
+                Sql="UPDATE VANREC SET VANNAME = '"+van+"',VANNUMBER = '"+num+"', CAPACITY = '"+Float.parseFloat(capacity)+"'WHERE CODE)="+Integer.parseInt(code);
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -7635,7 +7635,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
 
-            Sql="UPDATE DSPCLIENT SET NAME = '"+name+"',ADD1 = '"+add1+"',ADD2 = '"+add2+"',CONTACT = '"+contact+"',NTN = '"+ntn+"' WHERE TO_NUMBER(CODE)="+Integer.parseInt(code);
+            Sql="UPDATE DSPCLIENT SET NAME = '"+name+"',ADD1 = '"+add1+"',ADD2 = '"+add2+"',CONTACT = '"+contact+"',NTN = '"+ntn+"' WHERE CODE)="+Integer.parseInt(code);
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -7753,7 +7753,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from DSPCLIENT";
+            String Sql = "Select MAX(CODE)as ID from DSPCLIENT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -7972,7 +7972,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from POST";
+            String Sql = "Select MAX(CODE)as ID from POST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8005,7 +8005,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from POST";
+            String Sql = "Select MIN(CODE)as ID from POST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8088,7 +8088,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from VANREC";
+            String Sql = "Select MIN(CODE)as ID from VANREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8255,7 +8255,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from VANREC";
+            String Sql = "Select MAX(CODE)as ID from VANREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8306,7 +8306,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from FINANCE";
+            String Sql = "Select MIN(CODE)as ID from FINANCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8467,7 +8467,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from FINANCE";
+            String Sql = "Select MAX(CODE)as ID from FINANCE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8546,9 +8546,9 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
             if(isCredit){
-                Sql = "Select MIN(TO_NUMBER(DOCCODE))as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")";
             }else{
-                Sql = "Select MIN(TO_NUMBER(DOCCODE))as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")";
             }
             result=statement.executeQuery(Sql);
             result.next();
@@ -8581,7 +8581,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         {
             statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(DOCNO))as ID from PERMAIN ";
+                Sql = "Select MIN(DOCNO)as ID from PERMAIN ";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8814,9 +8814,9 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
             if(isCredit){
-                Sql = "Select MAX(TO_NUMBER(DOCCODE))as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MAX(DOCCODE)as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")";
             }else{
-                Sql = "Select MAX(TO_NUMBER(DOCCODE))as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MAX(DOCCODE)as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")";
             }
             result=statement.executeQuery(Sql);
             result.next();
@@ -8850,7 +8850,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         {
             statement = conn.createStatement();
             String Sql;
-            Sql = "Select MAX(TO_NUMBER(DOCCODE))as ID from RECOVERY";
+            Sql = "Select MAX(DOCCODE)as ID from RECOVERY";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -8951,7 +8951,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from CLIENTS";
+            String Sql = "Select MIN(CODE)as ID from CLIENTS";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9097,7 +9097,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from CLIENTS";
+            String Sql = "Select MAX(CODE)as ID from CLIENTS";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9381,7 +9381,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from EXPENCEDEP";
+            String Sql = "Select MAX(CODE)as ID from EXPENCEDEP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9414,7 +9414,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from EXPENCEDEP";
+            String Sql = "Select MIN(CODE)as ID from EXPENCEDEP";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9485,7 +9485,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from PMAST";
+            String Sql = "Select MIN(CODE)as ID from PMAST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9629,7 +9629,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from PMAST";
+            String Sql = "Select MAX(CODE)as ID from PMAST";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9730,7 +9730,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from EMPREC";
+            String Sql = "Select MIN(CODE)as ID from EMPREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -9876,7 +9876,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from EMPREC";
+            String Sql = "Select MAX(CODE)as ID from EMPREC";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -12500,7 +12500,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from ROLE";
+            String Sql = "Select MIN(CODE)as ID from ROLE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -12585,7 +12585,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(USERID))as ID from USERLOGIN";
+            String Sql = "Select MAX(USERID)as ID from USERLOGIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -12821,7 +12821,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from ROLE";
+            String Sql = "Select MAX(CODE)as ID from ROLE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -13069,7 +13069,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(USERID))as ID from USERLOGIN";
+            String Sql = "Select MIN(USERID)as ID from USERLOGIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -13258,7 +13258,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(USERID))as Count from USERLOGIN";
+            String Sql = "Select COUNT(USERID)as Count from USERLOGIN";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -13309,7 +13309,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select COUNT(TO_NUMBER(CODE))as Count from ROLE";
+            String Sql = "Select COUNT(CODE)as Count from ROLE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("Count");
@@ -13589,7 +13589,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(CODE))as ID from SATELMENTTYPE";
+            String Sql = "Select MAX(CODE)as ID from SATELMENTTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");
@@ -13622,7 +13622,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(TO_NUMBER(CODE))as ID from SATELMENTTYPE";
+            String Sql = "Select MIN(CODE)as ID from SATELMENTTYPE";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");

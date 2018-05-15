@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="304d81e6-65ec-40c6-9b40-dcc0184a4b56" name="Default" comment="" />
+    <list default="true" id="304d81e6-65ec-40c6-9b40-dcc0184a4b56" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_EMPINCENTIVE_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_EMPINCENTIVE_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_EMPTARGET_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_EMPTARGET_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_GENERAL_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_GENERAL_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_ISSUE_SALERTN_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_ISSUE_SALERTN_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_ISSUE_SALE_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_ISSUE_SALE_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_ORDER_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_ORDER_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_PAYSELLER_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_PAYSELLER_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMEPROCAT_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMEPROCAT_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMEQTY_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMEQTY_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMERS_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_SCHEMERS_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_SCHPROSUBCATPRO_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_SCHPROSUBCATPRO_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DB/PAK_SLABPER_DB.class" afterPath="$PROJECT_DIR$/build/classes/DB/PAK_SLABPER_DB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/DynamicERP/frames/mainpkg/MAIN.class" afterPath="$PROJECT_DIR$/build/classes/DynamicERP/frames/mainpkg/MAIN.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_EMPINCENTIVE_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_EMPINCENTIVE_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_EMPTARGET_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_EMPTARGET_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_GENERAL_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_GENERAL_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_INSTRTN_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_INSTRTN_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_INSTRTN_DB1.java" afterPath="$PROJECT_DIR$/src/DB/PAK_INSTRTN_DB1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_ISSUE_SALERTN_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_ISSUE_SALERTN_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_ISSUE_SALE_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_ISSUE_SALE_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_ORDER_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_ORDER_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_PAYSELLER_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_PAYSELLER_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_QUOTATION_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_QUOTATION_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_RECOVERY_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_RECOVERY_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SALEORDER_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SALEORDER_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SALERTN_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SALERTN_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SALE_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SALE_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SATELMENT_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SATELMENT_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHEMEPROCAT_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHEMEPROCAT_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHEMEPROSUBCAT_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHEMEPROSUBCAT_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHEMEQTY_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHEMEQTY_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHEMERS_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHEMERS_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHPROCATPRO_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHPROCATPRO_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHPROSUBCATPRO_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHPROSUBCATPRO_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SCHQTYPRO_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SCHQTYPRO_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_SLABPER_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_SLABPER_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_UPDATEREC_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_UPDATEREC_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/PAK_VOUCHR_DB.java" afterPath="$PROJECT_DIR$/src/DB/PAK_VOUCHR_DB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DynamicERP/frames/mainpkg/MAIN.java" afterPath="$PROJECT_DIR$/src/DynamicERP/frames/mainpkg/MAIN.java" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,6 +56,9 @@
   </component>
   <component name="FileEditorManager">
     <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -44,7 +92,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -52,24 +101,12 @@
               <item name="DynamicERP" type="b2602c69:ProjectViewProjectNode" />
               <item name="DynamicERP" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="DynamicERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DynamicERP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DynamicERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DynamicERP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DB" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,11 +228,13 @@
       <workItem from="1525096817338" duration="688000" />
       <workItem from="1525097585074" duration="469000" />
       <workItem from="1525104847198" duration="5000" />
+      <workItem from="1526358285133" duration="24000" />
+      <workItem from="1526358992046" duration="11000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1162000" />
+    <option name="totallyTimeSpent" value="1197000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -207,8 +246,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -218,8 +257,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />

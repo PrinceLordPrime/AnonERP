@@ -168,7 +168,7 @@ public class PAK_PAYSELLER_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(DOCNO))as ID from PAYMAIN ";
+                Sql = "Select MIN(DOCNO))as ID from PAYMAIN ";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -663,7 +663,7 @@ public class PAK_PAYSELLER_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(DOCNO))as ID from PAYMAIN";
+            String Sql = "Select MAX(DOCNO))as ID from PAYMAIN";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();

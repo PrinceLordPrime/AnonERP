@@ -283,7 +283,7 @@ public class PAK_UPDATEREC_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql;
-            Sql = "Select MAX(TO_NUMBER(DOCCODE))as ID from RECOVERY";
+            Sql = "Select MAX(DOCCODE))as ID from RECOVERY";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();

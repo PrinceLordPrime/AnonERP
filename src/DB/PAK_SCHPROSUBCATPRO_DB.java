@@ -169,7 +169,7 @@ public class PAK_SCHPROSUBCATPRO_DB extends PAK_GLOBAL_DB{
         {
             java.sql.Statement statement = conn.createStatement();
             String Sql;
-                Sql = "Select MIN(TO_NUMBER(TONO))as ID from SCHPROSUBCATPRO ";
+                Sql = "Select MIN(TONO))as ID from SCHPROSUBCATPRO ";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();
@@ -670,7 +670,7 @@ public class PAK_SCHPROSUBCATPRO_DB extends PAK_GLOBAL_DB{
         try
         {
             java.sql.Statement statement = conn.createStatement();
-            String Sql = "Select MAX(TO_NUMBER(TONO))as ID from SCHPROSUBCATPRO";
+            String Sql = "Select MAX(TONO))as ID from SCHPROSUBCATPRO";
             ResultSet result = null;
             result=statement.executeQuery(Sql);
             result.next();

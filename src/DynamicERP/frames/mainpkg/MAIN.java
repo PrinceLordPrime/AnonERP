@@ -120,7 +120,7 @@ public class MAIN extends javax.swing.JFrame {
                 
                 JFrame j=new JFrame();
                     j.setAlwaysOnTop(true);
-                    JOptionPane.showMessageDialog(j, "No data Found", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(j, "Empty DB! No Data Found", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("Empty DB");
             }
             data.close_database(conn);

@@ -503,7 +503,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
             statement = conn.createStatement();
             String Sql = "INSERT INTO CLIENTS(CODE,NAME,ADD1,CNIC,CONTACT,PREVIOUSBAL,AREACODE,REMARKS,REFFERENCE,CLBAL,ACTYPE,CUSTTYPE,ZONECODE,ROUTECODE,DATEOFJOINING) VALUES ("+
                     Integer.parseInt(Code)+ ",'" + name +  "','" + add1 +  "','" + cnic +  "','" +contact +  "'," + Integer.parseInt(preBal)  +",'" + 
-                    custType + "','" +  relation + "','" +   ref + "',"+ Integer.parseInt(c)+ ",'" +ct + "','" +ppt + "'," + Integer.parseInt(zone)  +","+ Integer.parseInt(route)+ "," + input_date;
+                    custType + "','" +  relation + "','" +   ref + "',"+ Integer.parseInt(c)+ ",'" +ct + "','" +ppt + "'," + Integer.parseInt(zone)  +","+ Integer.parseInt(route)+ ",'" + input_date + "')";
             
             System.out.println("SQL : "+Sql);
             

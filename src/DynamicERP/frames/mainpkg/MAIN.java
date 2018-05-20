@@ -3089,7 +3089,14 @@ public class MAIN extends javax.swing.JFrame {
                         } catch (SQLException ex) {
                             Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        break;
+                        break;//
+                    case "Products Sub Category":
+                        try {
+                            dialogeClass.createLineWin();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        break;//Products Sub Category
                     case "Products Type":
                         try {
                             dialogeClass.createStTypeRecWin();

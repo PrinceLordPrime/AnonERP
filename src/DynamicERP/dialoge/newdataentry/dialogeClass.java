@@ -250,6 +250,7 @@ public class dialogeClass {
         dialogStockREPSubCatRec.dispose();
     }//STOCK REP PARAMETER End
      
+     
     //***************************************STOCK REP PARAMETER***************************************
     // Start
     private static JDialog dialogStockREPCatRec=new JDialog();

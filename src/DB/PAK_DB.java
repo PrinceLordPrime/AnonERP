@@ -5044,7 +5044,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         try
         {
             statement = conn.createStatement();
-            String Sql = "Select MIN(CCODE))as ID from PCAT";
+            String Sql = "Select MIN(CCODE)as ID from PCAT";
             result=statement.executeQuery(Sql);
             result.next();
             String temp=result.getString("ID");

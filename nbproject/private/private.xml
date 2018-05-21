@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
@@ -8,3 +9,20 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/DynamicERP/frames/relationalforms/CUSTREC.java</file>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/logical/Conversions.java</file>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/DB/PAK_DB.java</file>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/DB/PAK_GENERAL_DB.java</file>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/princelordprime/princecode.java</file>
+            <file>file:/D:/Netbeans%20Workspace/DynamicERP/src/DB/PAK_GLOBAL_DB.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> Stashed changes

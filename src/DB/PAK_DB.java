@@ -505,7 +505,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
                     Integer.parseInt(Code)+ ",'" + name +  "','" + add1 +  "','" + cnic +  "','" +contact +  "'," + Integer.parseInt(preBal)  +",'" + 
                     custType + "','" +  relation + "','" +   ref + "',"+ Integer.parseInt(c)+ ",'" +ct + "','" +ppt + "'," + Integer.parseInt(zone)  +","+ Integer.parseInt(route)+ ",'" + input_date + "')";
             
-            System.out.println("SQL : "+Sql);
+            //System.out.println("SQL : "+Sql);
             
             statement.executeUpdate(Sql);
             var = true;
@@ -10312,7 +10312,8 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
     }
     public String find_dist_name_by_code(Connection conn, String code) throws SQLException {
         java.sql.Statement statement = conn.createStatement();
-        String Sql = "select * from DISTRICT WHERE CODE="+code;
+        
+        String Sql = "select * from DISTRICT WHERE CODE='"+code+"'";
 
         ResultSet result = null;
         result=statement.executeQuery(Sql);

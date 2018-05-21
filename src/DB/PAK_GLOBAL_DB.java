@@ -64,7 +64,7 @@ public class PAK_GLOBAL_DB{
                     //String db_driver   = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
                     //try { Class.forName(db_driver); } catch(ClassNotFoundException e) { JOptionPane.showMessageDialog(null, "Failed to Connect the My SQL" , "My SQL Database Connection Error", JOptionPane.ERROR_MESSAGE); e.printStackTrace();  }
                     conn = DriverManager.getConnection(Url,Username,Password);
-                    System.out.println("Connection Successful");
+                    //System.out.println("Connection Successful");
                 } else if("sqlserver".equals(Database)) {
                     String db_url      = "jdbc:sqlserver://127.0.0.1:1433;DatabaseName=my_db";
                     String db_driver   = "com.microsoft.sqlserver.jdbc.SQLServerDriver";

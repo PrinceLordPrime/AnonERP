@@ -1339,7 +1339,8 @@ public class CUSTREC extends javax.swing.JFrame {
         try {
             conn = data.connect_database();
             cusTypetNames.setModel(buildAllComboBoxModel("cust"));
-            if(setSelectedComboItem(custTypeCode,cusTypetNames,((!custTypeCode.getText().isEmpty())?data.find_dist_name_by_code(conn, custTypeCode.getText()):""))){
+            String value = ((!custTypeCode.getText().isEmpty())?data.find_dist_name_by_code(conn, custTypeCode.getText()):"");
+            if(setSelectedComboItem(custTypeCode,cusTypetNames,value)){
                 
             }else{
                 CustType.setText(getCode(cusTypetNames.getSelectedItem().toString(),"cust"));
@@ -1352,13 +1353,8 @@ public class CUSTREC extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_cusTypetNamesPopupMenuWillBecomeVisible
 
-    private void cusTypetNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusTypetNamesActionPerformed
-        System.out.println("custNames.getSelectedItem().toString()"+cusTypetNames.getSelectedItem().toString());
-        custTypeCode.setText(getCode(cusTypetNames.getSelectedItem().toString(),"cust"));        // TODO add your handling code here:
-    }//GEN-LAST:event_cusTypetNamesActionPerformed
-
     private void zoneCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoneCodeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_zoneCodeActionPerformed
 
     private void zoneCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zoneCodeKeyPressed
@@ -1446,10 +1442,16 @@ public class CUSTREC extends javax.swing.JFrame {
         name.selectAll();
         code.setText("");
     }//GEN-LAST:event_btnDuplicateActionPerformed
+
+    private void cusTypetNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusTypetNamesActionPerformed
+        System.out.println("custNames.getSelectedItem().toString()"+cusTypetNames.getSelectedItem().toString());
+        custTypeCode.setText(getCode(cusTypetNames.getSelectedItem().toString(),"cust"));
+    }//GEN-LAST:event_cusTypetNamesActionPerformed
     public boolean setSelectedComboItem(JTextField textField,JComboBox comboBox, String value)
     {
         boolean tf=false;
         String item;
+        
         if(!value.isEmpty()){
             for (int i = 0; i < comboBox.getItemCount(); i++)
             {

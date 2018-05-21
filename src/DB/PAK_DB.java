@@ -117,7 +117,8 @@ public class PAK_DB extends PAK_GLOBAL_DB {
         try
         {
             statement = conn.createStatement();
-            String Sql = "INSERT INTO CASHDEPOSIT(CODE,AMOUNT,SMCODE,ODATE,VANCODE,FINCODE,DESCR) VALUES ("+ Integer.parseInt(Code)+ "," + Integer.parseInt(amount)+ "," +  Integer.parseInt(mName)+ ", DATE('" + date + "' , 'MM/DD/YY'),"+ Integer.parseInt(vanCode)+ ","+ Integer.parseInt(finCode)+",'"+desc+"' )";
+            String Sql = "INSERT INTO CASHDEPOSIT(CODE,AMOUNT,SMCODE,ODATE,VANCODE,FINCODE,DESCR) VALUES ("+ Integer.parseInt(Code)+ "," + Integer.parseInt(amount)+ "," +  Integer.parseInt(mName)+ ",'" + date + "',"+ Integer.parseInt(vanCode)+ ","+ Integer.parseInt(finCode)+",'"+desc+"' )";
+                        
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -185,7 +186,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
         try
         {
             statement = conn.createStatement();
-            String Sql = "INSERT INTO EXPENCEDEP(CODE,EXPCODE,SMCODE,ODATE,AMOUNT,VANCODE,FINCODE) VALUES ("+ Integer.parseInt(Code)+ ",'" + Integer.parseInt(exp)+ "','" + Integer.parseInt(sm) + "'," + " DATE('" + date + "' , 'MM/DD/YY') " + ",'" + Integer.parseInt(amount)+ "','" + Integer.parseInt(van)+ "','" + Integer.parseInt(fin)+ "')";
+            String Sql = "INSERT INTO EXPENCEDEP(CODE,EXPCODE,SMCODE,ODATE,AMOUNT,VANCODE,FINCODE) VALUES ("+ Integer.parseInt(Code)+ ",'" + Integer.parseInt(exp)+ "','" + Integer.parseInt(sm) + "'," + "'" + date + "'" + ",'" + Integer.parseInt(amount)+ "','" + Integer.parseInt(van)+ "','" + Integer.parseInt(fin)+ "')";
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -256,13 +257,14 @@ public class PAK_DB extends PAK_GLOBAL_DB {
             String Sql = "INSERT INTO PERMAIN(ODATE,DOCNO,REFNO,SUPCODE,TGROSSAMT,FMRSUM,SPLRS,OTHEREXP,AVDISCPER,"
                     + "TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,PAID,REMARKS,"
                     + "NETPAYABLE,SPLFMR) "
-                    + "VALUES (DATE('"+odate+"' ,'MM/DD/YY'),'" 
+                    + "VALUES ('"+odate+"','" 
                     + Integer.parseInt(docno)+ "','" + refno+ "',"
                     + "'"+Integer.parseInt(supcode)+"','"+Float.parseFloat(tgrossamt)+"','"+Float.parseFloat(fmesum)+"','"+Float.parseFloat(splrs)+"',"
                     + "'"+Float.parseFloat(otherexp)+"','"+Float.parseFloat(avdiscper)+"','"+Float.parseFloat(tdiscrs)
                     + "','"+Float.parseFloat(avtaxper)+"','"+Float.parseFloat(ttaxrs)+"','"+Float.parseFloat(tnetamount)+"',"
                     + "'"+Float.parseFloat(remaning)+"','"+Float.parseFloat(paid)+"','"+remarks+"','"+Float.parseFloat(netpayable)+"','"+Float.parseFloat(splfmr)+"')";
              
+            
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -293,7 +295,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
         {
             statement = conn.createStatement();
             String Sql = "INSERT INTO PERDTL(DOCNO,SEQNO,PCODE,PERQTY,PERRATE,GROSSAMOUNT,TDO,DISCPER,FMR,"+
-                    "TAXPER,NETAMOUNT,DMG,FREE,RETURNQTY,CUSTOM,EXPIRYDATE) VALUES ('"+ Integer.parseInt(docno)+"','" + Integer.parseInt(seqno)+ "','"+Float.parseFloat(pcode)+"','"+Float.parseFloat(perqty)+"','"+Float.parseFloat(perrate)+"','"+Float.parseFloat(grossamount)+"','"+Float.parseFloat(discper)+"','"+Float.parseFloat(discrs)+ "','"+Float.parseFloat(taxper)+"','"+Float.parseFloat(taxrs)+"','"+Float.parseFloat(netamount)+"','"+Float.parseFloat(dmg)+"','"+Float.parseFloat(free)+"','"+Float.parseFloat(returnqty)+"','"+custom+"',DATE('"+expiryDate+"' ,'MM/DD/YY'))";
+                    "TAXPER,NETAMOUNT,DMG,FREE,RETURNQTY,CUSTOM,EXPIRYDATE) VALUES ('"+ Integer.parseInt(docno)+"','" + Integer.parseInt(seqno)+ "','"+Float.parseFloat(pcode)+"','"+Float.parseFloat(perqty)+"','"+Float.parseFloat(perrate)+"','"+Float.parseFloat(grossamount)+"','"+Float.parseFloat(discper)+"','"+Float.parseFloat(discrs)+ "','"+Float.parseFloat(taxper)+"','"+Float.parseFloat(taxrs)+"','"+Float.parseFloat(netamount)+"','"+Float.parseFloat(dmg)+"','"+Float.parseFloat(free)+"','"+Float.parseFloat(returnqty)+"','"+custom+"','"+expiryDate+"')";
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -3989,7 +3991,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
 
-            Sql="UPDATE CASHDEPOSIT SET AMOUNT = '"+amount+"', SMCODE = '"+smcode+"', ODATE = DATE('" + date + "' , 'MM/DD/YY'), VANCODE = '"+vancode+"', FINCODE = '"+fincode+"' , DESCR = '"+desc +"' WHERE CODE="+code+"";// VANCODE FINCODE
+            Sql="UPDATE CASHDEPOSIT SET AMOUNT = '"+amount+"', SMCODE = '"+smcode+"', ODATE = '" + date + "', VANCODE = '"+vancode+"', FINCODE = '"+fincode+"' , DESCR = '"+desc +"' WHERE CODE="+code+"";// VANCODE FINCODE
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -5233,8 +5235,8 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
              Sql="UPDATE PERMAIN SET AVDISCPER= '"+avdiscper+"', REFNO = '"+refno+"', SUPCODE = '"+supcode+
-                     "',TGROSSAMT = '"+tgrossamt+"',REMARKS= '"+remarks+"',ODATE= DATE('" + odate +
-                     "' , 'MM/DD/YY') ,FMRSUM= '"+fmrsum+"',SPLRS= '"+splrs+"',OTHEREXP = '"+otherexp+
+                     "',TGROSSAMT = '"+tgrossamt+"',REMARKS= '"+remarks+"',ODATE= '" + odate +
+                     "' ,FMRSUM= '"+fmrsum+"',SPLRS= '"+splrs+"',OTHEREXP = '"+otherexp+
                      "',TDISCRS = '"+tdiscrs+"',AVTAXPER = '"+avtaxper+"',TTAXRS = '"+ttaxrs+"',TNETAMOUNT = '"+
                      tnetamount+"',REMAINING = '"+remaning+"',PAID = '"+paid+"',NETPAYABLE = '"+netpayable+"',SPLFMR= '"+splfmr+
                      "' WHERE DOCNO ="+docno;
@@ -9161,7 +9163,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             //Sql="UPDATE CLIENTS SET NAME = '"+cust+"', ADD1 = '"+sm1+"', ADD2 = '"+sm2+"',CONTACT = '"+cash+"',PREVIOUSBAL= '"+remarks+"',CREDITLIM= '"+date+"',CUSTTYPE= '"+amount+"',DISTCODE= '"+fright+"',ROUTECODE = '"+creditAmount+"' WHERE CODE="+code;
             //name +  "','" + add1 +  "','" + add2 +  "','" +contact +  "','" + Integer.parseInt(preBal) +  "','" + Integer.parseInt(CreditLim) +  "','" + custType +  "','" + Integer.parseInt(distCode) +  "','" + Integer.parseInt(routeCode) +  "','" + Integer.parseInt(zoneCode) + "','" + comp + "','" +  + "','" + expDate + "')";
             Sql="UPDATE CLIENTS SET NAME = '"+name+"', ADD1 = '"+add1+"', CNIC = '"+add2+"',CONTACT = '"+contact+"',PREVIOUSBAL= "+
-                    Integer.parseInt(preBal)+",AREACODE= '"+custType+"',REMARKS = '"+relation+"',REFFERENCE = '"+ref+"',CLBAL = '"+ref1+"',ACTYPE = '"+ref2+"',CUSTTYPE = '"+ccp+"' ,ZONECODE = '"+zone+"',ROUTECODE = '"+route+"',DATEOFJOINING= DATE('" + odate +"' , 'MM/DD/YY')  WHERE CODE="+Code;
+                    Integer.parseInt(preBal)+",AREACODE= '"+custType+"',REMARKS = '"+relation+"',REFFERENCE = '"+ref+"',CLBAL = '"+ref1+"',ACTYPE = '"+ref2+"',CUSTTYPE = '"+ccp+"' ,ZONECODE = '"+zone+"',ROUTECODE = '"+route+"',DATEOFJOINING= '" + odate +"'  WHERE CODE="+Code;
             statement.executeUpdate(Sql);
             var = true;
         }
@@ -9242,7 +9244,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         {
             statement = conn.createStatement();
             String Sql;
-            Sql="UPDATE EXPENCEDEP SET EXPCODE = '"+exp+"',SMCODE = '"+sm+"',ODATE = DATE('"+date+"' , 'MM/DD/YY') ,AMOUNT = '"+amount+"',VANCODE = '"+van+"',FINCODE = '"+fin+"' WHERE CODE="+Code;
+            Sql="UPDATE EXPENCEDEP SET EXPCODE = '"+exp+"',SMCODE = '"+sm+"',ODATE = '"+date+"' ,AMOUNT = '"+amount+"',VANCODE = '"+van+"',FINCODE = '"+fin+"' WHERE CODE="+Code;
             statement.executeUpdate(Sql);
             var = true;
         }

@@ -615,7 +615,7 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="netAmt" alignment="1" pref="115" max="32767" attributes="0"/>
+                                                  <Component id="netAmt" alignment="1" pref="120" max="32767" attributes="0"/>
                                                   <Component id="grossAmt" alignment="1" min="-2" pref="109" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>

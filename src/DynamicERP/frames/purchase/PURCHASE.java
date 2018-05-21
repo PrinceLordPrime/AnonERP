@@ -74,6 +74,10 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.table.JTableHeader;
 
+// PrinceLord Prime
+
+import princelordprime.princecode;
+
 /**
  *
  * @author Shan
@@ -1579,8 +1583,12 @@ public class PURCHASE extends
                     codeInt = max + 1;
                 }
                 ///Max                 String.valueOf(codeInt)
+                //dateField.toDateString(oDate.getDate().toString())
+                
+                princecode code = new princecode();
+                String dated = code.get_correct_date(oDate.getDate());
 
-                tf = data.insert_purchase_in_table(connAA, dateField.toDateString(oDate.getDate().toString()),
+                tf = data.insert_purchase_in_table(connAA, dated,
                         codeInt + "", refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(),
                         splRs.getText(), otherExp.getText(), avediscper.getText(), discount.getText(), taxPer.getText(),
                         taxRs.getText(), netAmt.getText(), remaining.getText(), paid.getText(), remarks.getText(),

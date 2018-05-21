@@ -1339,7 +1339,9 @@ public class CUSTREC extends javax.swing.JFrame {
         try {
             conn = data.connect_database();
             cusTypetNames.setModel(buildAllComboBoxModel("cust"));
-            String value = ((!custTypeCode.getText().isEmpty())?data.find_dist_name_by_code(conn, custTypeCode.getText()):"");
+            String value = ((!custTypeCode.getText().isEmpty())?data.find_dist_name_by_code(conn, custTypeCode.getText()):"");     
+            
+            
             if(setSelectedComboItem(custTypeCode,cusTypetNames,value)){
                 
             }else{
@@ -1451,7 +1453,7 @@ public class CUSTREC extends javax.swing.JFrame {
     {
         boolean tf=false;
         String item;
-        
+                
         if(!value.isEmpty()){
             for (int i = 0; i < comboBox.getItemCount(); i++)
             {

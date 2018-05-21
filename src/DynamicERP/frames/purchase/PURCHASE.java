@@ -1584,12 +1584,13 @@ public class PURCHASE extends
                 }
                 ///Max                 String.valueOf(codeInt)
                 //dateField.toDateString(oDate.getDate().toString())
+                                              
                 
                 princecode code = new princecode();
                 String dated = code.get_correct_date(oDate.getDate());
 
                 tf = data.insert_purchase_in_table(connAA, dated,
-                        codeInt + "", refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(),
+                        Integer.toString(codeInt), refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(),
                         splRs.getText(), otherExp.getText(), avediscper.getText(), discount.getText(), taxPer.getText(),
                         taxRs.getText(), netAmt.getText(), remaining.getText(), paid.getText(), remarks.getText(),
                         netpayable.getText(), dcode.getText(),splFmrPer.getText());

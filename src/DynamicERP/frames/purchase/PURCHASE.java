@@ -1590,7 +1590,7 @@ public class PURCHASE extends
                 String dated = code.get_correct_date(oDate.getDate());
 
                 tf = data.insert_purchase_in_table(connAA, dated,
-                        Integer.toString(codeInt), refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(),
+                        codeInt, refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(),
                         splRs.getText(), otherExp.getText(), avediscper.getText(), discount.getText(), taxPer.getText(),
                         taxRs.getText(), netAmt.getText(), remaining.getText(), paid.getText(), remarks.getText(),
                         netpayable.getText(), dcode.getText(),splFmrPer.getText());
@@ -1601,10 +1601,11 @@ public class PURCHASE extends
                         
                         String tempDate;
                             if(purchaseProducts[i].getExpDate().getDate()!=null){
-                                tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+//                                tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+                                  tempDate=code.get_correct_date(purchaseProducts[i].getExpDate().getDate());
                             }else{
                                 tempDate=null;
-                            }
+                            }                            
                             tf=data.insert_purchase_products_in_table(connAA,
                                     codeInt+"",
                                     purchaseProducts[i].getSeqNoText(),
@@ -1621,7 +1622,7 @@ public class PURCHASE extends
                                     purchaseProducts[i].getFree().getText(),
                                     "0.0",
                                     purchaseProducts[i].getCustom().getText(),
-                                    dateField.toDateString(tempDate));
+                                    tempDate);
                     }
                 }
                 

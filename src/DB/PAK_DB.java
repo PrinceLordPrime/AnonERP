@@ -245,7 +245,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
         }
         return var;
     }
-    public boolean insert_purchase_in_table(Connection conn,  String odate,String  docno,String  refno,String  supcode,
+    public boolean insert_purchase_in_table(Connection conn,  String odate,int  docno,String  refno,String  supcode,
             String  tgrossamt,String  fmesum,String  splrs,String  otherexp,String  avdiscper,String  tdiscrs,String  avtaxper,
             String  ttaxrs,String  tnetamount,String  remaning,String  paid,String  remarks,String netpayable,String dealerCode,String splfmr){
         boolean var = false;
@@ -258,7 +258,7 @@ public class PAK_DB extends PAK_GLOBAL_DB {
                     + "TDISCRS,AVTAXPER,TTAXRS,TNETAMOUNT,REMAINING,PAID,REMARKS,"
                     + "NETPAYABLE,SPLFMR) "
                     + "VALUES ('"+odate+"','" 
-                    + Integer.parseInt(docno)+ "','" + refno+ "',"
+                    + docno + "','" + refno+ "',"
                     + "'"+Integer.parseInt(supcode)+"','"+Float.parseFloat(tgrossamt)+"','"+Float.parseFloat(fmesum)+"','"+Float.parseFloat(splrs)+"',"
                     + "'"+Float.parseFloat(otherexp)+"','"+Float.parseFloat(avdiscper)+"','"+Float.parseFloat(tdiscrs)
                     + "','"+Float.parseFloat(avtaxper)+"','"+Float.parseFloat(ttaxrs)+"','"+Float.parseFloat(tnetamount)+"',"

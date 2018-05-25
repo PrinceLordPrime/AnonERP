@@ -34,6 +34,7 @@ import DynamicERP.frames.extra.ROUTEREC;
 import DynamicERP.frames.extra.SATELMENTTYPE;
 import DynamicERP.frames.extra.VANREC;
 import DynamicERP.frames.extra.ZONEREC;
+import DynamicERP.frames.ledgers.CUSTOMERLEDGER;
 import DynamicERP.frames.newdataentry.CATREC;
 import DynamicERP.frames.newdataentry.CUSTTYPE;
 import DynamicERP.frames.newdataentry.EXPENCE;
@@ -471,6 +472,17 @@ public class dialogeClass {
     public static void disposeRecoveryWin(){  
         dialogRecovery.dispose();
     }//Recovery End
+    //
+    //***************************************   Customers Ledger   ***************************************
+    // Start
+    private static JDialog dialogCustLeg=new JDialog();
+    public static void createCustLegWin() throws SQLException, Exception{  
+        CUSTOMERLEDGER block = new CUSTOMERLEDGER();
+        dialogCustLeg = styleDilog(dialogCustLeg,block);
+    }
+    public static void disposeCustLegWin(){  
+        dialogCustLeg.dispose();
+    }//Customers Ledger End
     
     //***************************************Cash - Credit Entry   ***************************************
     // Start

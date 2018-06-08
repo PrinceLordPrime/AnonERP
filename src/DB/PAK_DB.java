@@ -8560,9 +8560,9 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
             statement = conn.createStatement();
             String Sql;
             if(isCredit){
-                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE CREDITAMOUNT > "+Integer.parseInt("0")+")as T";
             }else{
-                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")";
+                Sql = "Select MIN(DOCCODE)as ID from (select * from RECOVERY WHERE AMOUNT > "+Integer.parseInt("0")+")as T";
             }
             result=statement.executeQuery(Sql);
             result.next();

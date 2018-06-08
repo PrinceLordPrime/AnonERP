@@ -3203,7 +3203,16 @@ public class MAIN extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        break;
+                        break;//CUSTOMERLEDGER
+                    case "Customers Ledger":
+                        try {
+                            dialogeClass.createCustLegWin();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (Exception ex) {
+                            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        break;//CUSTOMERLEDGER
                 }
             }else{
                 System.out.println("TreePath : <WARNING> Found Null");

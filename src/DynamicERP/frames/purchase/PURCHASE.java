@@ -86,6 +86,7 @@ public class PURCHASE extends
         javax.swing.JFrame {
 
     Conversions dateField = new Conversions();
+    princecode code = new princecode();
 
     /**
      * Creates new form PURCHASE
@@ -1444,12 +1445,7 @@ public class PURCHASE extends
         Connection connAA = null;
         try {
             
-            try {
-                tf = data.update_purchase(connAA, dateField.toDateString(oDate.getDate().toString()), invNo.getText() + "", refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(), splRs.getText(), otherExp.getText(), avediscper.getText(), discount.getText(), taxPer.getText(), taxRs.getText(), netAmt.getText(), remaining.getText(), paid.getText(), remarks.getText(), netpayable.getText(), dcode.getText(),splFmrPer.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(PURCHASE.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            tf = data.update_purchase(connAA, code.get_correct_date(oDate.getDate()), invNo.getText() + "", refNo.getText(), suppCode.getText(), grossAmt.getText(), fmrsumrs.getText(), splRs.getText(), otherExp.getText(), avediscper.getText(), discount.getText(), taxPer.getText(), taxRs.getText(), netAmt.getText(), remaining.getText(), paid.getText(), remarks.getText(), netpayable.getText(), dcode.getText(),splFmrPer.getText());       
         } catch (Exception ex) {
             Logger.getLogger(FIRMREC.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1479,7 +1475,8 @@ public class PURCHASE extends
                         try {
                                 String tempDate;
                                 if(purchaseProducts[i].getExpDate().getDate()!=null){
-                                    tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+                                    //tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+                                    tempDate=code.get_correct_date(purchaseProducts[i].getExpDate().getDate());
                                 }else{
                                     tempDate=null;
                                 }
@@ -1498,7 +1495,7 @@ public class PURCHASE extends
                                     purchaseProducts[i].getFree().getText(),
                                     "0.0",
                                     purchaseProducts[i].getCustom().getText(),
-                                    dateField.toDateString(tempDate));
+                                    tempDate);
                                     System.out.println("update_purchase_products_in_table_new "+tf);
                             
                         } catch (Exception ex) {
@@ -1511,7 +1508,8 @@ public class PURCHASE extends
                         try {
                         String tempDate;
                             if(purchaseProducts[i].getExpDate().getDate()!=null){
-                                tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+                                //tempDate=purchaseProducts[i].getExpDate().getDate().toString();
+                                tempDate=code.get_correct_date(purchaseProducts[i].getExpDate().getDate());
                             }else{
                                 tempDate=null;
                             }
@@ -1531,7 +1529,7 @@ public class PURCHASE extends
                                     purchaseProducts[i].getFree().getText(),
                                     "0.0",
                                     purchaseProducts[i].getCustom().getText(),
-                                    dateField.toDateString(tempDate));
+                                    tempDate);
                             
                             
                         } catch (Exception ex) {
@@ -1584,9 +1582,7 @@ public class PURCHASE extends
                 }
                 ///Max                 String.valueOf(codeInt)
                 //dateField.toDateString(oDate.getDate().toString())
-                                              
                 
-                princecode code = new princecode();
                 String dated = code.get_correct_date(oDate.getDate());
 
                 tf = data.insert_purchase_in_table(connAA, dated,

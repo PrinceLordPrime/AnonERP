@@ -5230,6 +5230,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
         boolean var = false;
         
         java.sql.Statement statement = null;
+        System.out.println("Executing.... ");
         try
         {
             statement = conn.createStatement();
@@ -5240,6 +5241,7 @@ Integer.parseInt(code)+ "," + Integer.parseInt(cust) + "," +Integer.parseInt(sm1
                      "',TDISCRS = '"+tdiscrs+"',AVTAXPER = '"+avtaxper+"',TTAXRS = '"+ttaxrs+"',TNETAMOUNT = '"+
                      tnetamount+"',REMAINING = '"+remaning+"',PAID = '"+paid+"',NETPAYABLE = '"+netpayable+"',SPLFMR= '"+splfmr+
                      "' WHERE DOCNO ="+docno;
+             
              statement.executeUpdate(Sql);
 
             

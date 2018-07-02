@@ -35,6 +35,7 @@ import DynamicERP.frames.extra.SATELMENTTYPE;
 import DynamicERP.frames.extra.VANREC;
 import DynamicERP.frames.extra.ZONEREC;
 import DynamicERP.frames.ledgers.CUSTOMERLEDGER;
+import DynamicERP.frames.ledgers.SELLERSLEDGER;
 import DynamicERP.frames.newdataentry.CATREC;
 import DynamicERP.frames.newdataentry.CUSTTYPE;
 import DynamicERP.frames.newdataentry.EXPENCE;
@@ -479,6 +480,7 @@ public class dialogeClass {
     public static void createCustLegWin() throws SQLException, Exception{  
         CUSTOMERLEDGER block = new CUSTOMERLEDGER();
         dialogCustLeg = styleDilog(dialogCustLeg,block);
+        System.out.println("IN CUSTOMERLEDGER");
     }
     public static void disposeCustLegWin(){  
         dialogCustLeg.dispose();
@@ -524,6 +526,18 @@ public class dialogeClass {
     }
     public static void disposePaysellerWin(){  
         dialogPayseller.dispose();
+    }//Payseller End
+    
+    //***************************************Payseller***************************************
+    // Start
+    private static JDialog dialogSellersLedgers=new JDialog();
+    public static void createSellersLedgersWin() throws SQLException, Exception{  
+        
+        SELLERSLEDGER block = new SELLERSLEDGER();
+        dialogSellersLedgers = styleDilog(dialogSellersLedgers,block);
+    }
+    public static void disposeSellersLedgersWin(){  
+        dialogSellersLedgers.dispose();
     }//Payseller End
     
     

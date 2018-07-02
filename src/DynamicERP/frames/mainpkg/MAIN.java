@@ -3203,7 +3203,7 @@ public class MAIN extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        break;//CUSTOMERLEDGER
+                        break;
                     case "Customers Ledger":
                         try {
                             dialogeClass.createCustLegWin();
@@ -3212,7 +3212,9 @@ public class MAIN extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        break;//CUSTOMERLEDGER
+                        break;// Payments To Sellers
+                    
+                        
                 }
             }else{
                 System.out.println("TreePath : <WARNING> Found Null");
@@ -3663,8 +3665,13 @@ try {
     }//GEN-LAST:event_jmitemcustledger1MouseExited
 
     private void jmitemcustledger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitemcustledger1ActionPerformed
-            CUSTOMERLEDGER a = new CUSTOMERLEDGER();
-            a.setVisible(true);
+         try {
+            dialogeClass.createCustLegWin();
+        } catch (Exception ex) {
+            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//         CUSTOMERLEDGER a = new CUSTOMERLEDGER();
+//            a.setVisible(true);
     }//GEN-LAST:event_jmitemcustledger1ActionPerformed
 
     private void jmitemcustlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitemcustlistActionPerformed
@@ -3689,9 +3696,14 @@ try {
     }//GEN-LAST:event_jmitemcustlistActionPerformed
 
     private void jmitemcomledgerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitemcomledgerActionPerformed
-            SELLERSLEDGER a = new SELLERSLEDGER();
-            a.setVisible(true);
-            
+        try {
+            dialogeClass.createSellersLedgersWin();
+        } catch (Exception ex) {
+            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//       SELLERSLEDGER a = new SELLERSLEDGER();
+//            a.setVisible(true);
+//            
             
                  }//GEN-LAST:event_jmitemcomledgerActionPerformed
 
